@@ -55,7 +55,7 @@ syn keyword javaScriptType		Array Boolean Date Function Number Object String Reg
 syn keyword javaScriptStatement		return with
 syn keyword javaScriptBoolean		true false
 syn keyword javaScriptNull		null undefined
-syn keyword javaScriptIdentifier	arguments this var let
+syn keyword javaScriptIdentifier	arguments this let
 syn keyword javaScriptLabel		case default
 syn keyword javaScriptException		try catch finally throw
 syn keyword javaScriptMessage		alert confirm prompt status
@@ -76,6 +76,8 @@ syn match javaScriptOperator "&&"
 syn match javaScriptOperator "||"
 syn match javaScriptFunctionCall "\w\+\ze\s\{-}("
 syn match javaScriptConstName /[A-Z]\{2,\}/
+syn keyword javaScriptVar var contained
+syn match javaScriptVarDeclaration /var\s*\w*/ contains=javaScriptVar,javaScriptConstName
 
 if exists("javaScript_fold")
     syn match	javaScriptFunction	"\<function\>"
@@ -88,8 +90,8 @@ if exists("javaScript_fold")
     setlocal foldtext=getline(v:foldstart)
 else
     syn keyword javaScriptFunction	function
-    syn match	javaScriptBraces	   "[{}\[\]]"
-    syn match	javaScriptParens	   "[()]"
+    syn match	javaScriptBraces	"[{}\[\]]"
+    syn match	javaScriptParens	"[()]"
 endif
 
 syn sync fromstart
@@ -134,7 +136,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptNull			Type
   HiLink javaScriptBoolean		Boolean
   HiLink javaScriptRegexpString		String
-"  HiLink javaScriptIdentifier		Identifier
   HiLink javaScriptIdentifier		Keyword
   HiLink javaScriptFunctionCall		Function
   HiLink javaScriptLabel		Label
@@ -146,6 +147,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptReserved		Keyword
   HiLink javaScriptDebug		Debug
   HiLink javaScriptConstant		Label
+  HiLink javaScriptVar			Keyword
+  HiLink javaScriptVarDeclaration	Identifier
 
   delcommand HiLink
 endif
