@@ -117,7 +117,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptStringD		String
   HiLink javaScriptCharacter		Character
   HiLink javaScriptSpecialCharacter	javaScriptSpecial
-  HiLink javaScriptNumber		javaScriptValue
+  HiLink javaScriptNumber		Constant
   HiLink javaScriptConditional		Conditional
   HiLink javaScriptRepeat		Repeat
   HiLink javaScriptBranch		Conditional
