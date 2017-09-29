@@ -75,6 +75,7 @@ syn match javaScriptOperator "?"
 syn match javaScriptOperator "&&"
 syn match javaScriptOperator "||"
 syn match javaScriptFunctionCall "\w\+\ze\s\{-}("
+syn match javaScriptConstName /[A-Z]\{2,\}/
 
 if exists("javaScript_fold")
     syn match	javaScriptFunction	"\<function\>"
@@ -122,6 +123,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptBranch		Conditional
 "  HiLink javaScriptOperator		Operator
   HiLink javaScriptOperator		Keyword
+  HiLink javaScriptConstName		Type
   HiLink javaScriptType			Type
   HiLink javaScriptStatement		Statement
   HiLink javaScriptFunction		Keyword
