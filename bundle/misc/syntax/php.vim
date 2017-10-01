@@ -578,7 +578,7 @@ endif
 if php_alt_assignByReference
     " special highlighting for '=&' operator
     syntax match phpAssignByRef /=\s*&/ containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle
-    highlight link phpAssignByRef Type
+    highlight link phpAssignByRef Keyword
 endif
 
 if php_alt_comparisons
@@ -641,7 +641,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpBoolean Boolean
   HiLink   phpStorageClass  StorageClass
   HiLink   phpSCKeyword Keyword
-  HiLink   phpFCKeyword Define
+  HiLink   phpFCKeyword Type
   HiLink   phpStructure Keyword
   HiLink   phpStringSingle  String
   HiLink   phpStringDouble  String
@@ -658,7 +658,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpKeyword Statement
   HiLink   phpType  Type
   HiLink   phpInclude Include
-  HiLink   phpDefine Keyword
+  HiLink   phpDefine Type
   HiLink   phpBackslashSequences SpecialChar
   HiLink   phpBackslashDoubleQuote SpecialChar
   HiLink   phpBackslashSingleQuote SpecialChar
