@@ -520,7 +520,7 @@ syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,
 " Highlighting for __autoload slightly different from line above
 syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
   \ __autoload
-highlight link phpSpecialFunction phpOperator
+highlight link phpSpecialFunction Special
 
 " Highlighting for PHP5's built-in classes
 " - built-in classes harvested from get_declared_classes() in 5.1.4
@@ -543,7 +543,7 @@ syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStrin
   \ DOMCharacterData DOMAttr DOMElement DOMText DOMComment DOMTypeinfo DOMUserDataHandler
   \ DOMLocator DOMConfiguration DOMCdataSection DOMDocumentType DOMNotation DOMEntity
   \ DOMEntityReference DOMProcessingInstruction DOMStringExtend DOMXPath
-highlight link phpClasses phpFunctions
+highlight link phpClasses Type
 
 " Highlighting for PHP5's built-in interfaces
 " - built-in classes harvested from get_declared_interfaces() in 5.1.4
@@ -640,16 +640,16 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpException Exception
   HiLink   phpBoolean Boolean
   HiLink   phpStorageClass  StorageClass
-  HiLink   phpSCKeyword StorageClass
+  HiLink   phpSCKeyword Keyword
   HiLink   phpFCKeyword Define
-  HiLink   phpStructure Structure
+  HiLink   phpStructure Keyword
   HiLink   phpStringSingle  String
   HiLink   phpStringDouble  String
   HiLink   phpBacktick  String
   HiLink   phpNumber  Number
   HiLink   phpFloat Float
   HiLink   phpMethods Function
-  HiLink   phpFunctions Function
+  HiLink   phpFunctions Special
   HiLink   phpBaselib Function
   HiLink   phpRepeat  Repeat
   HiLink   phpConditional Conditional
@@ -658,12 +658,12 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpKeyword Statement
   HiLink   phpType  Type
   HiLink   phpInclude Include
-  HiLink   phpDefine  Define
+  HiLink   phpDefine Keyword
   HiLink   phpBackslashSequences SpecialChar
   HiLink   phpBackslashDoubleQuote SpecialChar
   HiLink   phpBackslashSingleQuote SpecialChar
-  HiLink   phpParent  Delimiter
-  HiLink   phpBrackets  Delimiter
+  HiLink   phpParent Delimiter
+  HiLink   phpBrackets Keyword
   HiLink   phpIdentifierConst Delimiter
   HiLink   phpParentError Error
   HiLink   phpOctalError  Error
