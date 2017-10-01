@@ -342,7 +342,7 @@ syn keyword phpInclude  include require include_once require_once use contained
 
 " Peter Hodge - added 'clone' keyword
 " Define
-syn keyword phpDefine new clone contained
+syn keyword phpKeyword new clone contained
 
 " Boolean
 syn keyword phpBoolean  true false  contained
@@ -655,7 +655,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpConditional Conditional
   HiLink   phpLabel Label
   HiLink   phpStatement Statement
-  HiLink   phpKeyword Statement
+  HiLink   phpKeyword Keyword
   HiLink   phpType  Type
   HiLink   phpInclude Include
   HiLink   phpDefine Type
