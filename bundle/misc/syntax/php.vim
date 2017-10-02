@@ -295,8 +295,8 @@ syn match phpOperator "&&\|\<and\>" contained display
 syn match phpOperator "||\|\<x\=or\>" contained display
 syn match phpRelation "[!=<>]=" contained display
 syn match phpRelation "[<>]"  contained display
-syn match phpMemberSelector "->"  contained display
-syn match phpVarSelector  "\$"  contained display
+syn match phpMemberSelector "->" contained display
+syn match phpVarSelector "\$" contained display
 
 " Identifier
 syn match phpIdentifier "$\h\w*" contained contains=phpEnvVar,phpIntVar,phpVarSelector display
@@ -553,6 +553,9 @@ syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStrin
   \ DOMLocator DOMConfiguration DOMCdataSection DOMDocumentType DOMNotation DOMEntity
   \ DOMEntityReference DOMProcessingInstruction DOMStringExtend DOMXPath
 highlight link phpClasses Type
+
+syntax match phpThis "$this->" containedin=ALL contains=phpVarSelector,phpMemberSelector
+highlight link phpThis Label
 
 " Highlighting for PHP5's built-in interfaces
 " - built-in classes harvested from get_declared_interfaces() in 5.1.4

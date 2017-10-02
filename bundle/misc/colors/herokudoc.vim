@@ -6,15 +6,15 @@
 " Version: 1.4
 " Description: Based on herokudoc-gvim color scheme from http://vimcolors.com
 " Used Colors:
-" 	#434E56 - normal background
 " 	#AEAE9A - gray (normal text)
 " 	#FFEA00 - yellow (type)
-" 	#666600 - darkyellow (TODO background)
 " 	#B5EE00 - green (variable)
 " 	#FF9143 - orange (number, constant)
 " 	#88BEEE - blue (function)
 " 	#FFAAFF - pink (enumeration)
 " 	#55FFFF - cyan (link)
+" 	#434E56 - gray-blue (normal background)
+" 	#666600 - darkyellow (TODO background)
 
 let g:colors_name="herokudoc"
 
@@ -38,9 +38,9 @@ hi  Function 	guifg=#88BEEE
 hi Statement 	guifg=#FFFFFF gui=BOLD ctermfg=3
 hi  Operator 	guifg=#FFFFFF gui=BOLD
 hi  Keyword 	guifg=#FFFFFF gui=BOLD
+hi  Label		guifg=#B5EE00 gui=BOLD
 "hi  Conditional
 "hi  Repeat
-"hi  Label
 "hi  Exception
 hi PreProc 		guifg=#FFFFFF gui=BOLD,ITALIC
 "hi  Include
