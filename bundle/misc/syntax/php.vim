@@ -435,13 +435,10 @@ else
   syn match phpParent "[({[\]})]" contained
 endif
 
-
-" by REKSAR
 syn match phpCustomFunction "\w\+\ze(" contained
 syn match phpCustomMethod "->\w\+\ze(" contained contains=phpMemberSelector,phpCustomFunction
 
-
-syn cluster phpClConst  contains=phpFunctions,phpIdentifier,phpConditional,phpRepeat,phpStatement,phpOperator,phpRelation,phpStringSingle,phpStringDouble,phpBacktick,phpNumber,phpFloat,phpKeyword,phpType,phpBoolean,phpStructure,phpMethodsVar,phpConstant,phpCoreConstant,phpException
+syn cluster phpClConst  contains=phpFunctions,phpIdentifier,phpConditional,phpRepeat,phpStatement,phpOperator,phpRelation,phpStringSingle,phpStringDouble,phpBacktick,phpNumber,phpFloat,phpKeyword,phpType,phpBoolean,phpStructure,phpMethodsVar,phpConstant,phpCoreConstant,phpException,phpClassDefinition
 syn cluster phpClInside contains=@phpClConst,phpComment,phpLabel,phpParent,phpParentError,phpInclude,phpHereDoc,phpNowDoc
 syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass,phpCustomFunction,phpCustomMethod
 syn cluster phpClTop  contains=@phpClFunction,phpFoldFunction,phpFoldClass,phpFoldInterface,phpFoldTry,phpFoldCatch
@@ -473,26 +470,30 @@ endif
 if exists("php_folding") && php_folding==1
 " match one line constructs here and skip them at folding
   syn keyword phpSCKeyword  abstract final private protected public static  contained
-  syn keyword phpFCKeyword function contained
-  syn keyword phpStorageClass global  contained
+  syn keyword phpFCKeyword  function  contained
+  syn keyword phpStorageClass  global  contained
   syn match phpStructure "\(\s\|^\)\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\(\s\+.*[;}]\)\@="  contained contains=phpSCKeyword
-  syn match phpStructure  "\(\s\|^\)\(abstract\s\+\|final\s\+\)*class\(\s\+.*}\)\@="  contained
-  syn match phpStructure  "\(\s\|^\)interface\(\s\+.*}\)\@="  contained
-  syn match phpException  "\(\s\|^\)try\(\s\+.*}\)\@="  contained
-  syn match phpException  "\(\s\|^\)catch\(\s\+.*}\)\@="  contained
+  syn match phpClassName "\h\w*" containedin=phpStructure
+  syn match phpStructure "\(\s\|^\)\(abstract\s\+\|final\s\+\)*class\(\s\+.*}\)\@=" contained contains=phpClassName
+  syn match phpStructure "\(\s\|^\)interface\(\s\+.*}\)\@=" contained
+  syn match phpException "\(\s\|^\)try\(\s\+.*}\)\@=" contained
+  syn match phpException "\(\s\|^\)catch\(\s\+.*}\)\@=" contained
 
   set foldmethod=syntax
   syn region  phpFoldHtmlInside matchgroup=Delimiter start="?>" end="<?\(php\)\=" contained transparent contains=@htmlTop
   syn region  phpFoldFunction matchgroup=Storageclass start="^\z(\s*\)\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\s\([^};]*$\)\@="rs=e-9 matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldHtmlInside,phpFCKeyword contained transparent fold extend
   syn region  phpFoldFunction matchgroup=Define start="^function\s\([^};]*$\)\@=" matchgroup=Delimiter end="^}" contains=@phpClFunction,phpFoldHtmlInside contained transparent fold extend
-  syn region  phpFoldClass  matchgroup=Keyword start="^\z(\s*\)\(abstract\s\+\|final\s\+\)*class\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction,phpSCKeyword contained transparent fold extend
+  syn match   phpClassName "\h\w*" containedin=phpFoldClass
+  syn region  phpFoldClass  matchgroup=Keyword start="^\z(\s*\)\(abstract\s\+\|final\s\+\)*class\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction,phpSCKeyword,phpClassName contained transparent fold extend
   syn region  phpFoldInterface  matchgroup=Structure start="^\z(\s*\)interface\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
   syn region  phpFoldCatch  matchgroup=Exception start="^\z(\s*\)catch\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
   syn region  phpFoldTry  matchgroup=Exception start="^\z(\s*\)try\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
 elseif exists("php_folding") && php_folding==2
   syn keyword phpDefine function contained
-  syn keyword phpStructure  abstract class interface  contained
-  syn keyword phpException  catch throw try contained
+  syn keyword phpStructure  abstract interface  contained
+  syn keyword phpClassKey  class  containedin=phpClassDefinition
+  syn match   phpClassDefinition "class\s\+\h\w*" contained contains=phpClassKey
+  syn keyword phpException  catch throw try  contained
   syn keyword phpStorageClass final global private protected public static  contained
 
   set foldmethod=syntax
@@ -500,9 +501,11 @@ elseif exists("php_folding") && php_folding==2
   syn region  phpParent matchgroup=Delimiter start="{" end="}"  contained contains=@phpClFunction,phpFoldHtmlInside transparent fold
 else
   syn keyword phpDefine function contained
-  syn keyword phpStructure  abstract class interface  contained
-  syn keyword phpException  catch throw try contained
-  syn keyword phpStorageClass final global private protected public static  contained
+  syn keyword phpStructure  abstract interface  contained
+  syn keyword phpClassKey  class  containedin=phpClassDefinition
+  syn match   phpClassDefinition "class\s\+\h\w*" contained contains=phpClassKey
+  syn keyword phpException  catch throw try  contained
+  syn keyword phpStorageClass  final global private protected public static  contained
 endif
 
 " TODO: fold on "trait". For now just make sure it gets colored:
@@ -640,6 +643,9 @@ if version >= 508 || !exists("did_php_syn_inits")
   endif
 
   HiLink phpCustomFunction Function
+  HiLink phpClassKey Keyword
+  HiLink phpClassDefinition Type
+  HiLink phpClassName Type
   HiLink   phpConstant  Constant
   HiLink   phpCoreConstant  Constant
   HiLink   phpComment Comment
