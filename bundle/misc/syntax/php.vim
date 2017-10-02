@@ -653,7 +653,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpDocCustomTags Type
   HiLink   phpException Exception
   HiLink   phpBoolean Boolean
-  HiLink   phpStorageClass Keyword
+  HiLink   phpStorageClass Storageclass
   HiLink   phpSCKeyword Keyword
   HiLink   phpFCKeyword Type
   HiLink   phpStructure Keyword

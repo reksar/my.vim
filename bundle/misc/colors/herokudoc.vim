@@ -3,7 +3,7 @@
 "
 " Maintainer: reksarka@gmail.com
 " Last Change: 01.10.2017
-" Version: 1.3
+" Version: 1.4
 " Description: Based on herokudoc-gvim color scheme from http://vimcolors.com
 " Used Colors:
 " 	#434E56 - normal background
@@ -28,17 +28,38 @@ endif
 hi Normal 		guifg=#D9D9C0 guibg=#434E56 ctermfg=7
 hi Comment  	guifg=#8F8F8F gui=ITALIC ctermfg=7 ctermbg=0
 hi Constant		guifg=#FF9143 ctermfg=3
-hi String 		guifg=#FFFFFF ctermbg=1
-hi Character 	guifg=#DDDDDD guibg=#404040
-hi Type			guifg=#FFEA00 gui=NONE ctermfg=4
+hi  String 		guifg=#FFFFFF ctermbg=1
+hi  Character 	guifg=#DDDDDD guibg=#404040
+"hi  Number
+"hi  Boolean
+"hi  Float
 hi Identifier 	guifg=#B5EE00 ctermfg=2
-hi Function 	guifg=#88BEEE
-hi Special		guifg=#88BEEE gui=ITALIC
+hi  Function 	guifg=#88BEEE
 hi Statement 	guifg=#FFFFFF gui=BOLD ctermfg=3
-hi  Keyword 	guifg=#FFFFFF gui=BOLD
 hi  Operator 	guifg=#FFFFFF gui=BOLD
-hi  Delimiter	guifg=#FFFFFF gui=BOLD
+hi  Keyword 	guifg=#FFFFFF gui=BOLD
+"hi  Conditional
+"hi  Repeat
+"hi  Label
+"hi  Exception
 hi PreProc 		guifg=#FFFFFF gui=BOLD,ITALIC
+"hi  Include
+"hi  Define
+"hi  Macro
+"hi  PreCondit
+hi Type			guifg=#FFEA00 gui=NONE ctermfg=4
+hi  StorageClass guifg=#FFFFFF gui=BOLD
+"hi  Structure
+"hi  Typedef
+hi Special		guifg=#88BEEE gui=ITALIC
+hi  Delimiter	guifg=#FFFFFF gui=BOLD
+"hi  SpecialChar
+"hi  Tag
+"hi  SpecialComment
+"hi  Debug
+"hi Underlined
+"hi Ignore
+"hi Error
 
 "--- Marked Text -------------------------------------------------------------
 hi Search 		guifg=#000000 guibg=#20CC20
