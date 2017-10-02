@@ -159,7 +159,7 @@ syn keyword phpFunctions  dbx_close dbx_compare dbx_connect dbx_error dbx_escape
 syn keyword phpFunctions  dio_close dio_fcntl dio_open dio_read dio_seek dio_stat dio_tcsetattr dio_truncate dio_write  contained
 syn keyword phpFunctions  chdir chroot dir closedir getcwd opendir readdir rewinddir scandir  contained
 syn keyword phpFunctions  domxml_new_doc domxml_open_file domxml_open_mem domxml_version domxml_xmltree domxml_xslt_stylesheet_doc domxml_xslt_stylesheet_file domxml_xslt_stylesheet xpath_eval_expression xpath_eval xpath_new_context xptr_eval xptr_new_context contained
-syn keyword phpMethods  name specified value create_attribute create_cdata_section create_comment create_element_ns create_element create_entity_reference create_processing_instruction create_text_node doctype document_element dump_file dump_mem get_element_by_id get_elements_by_tagname html_dump_mem xinclude entities internal_subset name notations public_id system_id get_attribute_node get_attribute get_elements_by_tagname has_attribute remove_attribute set_attribute tagname add_namespace append_child append_sibling attributes child_nodes clone_node dump_node first_child get_content has_attributes has_child_nodes insert_before is_blank_node last_child next_sibling node_name node_type node_value owner_document parent_node prefix previous_sibling remove_child replace_child replace_node set_content set_name set_namespace unlink_node data target process result_dump_file result_dump_mem contained
+syn keyword phpMethods name specified value create_attribute create_cdata_section create_comment create_element_ns create_element create_entity_reference create_processing_instruction create_text_node doctype document_element dump_file dump_mem get_element_by_id get_elements_by_tagname html_dump_mem xinclude entities internal_subset name notations public_id system_id get_attribute_node get_attribute get_elements_by_tagname has_attribute remove_attribute set_attribute tagname add_namespace append_child append_sibling attributes child_nodes clone_node dump_node first_child get_content has_attributes has_child_nodes insert_before is_blank_node last_child next_sibling node_name node_type node_value owner_document parent_node prefix previous_sibling remove_child replace_child replace_node set_content set_name set_namespace unlink_node data target process result_dump_file result_dump_mem contained
 syn keyword phpFunctions  dotnet_load contained
 syn keyword phpFunctions  debug_backtrace debug_print_backtrace error_log error_reporting restore_error_handler set_error_handler trigger_error user_error  contained
 syn keyword phpFunctions  escapeshellarg escapeshellcmd exec passthru proc_close proc_get_status proc_nice proc_open proc_terminate shell_exec system contained
@@ -284,7 +284,7 @@ syn keyword phpKeyword  var const contained
 syn keyword phpType bool[ean] int[eger] real double float string array object NULL  contained
 
 " Structure
-syn keyword phpStructure  namespace extends implements instanceof parent self contained
+syn keyword phpStructure namespace extends implements instanceof parent self contained
 
 " Operator
 syn match phpOperator "[-=+%^&|*!.~?:]" contained display
@@ -299,10 +299,10 @@ syn match phpMemberSelector "->"  contained display
 syn match phpVarSelector  "\$"  contained display
 
 " Identifier
-syn match phpIdentifier "$\h\w*"  contained contains=phpEnvVar,phpIntVar,phpVarSelector display
+syn match phpIdentifier "$\h\w*" contained contains=phpEnvVar,phpIntVar,phpVarSelector display
 syn match phpIdentifierSimply "${\h\w*}"  contains=phpOperator,phpParent  contained display
-syn region  phpIdentifierComplex  matchgroup=phpParent start="{\$"rs=e-1 end="}"  contains=phpIdentifier,phpMemberSelector,phpVarSelector,phpIdentifierComplexP contained extend
-syn region  phpIdentifierComplexP matchgroup=phpParent start="\[" end="]" contains=@phpClInside contained
+syn region phpIdentifierComplex  matchgroup=phpParent start="{\$"rs=e-1 end="}"  contains=phpIdentifier,phpMemberSelector,phpVarSelector,phpIdentifierComplexP contained extend
+syn region phpIdentifierComplexP matchgroup=phpParent start="\[" end="]" contains=@phpClInside contained
 
 " Interpolated indentifiers (inside strings)
 	syn match phpBrackets "[][}{]" contained display
@@ -438,11 +438,12 @@ endif
 
 " by REKSAR
 syn match phpCustomFunction "\w\+\ze(" contained
+syn match phpCustomMethod "->\w\+\ze(" contained contains=phpMemberSelector,phpCustomFunction
 
 
 syn cluster phpClConst  contains=phpFunctions,phpIdentifier,phpConditional,phpRepeat,phpStatement,phpOperator,phpRelation,phpStringSingle,phpStringDouble,phpBacktick,phpNumber,phpFloat,phpKeyword,phpType,phpBoolean,phpStructure,phpMethodsVar,phpConstant,phpCoreConstant,phpException
 syn cluster phpClInside contains=@phpClConst,phpComment,phpLabel,phpParent,phpParentError,phpInclude,phpHereDoc,phpNowDoc
-syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass,phpCustomFunction
+syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass,phpCustomFunction,phpCustomMethod
 syn cluster phpClTop  contains=@phpClFunction,phpFoldFunction,phpFoldClass,phpFoldInterface,phpFoldTry,phpFoldCatch
 
 " Php Region
