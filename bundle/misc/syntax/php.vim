@@ -435,9 +435,14 @@ else
   syn match phpParent "[({[\]})]" contained
 endif
 
+
+" by REKSAR
+syn match phpCustomFunction "\w\+\ze(" contained
+
+
 syn cluster phpClConst  contains=phpFunctions,phpIdentifier,phpConditional,phpRepeat,phpStatement,phpOperator,phpRelation,phpStringSingle,phpStringDouble,phpBacktick,phpNumber,phpFloat,phpKeyword,phpType,phpBoolean,phpStructure,phpMethodsVar,phpConstant,phpCoreConstant,phpException
 syn cluster phpClInside contains=@phpClConst,phpComment,phpLabel,phpParent,phpParentError,phpInclude,phpHereDoc,phpNowDoc
-syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass
+syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass,phpCustomFunction
 syn cluster phpClTop  contains=@phpClFunction,phpFoldFunction,phpFoldClass,phpFoldInterface,phpFoldTry,phpFoldCatch
 
 " Php Region
@@ -467,7 +472,7 @@ endif
 if exists("php_folding") && php_folding==1
 " match one line constructs here and skip them at folding
   syn keyword phpSCKeyword  abstract final private protected public static  contained
-  syn keyword phpFCKeyword  function  contained
+  syn keyword phpFCKeyword function contained
   syn keyword phpStorageClass global  contained
   syn match phpStructure "\(\s\|^\)\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\(\s\+.*[;}]\)\@="  contained contains=phpSCKeyword
   syn match phpStructure  "\(\s\|^\)\(abstract\s\+\|final\s\+\)*class\(\s\+.*}\)\@="  contained
@@ -484,7 +489,7 @@ if exists("php_folding") && php_folding==1
   syn region  phpFoldCatch  matchgroup=Exception start="^\z(\s*\)catch\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
   syn region  phpFoldTry  matchgroup=Exception start="^\z(\s*\)try\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
 elseif exists("php_folding") && php_folding==2
-  syn keyword phpDefine function  contained
+  syn keyword phpDefine function contained
   syn keyword phpStructure  abstract class interface  contained
   syn keyword phpException  catch throw try contained
   syn keyword phpStorageClass final global private protected public static  contained
@@ -493,7 +498,7 @@ elseif exists("php_folding") && php_folding==2
   syn region  phpFoldHtmlInside matchgroup=Delimiter start="?>" end="<?\(php\)\=" contained transparent contains=@htmlTop
   syn region  phpParent matchgroup=Delimiter start="{" end="}"  contained contains=@phpClFunction,phpFoldHtmlInside transparent fold
 else
-  syn keyword phpDefine function  contained
+  syn keyword phpDefine function contained
   syn keyword phpStructure  abstract class interface  contained
   syn keyword phpException  catch throw try contained
   syn keyword phpStorageClass final global private protected public static  contained
@@ -595,6 +600,7 @@ endif
 
 " ================================================================
 
+
 " Sync
 if php_sync_method==-1
   if exists("php_noShortTags")
@@ -632,6 +638,7 @@ if version >= 508 || !exists("did_php_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
+  HiLink phpCustomFunction Function
   HiLink   phpConstant  Constant
   HiLink   phpCoreConstant  Constant
   HiLink   phpComment Comment
