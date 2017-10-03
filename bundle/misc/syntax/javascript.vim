@@ -76,7 +76,7 @@ syn match javaScriptOperator "&&"
 syn match javaScriptOperator "||"
 syn match javaScriptFunctionCall "\w\+\ze\s\{-}("
 syn match javaScriptConstName /[A-Z]\{2,\}/
-syn keyword javaScriptVar var contained
+syn keyword javaScriptVar  var  contained
 syn match javaScriptVarDeclaration /var\s*\w*/ contains=javaScriptVar,javaScriptConstName
 
 if exists("javaScript_fold")
@@ -89,9 +89,12 @@ if exists("javaScript_fold")
     setlocal foldmethod=syntax
     setlocal foldtext=getline(v:foldstart)
 else
-    syn keyword javaScriptFunction	function
-    syn match	javaScriptBraces	"[{}\[\]]"
-    syn match	javaScriptParens	"[()]"
+    syn keyword javaScriptFunctionKey  function  contained containedin=javaScriptAnonymousFunction
+    syn match 	javaScriptFunctionArgument "\w\+" contained containedin=javaScriptAnonymousFunction
+    syn match 	javaScriptAnonymousFunction "function\s*(.\{-})\s\+{" contains=javaScriptFunctionKey,javaScriptFunctionArgument
+
+    syn match javaScriptBraces "[{}\[\]]" containedin=ALLBUT,javaScriptComment,javaScriptLineComment
+    syn match javaScriptParens "[()]" containedin=ALLBUT,javaScriptComment,javaScriptLineComment
 endif
 
 syn sync fromstart
@@ -111,6 +114,10 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
+
+  HiLink javaScriptFunctionKey Type
+  HiLink javaScriptFunctionArgument Identifier
+
   HiLink javaScriptComment		Comment
   HiLink javaScriptLineComment		Comment
   HiLink javaScriptCommentTodo		Todo
