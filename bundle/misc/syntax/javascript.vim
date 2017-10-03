@@ -128,7 +128,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptConstName		Type
   HiLink javaScriptType			Type
   HiLink javaScriptStatement		Statement
-  HiLink javaScriptFunction		Keyword
+  HiLink javaScriptFunction		Type
   HiLink javaScriptBraces		Keyword
   HiLink javaScriptParens		Keyword
   HiLink javaScriptError		Error
