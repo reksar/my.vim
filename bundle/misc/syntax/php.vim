@@ -635,14 +635,6 @@ syntax match phpCustomFunction "\w\+\ze(" contained
 syntax match phpCustomMethod "->\w\+\ze(" contained contains=phpMemberSelector,phpCustomFunction
 
 
-highlight link phpThis Label
-highlight link phpMember Identifier
-highlight link phpCustomFunction Function
-highlight link phpClassKey Keyword
-highlight link phpClassDefinition Type
-highlight link phpClassName Type
-
-
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -653,6 +645,13 @@ if version >= 508 || !exists("did_php_syn_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
+
+  HiLink phpThis  Label
+  HiLink phpMember  Identifier
+  HiLink phpCustomFunction  Function
+  HiLink phpClassKey  Keyword
+  HiLink phpClassDefinition  Type
+  HiLink phpClassName  Type
 
   HiLink   phpConstant  Constant
   HiLink   phpCoreConstant  Constant
