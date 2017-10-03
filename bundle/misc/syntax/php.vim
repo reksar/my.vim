@@ -557,6 +557,9 @@ highlight link phpClasses Type
 syntax match phpThis "$this->" containedin=ALL contains=phpVarSelector,phpMemberSelector
 highlight link phpThis Label
 
+syntax match phpMember "->\w\+\((\)\@!\ze\W" containedin=ALL contains=phpMemberSelector
+highlight link phpMember Identifier
+
 " Highlighting for PHP5's built-in interfaces
 " - built-in classes harvested from get_declared_interfaces() in 5.1.4
 syntax keyword phpInterfaces containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
