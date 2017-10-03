@@ -435,9 +435,6 @@ else
   syn match phpParent "[({[\]})]" contained
 endif
 
-syn match phpCustomFunction "\w\+\ze(" contained
-syn match phpCustomMethod "->\w\+\ze(" contained contains=phpMemberSelector,phpCustomFunction
-
 syn cluster phpClConst  contains=phpFunctions,phpIdentifier,phpConditional,phpRepeat,phpStatement,phpOperator,phpRelation,phpStringSingle,phpStringDouble,phpBacktick,phpNumber,phpFloat,phpKeyword,phpType,phpBoolean,phpStructure,phpMethodsVar,phpConstant,phpCoreConstant,phpException,phpClassDefinition
 syn cluster phpClInside contains=@phpClConst,phpComment,phpLabel,phpParent,phpParentError,phpInclude,phpHereDoc,phpNowDoc
 syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass,phpCustomFunction,phpCustomMethod
@@ -554,12 +551,6 @@ syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStrin
   \ DOMEntityReference DOMProcessingInstruction DOMStringExtend DOMXPath
 highlight link phpClasses Type
 
-syntax match phpThis "$this->" containedin=ALL contains=phpVarSelector,phpMemberSelector
-highlight link phpThis Label
-
-syntax match phpMember "->\w\+\((\)\@!\ze\W" containedin=ALL contains=phpMemberSelector
-highlight link phpMember Identifier
-
 " Highlighting for PHP5's built-in interfaces
 " - built-in classes harvested from get_declared_interfaces() in 5.1.4
 syntax keyword phpInterfaces containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
@@ -637,6 +628,21 @@ syntax region phpDocTags  start="{@\(example\|id\|internal\|inheritdoc\|link\|so
 syntax match  phpDocTags  "@\(abstract\|access\|author\|category\|copyright\|deprecated\|example\|final\|global\|ignore\|internal\|license\|link\|method\|name\|package\|param\|property\|return\|see\|since\|static\|staticvar\|subpackage\|tutorial\|uses\|var\|version\|contributor\|modified\|filename\|description\|filesource\|throws\)\(\s\+\)\?" containedin=phpComment
 syntax match  phpDocTodo  "@\(todo\|fixme\|xxx\)\(\s\+\)\?" containedin=phpComment
 
+
+syntax match phpThis "$this->" containedin=ALL contains=phpVarSelector,phpMemberSelector
+syntax match phpMember "->\w\+\((\)\@!\ze\W" containedin=ALL contains=phpMemberSelector
+syntax match phpCustomFunction "\w\+\ze(" contained
+syntax match phpCustomMethod "->\w\+\ze(" contained contains=phpMemberSelector,phpCustomFunction
+
+
+highlight link phpThis Label
+highlight link phpMember Identifier
+highlight link phpCustomFunction Function
+highlight link phpClassKey Keyword
+highlight link phpClassDefinition Type
+highlight link phpClassName Type
+
+
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -648,10 +654,6 @@ if version >= 508 || !exists("did_php_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink phpCustomFunction Function
-  HiLink phpClassKey Keyword
-  HiLink phpClassDefinition Type
-  HiLink phpClassName Type
   HiLink   phpConstant  Constant
   HiLink   phpCoreConstant  Constant
   HiLink   phpComment Comment
