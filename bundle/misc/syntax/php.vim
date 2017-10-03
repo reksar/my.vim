@@ -284,7 +284,7 @@ syn keyword phpKeyword  var const contained
 syn keyword phpType  bool[ean] int[eger] real double float string array object NULL parent  contained
 
 " Structure
-syn keyword phpStructure namespace extends implements instanceof self contained
+syn keyword phpStructure namespace implements instanceof self contained
 
 " Operator
 syn match phpOperator "[-=+%^&|*!.~?:]" contained display
@@ -342,7 +342,7 @@ syn keyword phpInclude  include require include_once require_once use contained
 
 " Peter Hodge - added 'clone' keyword
 " Define
-syn keyword phpKeyword new clone contained
+syn keyword phpKeyword clone contained
 
 " Boolean
 syn keyword phpBoolean  true false  contained
@@ -488,8 +488,8 @@ if exists("php_folding") && php_folding==1
 elseif exists("php_folding") && php_folding==2
   syn keyword phpDefine function contained
   syn keyword phpStructure  abstract interface  contained
-  syn keyword phpClassKey  class  containedin=phpClassDefinition
-  syn match   phpClassDefinition "class\s\+\h\w*" contained contains=phpClassKey
+  syn keyword phpClassKey  class new extends  containedin=phpClassDefinition
+  syn match   phpClassDefinition "\(class\|new\|extends\)\s\+\h\w*" contained contains=phpClassKey
   syn keyword phpException  catch throw try  contained
   syn keyword phpStorageClass final global private protected public static  contained
 
@@ -499,8 +499,8 @@ elseif exists("php_folding") && php_folding==2
 else
   syn keyword phpDefine function contained
   syn keyword phpStructure  abstract interface  contained
-  syn keyword phpClassKey  class  containedin=phpClassDefinition
-  syn match   phpClassDefinition "class\s\+\h\w*" contained contains=phpClassKey
+  syn keyword phpClassKey  class new extends  containedin=phpClassDefinition
+  syn match   phpClassDefinition "\(class\|new\|extends\)\s\+\h\w*" contained contains=phpClassKey
   syn keyword phpException  catch throw try  contained
   syn keyword phpStorageClass  final global private protected public static  contained
 endif
