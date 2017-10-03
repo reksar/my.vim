@@ -697,7 +697,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpInterpVarname Identifier
   HiLink   phpTodo  Todo
   HiLink   phpDocTodo Todo
-  HiLink   phpMemberSelector  Structure
+  HiLink   phpMemberSelector  Keyword
   if exists("php_oldStyle")
   hi  phpIntVar guifg=Red ctermfg=DarkRed
   hi  phpEnvVar guifg=Red ctermfg=DarkRed
