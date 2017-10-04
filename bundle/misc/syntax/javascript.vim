@@ -77,7 +77,7 @@ syn match jsOperator "<"
 syn match jsOperator "&&"
 syn match jsOperator "||"
 syn match jsOperator "\."
-syn match jsOperator ","
+syn match jsOperator "," contained containedin=ALLBUT,jsComment,jsLineComment
 syn match jsOperator ":"
 syn match jsOperator ";"
 syn match jsFunctionCall "\w\+\ze\s\{-}("
