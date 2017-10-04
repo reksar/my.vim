@@ -8,12 +8,12 @@
 "		(ss) fixed regex parsing issue with multiple qualifiers [gi]
 "		(ss) additional factoring of keywords, globals, and members
 " Last Change:	2012 Oct 05
-" 		2013 Jun 12: adjusted javaScriptRegexpString (Kevin Locke)
+" 		2013 Jun 12: adjusted jsRegexpString (Kevin Locke)
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
 " tuning parameters:
-" unlet javaScript_fold
+" unlet js_fold
 
 if !exists("main_syntax")
   if version < 600
@@ -30,78 +30,83 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 " Drop fold if it set but vim doesn't support it.
-if version < 600 && exists("javaScript_fold")
-  unlet javaScript_fold
+if version < 600 && exists("js_fold")
+  unlet js_fold
 endif
 
 
-syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
-syn match   javaScriptLineComment      "\/\/.*" contains=@Spell,javaScriptCommentTodo
-syn match   javaScriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
-syn region  javaScriptComment	       start="/\*"  end="\*/" contains=@Spell,javaScriptCommentTodo
-syn match   javaScriptSpecial	       "\\\d\d\d\|\\."
-syn region  javaScriptStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javaScriptSpecial,@htmlPreproc
-syn region  javaScriptStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javaScriptSpecial,@htmlPreproc
+syn keyword jsCommentTodo      TODO FIXME XXX TBD contained
+syn match   jsLineComment      "\/\/.*" contains=@Spell,jsCommentTodo
+syn match   jsCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
+syn region  jsComment	       start="/\*"  end="\*/" contains=@Spell,jsCommentTodo
+syn match   jsSpecial	       "\\\d\d\d\|\\."
+syn region  jsStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=jsSpecial,@htmlPreproc
+syn region  jsStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=jsSpecial,@htmlPreproc
 
-syn match   javaScriptSpecialCharacter "'\\.'"
-syn match   javaScriptNumber	       "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
-syn region  javaScriptRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,2\}\s*$+ end=+/[gim]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
+syn match   jsSpecialCharacter "'\\.'"
+syn match   jsNumber	       "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
+syn region  jsRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,2\}\s*$+ end=+/[gim]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
-syn keyword javaScriptConditional	if else switch
-syn keyword javaScriptRepeat		while for do in
-syn keyword javaScriptBranch		break continue
-syn keyword javaScriptOperator		new delete instanceof typeof
-syn keyword javaScriptType		Array Boolean Date Function Number Object String RegExp
-syn keyword javaScriptStatement		return with
-syn keyword javaScriptBoolean		true false
-syn keyword javaScriptNull		null undefined
-syn keyword javaScriptIdentifier	arguments this let
-syn keyword javaScriptLabel		case default
-syn keyword javaScriptException		try catch finally throw
-syn keyword javaScriptMessage		alert confirm prompt status
-syn keyword javaScriptGlobal		self window top parent
-syn keyword javaScriptMember		document event location 
-syn keyword javaScriptDeprecated	escape unescape
-syn keyword javaScriptReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
+syn keyword jsConditional	if else switch
+syn keyword jsRepeat		while for do in
+syn keyword jsBranch		break continue
+syn keyword jsOperator		new delete instanceof typeof
+syn keyword jsType		Array Boolean Date Function Number Object String RegExp
+syn keyword jsStatement		return with
+syn keyword jsBoolean		true false
+syn keyword jsNull		null undefined
+syn keyword jsIdentifier	arguments this let
+syn keyword jsLabel		case default
+syn keyword jsException		try catch finally throw
+syn keyword jsMessage		alert confirm prompt status
+syn keyword jsGlobal		self window top parent
+syn keyword jsMember		document event location 
+syn keyword jsDeprecated	escape unescape
+syn keyword jsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
 
-" by REKSAR
-syn match javaScriptOperator "[.:;,+-]"
-syn match javaScriptOperator "="
-syn match javaScriptOperator "%"
-syn match javaScriptOperator ">"
-syn match javaScriptOperator "<"
-syn match javaScriptOperator "!"
-syn match javaScriptOperator "?"
-syn match javaScriptOperator "&&"
-syn match javaScriptOperator "||"
-syn match javaScriptFunctionCall "\w\+\ze\s\{-}("
-syn match javaScriptConstName /[A-Z]\{2,\}/
-syn keyword javaScriptVar  var  contained
-syn match javaScriptVarDeclaration /var\s*\w*/ contains=javaScriptVar,javaScriptConstName
 
-if exists("javaScript_fold")
-    syn match	javaScriptFunction	"\<function\>"
-    syn region	javaScriptFunctionFold	start="\<function\>.*[^};]$" end="^\z1}.*$" transparent fold keepend
+syn match jsOperator "[*\/]" contained containedin=ALLBUT,jsComment,jsLineComment
+syn match jsOperator "+"
+syn match jsOperator "-"
+syn match jsOperator "%"
+syn match jsOperator "="
+syn match jsOperator "?"
+syn match jsOperator "!"
+syn match jsOperator "&&"
+syn match jsOperator "||"
+syn match jsOperator "\."
+syn match jsOperator ","
+syn match jsOperator ":"
+syn match jsOperator ";"
+syn match jsFunctionCall "\w\+\ze\s\{-}("
+syn match jsConstName /[A-Z]\{2,\}/
+syn keyword jsVar  var  contained
+syn match jsVarDeclaration /var\s*\w*/ contains=jsVar,jsConstName
 
-    syn sync match javaScriptSync	grouphere javaScriptFunctionFold "\<function\>"
-    syn sync match javaScriptSync	grouphere NONE "^}"
+
+if exists("js_fold")
+    syn match	jsFunction	"\<function\>"
+    syn region	jsFunctionFold	start="\<function\>.*[^};]$" end="^\z1}.*$" transparent fold keepend
+
+    syn sync match jsSync	grouphere jsFunctionFold "\<function\>"
+    syn sync match jsSync	grouphere NONE "^}"
 
     setlocal foldmethod=syntax
     setlocal foldtext=getline(v:foldstart)
 else
-    syn keyword javaScriptFunctionKey  function  contained containedin=javaScriptAnonymousFunction
-    syn match 	javaScriptFunctionArgument "\w\+" contained containedin=javaScriptAnonymousFunction
-    syn match 	javaScriptAnonymousFunction "function\s*(.\{-})\s\+{" contains=javaScriptFunctionKey,javaScriptFunctionArgument
+    syn keyword jsFunctionKey  function  contained containedin=jsAnonymousFunction
+    syn match 	jsFunctionArgument "\w\+" contained containedin=jsAnonymousFunction
+    syn match 	jsAnonymousFunction "function\s*(.\{-})\s\+{" contains=jsFunctionKey,jsFunctionArgument
 
-    syn match javaScriptBraces "[{}\[\]]" containedin=ALLBUT,javaScriptComment,javaScriptLineComment
-    syn match javaScriptParens "[()]" containedin=ALLBUT,javaScriptComment,javaScriptLineComment
+    syn match jsBraces "[{}\[\]]" containedin=ALLBUT,jsComment,jsLineComment
+    syn match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
 endif
 
 syn sync fromstart
 syn sync maxlines=100
 
 if main_syntax == "javascript"
-  syn sync ccomment javaScriptComment
+  syn sync ccomment jsComment
 endif
 
 " Define the default highlighting.
@@ -115,47 +120,46 @@ if version >= 508 || !exists("did_javascript_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink javaScriptFunctionKey Type
-  HiLink javaScriptFunctionArgument Identifier
+  HiLink jsOperator  Keyword
+  HiLink jsVar			Keyword
+  HiLink jsVarDeclaration	Identifier
+  HiLink jsConstName		Type
+  HiLink jsFunctionKey  Type
+  HiLink jsFunctionArgument  Identifier
 
-  HiLink javaScriptComment		Comment
-  HiLink javaScriptLineComment		Comment
-  HiLink javaScriptCommentTodo		Todo
-  HiLink javaScriptSpecial		Special
-  HiLink javaScriptStringS		String
-  HiLink javaScriptStringD		String
-  HiLink javaScriptCharacter		Character
-  HiLink javaScriptSpecialCharacter	javaScriptSpecial
-  HiLink javaScriptNumber		Constant
-  HiLink javaScriptConditional		Conditional
-  HiLink javaScriptRepeat		Repeat
-  HiLink javaScriptBranch		Conditional
-"  HiLink javaScriptOperator		Operator
-  HiLink javaScriptOperator		Keyword
-  HiLink javaScriptConstName		Type
-  HiLink javaScriptType			Type
-  HiLink javaScriptStatement		Statement
-  HiLink javaScriptFunction		Type
-  HiLink javaScriptBraces		Keyword
-  HiLink javaScriptParens		Keyword
-  HiLink javaScriptError		Error
-  HiLink javaScrParenError		javaScriptError
-  HiLink javaScriptNull			Type
-  HiLink javaScriptBoolean		Boolean
-  HiLink javaScriptRegexpString		String
-  HiLink javaScriptIdentifier		Keyword
-  HiLink javaScriptFunctionCall		Function
-  HiLink javaScriptLabel		Label
-  HiLink javaScriptException		Exception
-  HiLink javaScriptMessage		Keyword
-  HiLink javaScriptGlobal		Keyword
-  HiLink javaScriptMember		Keyword
-  HiLink javaScriptDeprecated		Exception 
-  HiLink javaScriptReserved		Keyword
-  HiLink javaScriptDebug		Debug
-  HiLink javaScriptConstant		Label
-  HiLink javaScriptVar			Keyword
-  HiLink javaScriptVarDeclaration	Identifier
+  HiLink jsComment		Comment
+  HiLink jsLineComment		Comment
+  HiLink jsCommentTodo		Todo
+  HiLink jsSpecial		Special
+  HiLink jsStringS		String
+  HiLink jsStringD		String
+  HiLink jsCharacter		Character
+  HiLink jsSpecialCharacter	jsSpecial
+  HiLink jsNumber		Constant
+  HiLink jsConditional		Conditional
+  HiLink jsRepeat		Repeat
+  HiLink jsBranch		Conditional
+  HiLink jsType			Type
+  HiLink jsStatement		Statement
+  HiLink jsFunction		Type
+  HiLink jsBraces		Keyword
+  HiLink jsParens		Keyword
+  HiLink jsError		Error
+  HiLink javaScrParenError	jsError
+  HiLink jsNull			Type
+  HiLink jsBoolean		Boolean
+  HiLink jsRegexpString		String
+  HiLink jsIdentifier		Keyword
+  HiLink jsFunctionCall		Function
+  HiLink jsLabel		Label
+  HiLink jsException		Exception
+  HiLink jsMessage		Keyword
+  HiLink jsGlobal		Keyword
+  HiLink jsMember		Keyword
+  HiLink jsDeprecated		Exception 
+  HiLink jsReserved		Keyword
+  HiLink jsDebug		Debug
+  HiLink jsConstant		Label
 
   delcommand HiLink
 endif
