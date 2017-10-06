@@ -86,7 +86,8 @@ syntax keyword jsFunctionKey  function
 syntax match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})"
 syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})" contained
-syntax match jsFunctionCall "\w\+\ze\s*(.\{-})" contains=jsArguments
+syntax match jsFunctionCall "\w\+\ze\s*(" contains=jsArguments
+syntax match jsObjectAttributeAccess "\w\+\ze\."
 
 
 if exists("js_fold")
@@ -126,6 +127,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsArguments 		Identifier
   HiLink jsConstName		Type
   HiLink jsFunctionCall		Function
+  HiLink jsObjectAttributeAccess Identifier
 
   HiLink jsComment		Comment
   HiLink jsLineComment		Comment
