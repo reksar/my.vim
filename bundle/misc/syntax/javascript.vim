@@ -65,25 +65,28 @@ syn keyword jsDeprecated	escape unescape
 syn keyword jsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
 
 
-syn match jsOperator "[*\/]" contained containedin=ALLBUT,jsComment,jsLineComment
-syn match jsOperator "+"
-syn match jsOperator "-"
-syn match jsOperator "%"
-syn match jsOperator "="
-syn match jsOperator "?"
-syn match jsOperator "!"
-syn match jsOperator ">"
-syn match jsOperator "<"
-syn match jsOperator "&"
-syn match jsOperator "|"
-syn match jsOperator "\."
-syn match jsOperator "," contained containedin=ALLBUT,jsComment,jsLineComment
-syn match jsOperator ":"
-syn match jsOperator ";"
-syn match jsFunctionCall "\w\+\ze\s\{-}("
-syn match jsConstName /[A-Z]\{2,\}/
-syn keyword jsVar  var  contained
-syn match jsVarDeclaration /var\s*\w*/ contains=jsVar,jsConstName
+syntax match jsOperator "[*\/]" contained containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsOperator "+"
+syntax match jsOperator "-"
+syntax match jsOperator "%"
+syntax match jsOperator "="
+syntax match jsOperator "?"
+syntax match jsOperator "!"
+syntax match jsOperator ">"
+syntax match jsOperator "<"
+syntax match jsOperator "&"
+syntax match jsOperator "|"
+syntax match jsOperator "\."
+syntax match jsOperator "," contained containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsOperator ":"
+syntax match jsOperator ";"
+syntax match jsConstName /[A-Z]\{2,\}/
+syntax keyword jsVarKey  var
+syntax keyword jsFunctionKey  function
+syntax match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})"
+syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})" contained
+syntax match jsFunctionCall "\w\+\ze\s*(.\{-})" contains=jsArguments
 
 
 if exists("js_fold")
@@ -96,12 +99,7 @@ if exists("js_fold")
     setlocal foldmethod=syntax
     setlocal foldtext=getline(v:foldstart)
 else
-    syn keyword jsFunctionKey  function  contained containedin=jsAnonymousFunction
-    syn match 	jsFunctionArgument "\w\+" contained containedin=jsAnonymousFunction
-    syn match 	jsAnonymousFunction "function\s*(.\{-})\s\+{" contains=jsFunctionKey,jsFunctionArgument
-
     syn match jsBraces "[{}\[\]]" containedin=ALLBUT,jsComment,jsLineComment
-    syn match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
 endif
 
 syn sync fromstart
@@ -122,12 +120,12 @@ if version >= 508 || !exists("did_javascript_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink jsOperator  Keyword
-  HiLink jsVar			Keyword
-  HiLink jsVarDeclaration	Identifier
+  HiLink jsOperator 		Keyword
+  HiLink jsVarKey		Keyword
+  HiLink jsFunctionKey 		Type
+  HiLink jsArguments 		Identifier
   HiLink jsConstName		Type
-  HiLink jsFunctionKey  Type
-  HiLink jsFunctionArgument  Identifier
+  HiLink jsFunctionCall		Function
 
   HiLink jsComment		Comment
   HiLink jsLineComment		Comment
@@ -152,7 +150,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsBoolean		Boolean
   HiLink jsRegexpString		String
   HiLink jsIdentifier		Keyword
-  HiLink jsFunctionCall		Function
   HiLink jsLabel		Label
   HiLink jsException		Exception
   HiLink jsMessage		Keyword
