@@ -55,12 +55,11 @@ syn keyword jsType		Array Boolean Date Function Number Object String RegExp
 syn keyword jsStatement		return with
 syn keyword jsBoolean		true false
 syn keyword jsNull		null undefined
-syn keyword jsIdentifier	arguments this let
-syn keyword jsLabel		case default
+syn keyword jsLabel		case default let
 syn keyword jsException		try catch finally throw
 syn keyword jsMessage		alert confirm prompt status
 syn keyword jsGlobal		self window top parent
-syn keyword jsMember		document event location 
+syn keyword jsMember		document event location arguments this
 syn keyword jsDeprecated	escape unescape
 syn keyword jsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
 
@@ -87,7 +86,8 @@ syntax match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})"
 syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})" contained
 syntax match jsFunctionCall "\w\+\ze\s*(" contains=jsArguments
-syntax match jsObjectAttributeAccess "\w\+\ze\."
+syntax match jsIdentifier "\w\+\ze\."
+syntax match jsIdentifier "\w\+\ze\s*="
 
 
 if exists("js_fold")
@@ -128,6 +128,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsConstName		Type
   HiLink jsFunctionCall		Function
   HiLink jsObjectAttributeAccess Identifier
+  HiLink jsIdentifier		Identifier
 
   HiLink jsComment		Comment
   HiLink jsLineComment		Comment
@@ -151,7 +152,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsNull			Type
   HiLink jsBoolean		Boolean
   HiLink jsRegexpString		String
-  HiLink jsIdentifier		Keyword
   HiLink jsLabel		Label
   HiLink jsException		Exception
   HiLink jsMessage		Keyword
