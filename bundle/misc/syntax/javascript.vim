@@ -1,14 +1,14 @@
 " Vim syntax file
 " Language:	JavaScript
 " Maintainer:	Claudio Fleiner <claudio@fleiner.com>
-" Updaters:	Scott Shattuck (ss) <ss@technicalpursuit.com>
+" Updaters:	Scott Shattuck <ss@technicalpursuit.com>
+" 		Kevin Locke
+" 		REKSAR DSV <reksarka@gmail.com>
 " URL:		http://www.fleiner.com/vim/syntax/javascript.vim
-" Changes:	(ss) added keywords, reserved words, and other identifiers
-"		(ss) repaired several quoting and grouping glitches
-"		(ss) fixed regex parsing issue with multiple qualifiers [gi]
-"		(ss) additional factoring of keywords, globals, and members
-" Last Change:	2012 Oct 05
-" 		2013 Jun 12: adjusted jsRegexpString (Kevin Locke)
+" Description: 	During modifying this file, it tested on `jquery-3.2.1.js`.
+" 		All syntax bindings, that begins with `syntax` instead of 
+" 		`syn`, were changed or added by REKSAR.
+" Last Change:	06.10.2017
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -55,16 +55,17 @@ syn keyword jsType		Array Boolean Date Function Number Object String RegExp
 syn keyword jsStatement		return with
 syn keyword jsBoolean		true false
 syn keyword jsNull		null undefined
-syn keyword jsLabel		case default let
 syn keyword jsException		try catch finally throw
-syn keyword jsMessage		alert confirm prompt status
 syn keyword jsGlobal		self window top parent
-syn keyword jsMember		document event location arguments this
 syn keyword jsDeprecated	escape unescape
 syn keyword jsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
-
+syntax keyword jsLabel		case default let var
+syntax keyword jsMessage	alert confirm prompt status log
+syntax keyword jsMember		document event location arguments this
+syntax keyword jsFunctionKey 	function
 
 syntax match jsOperator "[*\/]" contained containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsOperator "," contained containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator "+"
 syntax match jsOperator "-"
 syntax match jsOperator "%"
@@ -76,19 +77,17 @@ syntax match jsOperator "<"
 syntax match jsOperator "&"
 syntax match jsOperator "|"
 syntax match jsOperator "\."
-syntax match jsOperator "," contained containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator ":"
 syntax match jsOperator ";"
-syntax match jsConstName /[A-Z]\{2,\}/
-syntax keyword jsVarKey  var
-syntax keyword jsFunctionKey  function
 syntax match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
+
 syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})"
 syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})" contained
 syntax match jsFunctionCall "\w\+\ze\s*(" contains=jsArguments
+
 syntax match jsIdentifier "\w\+\ze\."
 syntax match jsIdentifier "\w\+\ze\s*="
-
+syntax match jsConstant /[A-Z]\{2,\}/
 
 if exists("js_fold")
     syn match	jsFunction	"\<function\>"
@@ -100,7 +99,7 @@ if exists("js_fold")
     setlocal foldmethod=syntax
     setlocal foldtext=getline(v:foldstart)
 else
-    syn match jsBraces "[{}\[\]]" containedin=ALLBUT,jsComment,jsLineComment
+    syntax match jsBraces "[{}\[\]]" containedin=ALLBUT,jsComment,jsLineComment
 endif
 
 syn sync fromstart
@@ -121,14 +120,13 @@ if version >= 508 || !exists("did_javascript_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
+  " by REKSAR
   HiLink jsOperator 		Keyword
-  HiLink jsVarKey		Keyword
   HiLink jsFunctionKey 		Type
   HiLink jsArguments 		Identifier
-  HiLink jsConstName		Type
-  HiLink jsFunctionCall		Function
-  HiLink jsObjectAttributeAccess Identifier
-  HiLink jsIdentifier		Identifier
+  HiLink jsConstant 		Type
+  HiLink jsFunctionCall 	Function
+  HiLink jsIdentifier 		Identifier
 
   HiLink jsComment		Comment
   HiLink jsLineComment		Comment
@@ -160,7 +158,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsDeprecated		Exception 
   HiLink jsReserved		Keyword
   HiLink jsDebug		Debug
-  HiLink jsConstant		Label
 
   delcommand HiLink
 endif
