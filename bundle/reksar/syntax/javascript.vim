@@ -44,7 +44,6 @@ syn region  jsStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=js
 syn region  jsStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=jsSpecial,@htmlPreproc
 
 syn match   jsSpecialCharacter "'\\.'"
-syn match   jsNumber	       "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
 syn region  jsRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,2\}\s*$+ end=+/[gim]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
 syn keyword jsConditional	if else switch
@@ -65,6 +64,7 @@ syntax keyword jsMessage	alert confirm prompt status log
 syntax keyword jsMember		document event location arguments var
 syntax keyword jsFunctionKey 	function
 
+syntax match jsNumber 		"-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsParens 		"[()]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator 	"[\*+\-<>!?=|&%,\.;:]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator		"\/\(\*\|\/\)\@!" containedin=ALLBUT,jsComment,jsLineComment
