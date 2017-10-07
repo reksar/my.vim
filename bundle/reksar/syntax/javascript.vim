@@ -68,7 +68,7 @@ syntax match jsNumber 		"-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>" containedin=ALLBU
 syntax match jsParens 		"[()]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator 	"[\*+\-<>!?=|&%,\.;:]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator		"\/\(\*\|\/\)\@!" containedin=ALLBUT,jsComment,jsLineComment
-syntax match jsIdentifier 	"\w\+\ze\s*\(\/\|,\|)\|\]\|\[\|=\|;\|:\|+\|\-\|\*\|>\|<\||\|&\|?\|!\)"
+syntax match jsIdentifier 	"\w\+\ze\s*\(in\|\/\|,\|)\|\]\|\[\|=\|;\|:\|+\|\-\|\*\|>\|<\||\|&\|?\|!\)"
 syntax match jsIdentifier 	"\w\+\ze\."
 syntax match jsFunctionCall 	"\w\+\ze\s*("
 
