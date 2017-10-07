@@ -8,7 +8,7 @@
 " Description: 	During modifying this file, it tested on `jquery-3.2.1.js`.
 " 		All syntax bindings, that begins with `syntax` instead of 
 " 		`syn`, were changed or added by REKSAR.
-" Last Change:	06.10.2017
+" Last Change:	07.10.2017
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -59,35 +59,18 @@ syn keyword jsException		try catch finally throw
 syn keyword jsGlobal		self window top parent
 syn keyword jsDeprecated	escape unescape
 syn keyword jsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
-syntax keyword jsLabel		case default let var
+
+syntax keyword jsLabel		case default let this
 syntax keyword jsMessage	alert confirm prompt status log
-syntax keyword jsMember		document event location arguments this
+syntax keyword jsMember		document event location arguments var
 syntax keyword jsFunctionKey 	function
 
-syntax match jsOperator "[*\/]" contained containedin=ALLBUT,jsComment,jsLineComment
-syntax match jsOperator "," contained containedin=ALLBUT,jsComment,jsLineComment
-syntax match jsOperator "+"
-syntax match jsOperator "-"
-syntax match jsOperator "%"
-syntax match jsOperator "="
-syntax match jsOperator "?"
-syntax match jsOperator "!"
-syntax match jsOperator ">"
-syntax match jsOperator "<"
-syntax match jsOperator "&"
-syntax match jsOperator "|"
-syntax match jsOperator "\."
-syntax match jsOperator ":"
-syntax match jsOperator ";"
-syntax match jsParens "[()]" containedin=ALLBUT,jsComment,jsLineComment
-
-syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})"
-syntax match jsArguments "(\s\{-}\w*\(\s*,\s*\w\+\)*\s\{-})" contained
-syntax match jsFunctionCall "\w\+\ze\s*(" contains=jsArguments
-
-syntax match jsIdentifier "\w\+\ze\."
-syntax match jsIdentifier "\w\+\ze\s*="
-syntax match jsConstant /[A-Z]\{2,\}/
+syntax match jsParens 		"[()]" containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsOperator 	"[\*+\-<>!?=|&%,\.;:]" containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsOperator		"\/\(\*\|\/\)\@!" containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsIdentifier 	"\w\+\ze\s*\(\/\|,\|)\|\]\|\[\|=\|;\|:\|+\|\-\|\*\|>\|<\||\|&\|?\|!\)"
+syntax match jsIdentifier 	"\w\+\ze\."
+syntax match jsFunctionCall 	"\w\+\ze\s*("
 
 if exists("js_fold")
     syn match	jsFunction	"\<function\>"
@@ -121,12 +104,10 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   endif
 
   " by REKSAR
-  HiLink jsOperator 		Keyword
-  HiLink jsFunctionKey 		Type
-  HiLink jsArguments 		Identifier
-  HiLink jsConstant 		Type
-  HiLink jsFunctionCall 	Function
   HiLink jsIdentifier 		Identifier
+  HiLink jsOperator 		Keyword
+  HiLink jsFunctionCall 	Function
+  HiLink jsFunctionKey 		Type
 
   HiLink jsComment		Comment
   HiLink jsLineComment		Comment
