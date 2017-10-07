@@ -56,11 +56,11 @@ syn keyword jsStatement		return with
 syn keyword jsBoolean		true false
 syn keyword jsNull		null undefined
 syn keyword jsException		try catch finally throw
-syn keyword jsGlobal		self window top parent
+syn keyword jsGlobal		self top parent
 syn keyword jsDeprecated	escape unescape
 syn keyword jsReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
 
-syntax keyword jsLabel		case default let this
+syntax keyword jsLabel		case default let this window
 syntax keyword jsMessage	alert confirm prompt status log
 syntax keyword jsMember		document event location arguments var
 syntax keyword jsFunctionKey 	function
