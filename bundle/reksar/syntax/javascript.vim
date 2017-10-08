@@ -66,7 +66,8 @@ syntax keyword jsFunctionKey 	function
 
 syntax match jsNumber 		"-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsParens 		"[()]" containedin=ALLBUT,jsComment,jsLineComment
-syntax match jsOperator 	"[\*+\-<>!?=|&%,\.;:]" containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsDelimiter	"[\.,;:]" containedin=ALLBUT,jsComment,jsLineComment
+syntax match jsOperator 	"[\*+\-<>!?=|&%]" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsOperator		"\/\(\*\|\/\)\@!" containedin=ALLBUT,jsComment,jsLineComment
 syntax match jsIdentifier 	"\w\+\ze\s*\(in\|\/\|,\|)\|\]\|\[\|=\|;\|:\|+\|\-\|\*\|>\|<\||\|&\|?\|!\|%\)"
 syntax match jsIdentifier 	"\w\+\ze\."
@@ -108,6 +109,9 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsOperator 		Keyword
   HiLink jsFunctionCall 	Function
   HiLink jsFunctionKey 		Type
+  HiLink jsDelimiter		Delimiter
+  HiLink jsParens		Delimiter
+  HiLink jsBraces		Delimiter
 
   HiLink jsComment		Comment
   HiLink jsLineComment		Comment
@@ -124,8 +128,6 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsType			Type
   HiLink jsStatement		Statement
   HiLink jsFunction		Type
-  HiLink jsBraces		Keyword
-  HiLink jsParens		Keyword
   HiLink jsError		Error
   HiLink javaScrParenError	jsError
   HiLink jsNull			Type

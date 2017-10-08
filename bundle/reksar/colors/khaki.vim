@@ -34,9 +34,9 @@ hi Special		guifg=#FFCA57 gui=ITALIC
 hi Type			guifg=#AF875F gui=BOLD
 hi Constant		guifg=#C5772C
 hi String		guifg=#FFFFFF
+hi Delimiter	guifg=#CFBFAD
 hi Statement 	guifg=#CFBFAD gui=BOLD
 hi PreProc 		guifg=#CFBFAD gui=ITALIC
-hi Delimiter	guifg=#CFBFAD
 
 " Marked Text: ---------------------------------------------------------------
 hi Search 		guifg=#000000 guibg=#FFCC00
