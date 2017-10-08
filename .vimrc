@@ -12,7 +12,7 @@ syntax on
 set ls=2 " Statusbar
 "--- GUI ---------------------------------------------------------------------
 if has ('gui_running')
-	colorscheme herokudoc " Must be after [syntax on]
+	colorscheme khaki " Must be after [syntax on]
 	set lines=35 columns=90 " размер окна
 	set guioptions-=T " скрыть тулбар (кнопки)
 "--- GUI Windows -------------------------------------------------------------

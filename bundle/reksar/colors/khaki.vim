@@ -1,9 +1,9 @@
 " Vim color file
 " Based On: http://vimdoc.sourceforge.net/htmldoc/syntax.html
 " Maintainer: reksarka@gmail.com
-" Last Change: 07.10.2017
-" Version: 0.1
-" Description: Dark warm colorscheme.
+" Last Change: 08.10.2017
+" Version: 0.2
+" Description: Dark-warm colorscheme.
 " Used Colors:
 " 	#CFBFAD - sand (normal)
 " 	#333333 - dark-warm (normal background)
@@ -15,7 +15,7 @@
 " 	#FF5050 - red (operator) - backup
 " 	#AEAE9A - gray (normal text) - backup
 
-let g:colors_name="ascetic"
+let g:colors_name="khaki"
 
 set background=dark
 hi clear
