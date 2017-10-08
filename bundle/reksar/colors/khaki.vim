@@ -1,19 +1,19 @@
 " Vim color file
-" Based On: http://vimdoc.sourceforge.net/htmldoc/syntax.html
+" Documentation: http://vimdoc.sourceforge.net/htmldoc/syntax.html
+" Based On: http://vimcolors.com/452/moonshine_minimal/light
 " Maintainer: reksarka@gmail.com
 " Last Change: 08.10.2017
-" Version: 0.2
+" Version: 1.0
 " Description: Dark-warm colorscheme.
-" Used Colors:
-" 	#CFBFAD - sand (normal)
+" Main Colors:
+" 	#CFBFAD - white-sand (normal)
 " 	#333333 - dark-warm (normal background)
-" 	#4B6666 - obsidian (comment)
-" 	#AFAF3F - yellowgreen (identifier)
-"	#FFCA57 - yellow (function)
-"	#AF6925 - brown (type)
-"
-" 	#FF5050 - red (operator) - backup
-" 	#AEAE9A - gray (normal text) - backup
+" 	#777777 - gray (comment)
+" 	#AFAF3F - khaki (identifier)
+"	#FFCA57 - light-yellow (function)
+"	#C5772C - orange-brown (constant)
+" 	#AF875F - ligth-brown (type)
+" 	#B5EE00 - yellowgreen (reserved)
 
 let g:colors_name="khaki"
 
@@ -23,63 +23,41 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-"--- Syntax ------------------------------------------------------------------
+" Syntax: --------------------------------------------------------------------
 hi Normal 		guifg=#CFBFAD guibg=#333333
-hi Comment  	guifg=#4B6666 gui=ITALIC
-hi Constant		guifg=#FFFFFF
-"hi  String
-"hi  Character
-"hi  Number
-"hi  Boolean
-"hi  Float
+hi Keyword		gui=BOLD
+hi Comment  	guifg=#777777 gui=ITALIC
 hi Identifier 	guifg=#AFAF3F
-hi  Function 	guifg=#FFCA57
+hi Label		guifg=#AFAF3F gui=BOLD
+hi Function 	guifg=#FFCA57
+hi Special		guifg=#FFCA57 gui=ITALIC
+hi Type			guifg=#AF875F gui=BOLD
+hi Constant		guifg=#C5772C
+hi String		guifg=#FFFFFF
 hi Statement 	guifg=#CFBFAD gui=BOLD
-hi  Operator 	guifg=#FF5050
-hi  Keyword 	guifg=#CFBFAD gui=BOLD
-hi  Label		guifg=#B5EE00 gui=BOLD
-"hi  Conditional
-"hi  Repeat
-"hi  Exception
-hi PreProc 		guifg=#CFBFAD gui=BOLD,ITALIC
-"hi  Include
-"hi  Define
-"hi  Macro
-"hi  PreCondit
-hi Type			guifg=#AF6925
-hi  StorageClass guifg=#FFFFFF gui=BOLD
-"hi  Structure
-"hi  Typedef
-hi Special		guifg=#88BEEE gui=ITALIC
-hi  Delimiter	guifg=#FFFFFF gui=BOLD
-"hi  SpecialChar
-"hi  Tag
-"hi  SpecialComment
-"hi  Debug
-"hi Underlined
-"hi Ignore
-"hi Error
+hi PreProc 		guifg=#CFBFAD gui=ITALIC
+hi Delimiter	guifg=#CFBFAD
 
-"--- Marked Text -------------------------------------------------------------
-hi Search 		guifg=#000000 guibg=#20CC20
-hi  IncSearch 	guifg=#000000 guibg=Green	gui=NONE
-hi Visual 		guibg=#555555
+" Marked Text: ---------------------------------------------------------------
+hi Search 		guifg=#000000 guibg=#FFCC00
+hi IncSearch 	guifg=#000000 guibg=#B5EE00	gui=NONE
+hi Visual 		guibg=#202020
 hi Todo 		guifg=#D9D9C0 guibg=#666600	
 hi Folded 		guifg=#FFFFFF guibg=#333333 gui=BOLD
 
-"--- Border Interface --------------------------------------------------------
+" Border Interface: ----------------------------------------------------------
 hi NonText		guifg=#8B8BCD guibg=#2E2E2E
-hi LineNr   	guifg=#AEAE9A guibg=#3B454C
-hi ColorColumn 	guibg=#3B454C ctermbg=0
+hi LineNr   	guifg=#9A8B7B guibg=#292929
+hi ColorColumn 	guibg=#292929
 hi Statusline 	guifg=#FFFFFF guibg=#000000
+hi ErrorMsg		guibg=#CC0000
 
-"--- Menu --------------------------------------------------------------------
+" Menu: ----------------------------------------------------------------------
 hi Pmenu		guifg=#333333 guibg=#CFBFAD
 hi PmenuSel		guifg=#000000 guibg=#DDCCBB gui=BOLD
 
-"--- Cursor indicators -------------------------------------------------------
-hi CursorLineNr guifg=#AEAEAE guibg=#434E56
-hi CursorLine 	guibg=#3B454C
+" Cursor Indicators: ---------------------------------------------------------
+hi CursorLineNr guifg=#CFBFAD guibg=#333333
+hi CursorLine 	guibg=#292929
 " Brackets pairs
 hi MatchParen 	guifg=#55FFFF guibg=#444444 gui=BOLD,UNDERLINE
-
