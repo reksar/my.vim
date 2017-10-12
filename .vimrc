@@ -39,7 +39,7 @@ if has('gui_running')
 
 " Terminal: ------------------------------------------------------------------
 else
-	colorscheme cterm " Must be after `syntax on`
+	colorscheme khaki " Must be after `syntax on`
 endif
 
 " Highlighting: --------------------------------------------------------------

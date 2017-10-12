@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: php PHP 3/4/5
 " Maintainer: Jason Woofenden <jason@jasonwoof.com>
-" Last Change: Sep 18, 2014
+" Last Change: 12.10.2017
 " URL: https://gitorious.org/jasonwoof/vim-syntax/blobs/master/php.vim
 " Former Maintainers: Peter Hodge <toomuchphp-vim@yahoo.com>
 "         Debian VIM Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
@@ -658,7 +658,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpComment Comment
   HiLink   phpDocTags PreProc
   HiLink   phpDocCustomTags Type
-  HiLink   phpException Exception
+  HiLink   phpException Keyword
   HiLink   phpBoolean Boolean
   HiLink   phpStorageClass Storageclass
   HiLink   phpSCKeyword Keyword
@@ -672,10 +672,10 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpMethods Function
   HiLink   phpFunctions Special
   HiLink   phpBaselib Function
-  HiLink   phpRepeat  Repeat
-  HiLink   phpConditional Conditional
+  HiLink   phpRepeat  Keyword
+  HiLink   phpConditional Keyword
   HiLink   phpLabel Label
-  HiLink   phpStatement Statement
+  HiLink   phpStatement Keyword
   HiLink   phpKeyword Keyword
   HiLink   phpType  Type
   HiLink   phpInclude Include
@@ -710,7 +710,7 @@ if version >= 508 || !exists("did_php_syn_inits")
   HiLink   phpIntVar Identifier
   HiLink   phpEnvVar Identifier
   HiLink   phpOperator Operator
-  HiLink   phpVarSelector  Operator
+  HiLink   phpVarSelector  Label
   HiLink   phpRelation Operator
   HiLink   phpIdentifier Identifier
   HiLink   phpIdentifierSimply Identifier
