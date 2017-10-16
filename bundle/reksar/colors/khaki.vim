@@ -71,7 +71,7 @@ hi Folded 		guifg=#FFFFFF guibg=#333333 gui=BOLD
 
 " Border Interface: ----------------------------------------------------------
 
-hi NonText		guifg=#8B8BCD guibg=#2E2E2E
+hi NonText		guifg=#8B8BCD guibg=#292929 gui=BOLD
 
 hi LineNr   	guifg=#9A8B7B guibg=#292929 gui=NONE
 hi LineNr		ctermfg=Gray ctermbg=Black cterm=NONE
