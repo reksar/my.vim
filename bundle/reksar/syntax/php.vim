@@ -338,7 +338,7 @@ syn region phpIdentifierComplexP matchgroup=phpParent start="\[" end="]" contain
 syn match phpMethodsVar "->\h\w*" contained contains=phpMethods,phpMemberSelector display
 
 " Include
-syn keyword phpInclude  include require include_once require_once use contained
+syn keyword phpInclude  include require include_once require_once  contained
 
 " Peter Hodge - added 'clone' keyword
 " Define
@@ -488,8 +488,8 @@ if exists("php_folding") && php_folding==1
 elseif exists("php_folding") && php_folding==2
   syn keyword phpDefine function contained
   syn keyword phpStructure  abstract interface  contained
-  syn keyword phpClassKey  class new extends  containedin=phpClassDefinition
-  syn match   phpClassDefinition "\(class\|new\|extends\)\s\+\h\w*" contained contains=phpClassKey
+  syn keyword phpClassKey  class new extends use  containedin=phpClassDefinition
+  syn match   phpClassDefinition "\(class\|new\|extends\|use\)\s\+\h\w*" contained contains=phpClassKey
   syn keyword phpException  catch throw try  contained
   syn keyword phpStorageClass final global private protected public static  contained
 
@@ -499,8 +499,8 @@ elseif exists("php_folding") && php_folding==2
 else
   syn keyword phpDefine function contained
   syn keyword phpStructure  abstract interface  contained
-  syn keyword phpClassKey  class new extends  containedin=phpClassDefinition
-  syn match   phpClassDefinition "\(class\|new\|extends\)\s\+\h\w*" contained contains=phpClassKey
+  syn keyword phpClassKey  class new extends use  containedin=phpClassDefinition
+  syn match   phpClassDefinition "\(class\|new\|extends\|use\)\s\+\h\w*" contained contains=phpClassKey
   syn keyword phpException  catch throw try  contained
   syn keyword phpStorageClass  final global private protected public static  contained
 endif
