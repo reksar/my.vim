@@ -35,8 +35,8 @@ hi Label 		ctermfg=DarkRed ctermbg=Black cterm=NONE
 hi Function 	guifg=#FFCA57 guibg=#333333 gui=NONE
 hi Function 	ctermfg=Brown ctermbg=Black cterm=NONE
 
-hi Special		guifg=#FFCA57 guibg=#333333 gui=ITALIC
-hi Special		ctermfg=Brown ctermbg=Black cterm=ITALIC
+hi Special		guifg=#FFCA57 guibg=#333333
+hi Special		ctermfg=Brown ctermbg=Black
 
 hi Type			guifg=#AF875F guibg=#333333 gui=BOLD
 hi Type			ctermfg=DarkGreen ctermbg=Black cterm=NONE
