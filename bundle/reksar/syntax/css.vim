@@ -136,7 +136,7 @@ syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>"
 
 syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\)\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\|calc\)\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear\|radial\)-gradient\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y|\Z\)\=\|translate\(3d\|X\|Y\|Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y|\Z\)\=\|perspective\)\s*(" end=")" oneline keepend
 
