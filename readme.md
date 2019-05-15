@@ -1,19 +1,18 @@
 # Custom settings and features for Vim
 
+## Requirements
 
-## Install
+* [Vim](https://www.vim.org) text editor.
+* [Pathogen](https://www.vim.org/scripts/script.php?script_id=2332) plugin.
 
-* Install [Vim](https://www.vim.org) first.
-* Install [Pathogen](https://www.vim.org/scripts/script.php?script_id=2332) plugin (*vimrc* editing not needed).
-
+## Deployment
 
 ### in Linux
 
 * Place `~/.vimrc` file.
 * Place `~/.vim/bundle` dir.
 
-
 ### in Windows
 
-* Place `_vimrc` file into Vim root.
-* Place `bundle` dir into Vim work dir.
+* Place `_vimrc` file into Vim *root*.
+* Place `bundle` dir into Vim *work dir*.
