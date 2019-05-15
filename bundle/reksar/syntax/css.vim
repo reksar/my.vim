@@ -147,7 +147,8 @@ syn keyword cssCommonAttr contained top bottom
 syn keyword cssCommonAttr contained medium normal
 
 
-syn match cssAnimationProp contained "\<animation\(-\(name\|duration\|timing-function\|delay\|iteration-cout\|play-state\)\)\=\>"
+syn match cssAnimationProp contained "\<animation\(-\(name\|duration\|timing-function\|delay\|iteration-cout\|play-state\|fill-mode\)\)\=\>"
+syn keyword cssAnimationAttr contained forwards backwards both none
 
 
 syn keyword cssAnimationAttr contained infinite alternate paused running
