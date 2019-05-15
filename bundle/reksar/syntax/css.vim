@@ -292,6 +292,9 @@ syn match cssUIProp contained "\<outline-offset\>"
 syn match cssUIProp contained "\<box-sizing\>"
 syn keyword cssUIProp contained appearance icon resize
 syn keyword cssUIAttr contained window button menu field
+syn match cssUIAttr contained "\<border-box\>"
+syn match cssUIAttr contained "\<content-box\>"
+syn match cssUIAttr contained "\<padding-box\>"
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
 syn match cssAuralProp contained "\<\(play-during\|speech-rate\|voice-family\|pitch\(-range\)\=\|speak\(-\(punctuation\|numerals\)\)\=\)\>"
