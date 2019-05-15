@@ -209,7 +209,7 @@ syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
 syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
 syn keyword cssFontAttr contained large smaller larger narrower wider
-syn keyword cssFontAttr contained Courier Arial Georgia Times
+syn keyword cssFontAttr contained Courier Arial Georgia Times Helvetica
 
 
 syn keyword cssGeneratedContentProp contained content quotes crop
