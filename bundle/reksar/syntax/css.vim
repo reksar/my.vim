@@ -36,7 +36,7 @@ syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
 " HTML5 new tags 5*6=30
-syn keyword cssTagName article aside audio bdi canvas command
+syn keyword cssTagName article aside audio bdi canvas command svg
 syn keyword cssTagName datalist details embed figcaption figure footer
 syn keyword cssTagName header hgroup keygen mark meter nav
 syn keyword cssTagName output progress rt rp ruby section
