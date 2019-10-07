@@ -92,7 +92,8 @@ syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
 " doctests.
 " A dot must be allowed because of @MyClass.myfunc decorators.
 syn match   pythonFunction
-      \ "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*" contained
+      \ "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*"
+      \	contained
 
 syn match   pythonComment	"#.*$" contains=pythonTodo,@Spell
 syn keyword pythonTodo		FIXME NOTE NOTES TODO XXX contained
@@ -121,6 +122,7 @@ syn match   pythonEscape	"\\$"
 
 
 " By REKSAR
+syn keyword pythonSelf		self
 syn match   pythonOperator	"="
 syn match   pythonOperator	"[.,:+-/]"
 syn match   pythonOperator	"*"
@@ -131,7 +133,9 @@ syn match   pythonOperator	"}"
 syn match   pythonOperator	"\["
 syn match   pythonOperator	"\]"
 syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
-syn keyword pythonSelf		self
+syn region  pythonFunctionArgs	start="(" end=")" keepend
+      \ contains=pythonFunctionCall,pythonNumber,pythonString,pythonOperator,
+      \		 pythonSelf
 
 
 if exists("python_highlight_all")
@@ -294,11 +298,10 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonDocString	Comment
   HiLink pythonRawString	String
   HiLink pythonEscape		Special
-
-
-" By REKSAR
-  HiLink pythonFunctionCall	Function
+  " By REKSAR
   HiLink pythonSelf		Include
+  HiLink pythonFunctionCall	Function
+  HiLink pythonFunctionArgs	Identifier
 
 
   if !exists("python_no_number_highlight")
