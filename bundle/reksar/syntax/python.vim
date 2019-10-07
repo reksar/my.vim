@@ -134,10 +134,13 @@ syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
 syn region  pythonFunctionArgs	start="(" end=")" keepend
       \ contains=pythonFunctionCall,pythonNumber,pythonString,pythonOperator,
       \		 pythonSelf
-syn match   pythonParentIdentifier "\w\+\."
-syn match   pythonExpression "\w\+\ze\s\{-}[<>=]=\{0,1}" 
+
+syn match   pythonParentIdentifier  "\w\+\ze[\.\[]"
+syn match   pythonExpression	    "\w\+\ze\s\{-}[+-\*/<>=,:]=\{0,1}" 
       \ contains=pythonParentIdentifier,pythonOperator
-syn match   pythonExpression "\w\+\ze\s\{-}[+-\*/]\{0,1}=" 
+syn match   pythonExpression	    "\w\+\ze\s\{-}[+-\*/]\{0,1}=" 
+      \ contains=pythonParentIdentifier,pythonOperator
+syn match   pythonExpression	    "for\s\+\w\+"
       \ contains=pythonParentIdentifier,pythonOperator
 
 
