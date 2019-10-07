@@ -23,7 +23,6 @@
 "		- more highlighting is ON by default, except
 "		- space error highlighting is OFF by default
 "
-"		Highlighting of function/method calls has been added by REKSAR.
 "		See comments " By REKSAR.
 "
 " Optional highlighting can be controlled using these variables.
@@ -85,7 +84,8 @@ syn keyword pythonException	except finally raise try
 syn keyword pythonInclude	from import
 
 " Decorators (new in Python 2.4)
-syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
+syn match   pythonDecorator	"@\w\+" display skipwhite 
+      \ nextgroup=pythonFunction
 " The zero-length non-grouping match before the function name is
 " extremely important in pythonFunction.  Without it, everything is
 " interpreted as a function inside the contained environment of
