@@ -121,7 +121,7 @@ syn match   pythonEscape	"\\$"
 
 
 " By REKSAR
-syn match   String		"="
+syn match   pythonOperator	"="
 syn match   pythonOperator	"[.,:+-/]"
 syn match   pythonOperator	"*"
 syn match   pythonOperator	"("
