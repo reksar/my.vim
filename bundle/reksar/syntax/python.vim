@@ -130,8 +130,8 @@ syn match   pythonOperator	"{"
 syn match   pythonOperator	"}"
 syn match   pythonOperator	"\["
 syn match   pythonOperator	"\]"
-
-syn match pythonFunctionCall "\w\+\ze\s\{-}("
+syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
+syn keyword pythonSelf		self
 
 
 if exists("python_highlight_all")
@@ -298,6 +298,7 @@ if version >= 508 || !exists("did_python_syn_inits")
 
 " By REKSAR
   HiLink pythonFunctionCall	Function
+  HiLink pythonSelf		Include
 
 
   if !exists("python_no_number_highlight")
