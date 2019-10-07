@@ -123,9 +123,7 @@ syn match   pythonEscape	"\\$"
 
 " By REKSAR
 syn keyword pythonSelf		self
-syn match   pythonOperator	"="
-syn match   pythonOperator	"[.,:+-/]"
-syn match   pythonOperator	"*"
+syn match   pythonOperator	"[.,:+-\*/=<>]"
 syn match   pythonOperator	"("
 syn match   pythonOperator	")"
 syn match   pythonOperator	"{"
@@ -136,6 +134,11 @@ syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
 syn region  pythonFunctionArgs	start="(" end=")" keepend
       \ contains=pythonFunctionCall,pythonNumber,pythonString,pythonOperator,
       \		 pythonSelf
+syn match   pythonParentIdentifier "\w\+\."
+syn match   pythonExpression "\w\+\ze\s\{-}[<>=]=\{0,1}" 
+      \ contains=pythonParentIdentifier,pythonOperator
+syn match   pythonExpression "\w\+\ze\s\{-}[+-\*/]\{0,1}=" 
+      \ contains=pythonParentIdentifier,pythonOperator
 
 
 if exists("python_highlight_all")
@@ -302,6 +305,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonSelf		Include
   HiLink pythonFunctionCall	Function
   HiLink pythonFunctionArgs	Identifier
+  HiLink pythonParentIdentifier	Identifier
+  HiLink pythonExpression       Identifier
 
 
   if !exists("python_no_number_highlight")
