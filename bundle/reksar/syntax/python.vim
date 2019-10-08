@@ -258,8 +258,8 @@ syn region  pythonFunctionArgs	start="(" end=")" keepend
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier
 
-syn keyword pythonParentIdentifier  self
-syn match   pythonParentIdentifier  "\w\+\ze[\.\[]"
+syn keyword pythonParentIdentifier self
+syn match   pythonParentIdentifier "\w\+\ze[\.\[]"
 
 syn match pythonExpressionPart	"[+-/]\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
@@ -268,8 +268,14 @@ syn match pythonExpressionPart	"[\*=<>]\{1,2}\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier
 syn match pythonExpressionPart	"\w\+\ze\s\{-}[=<>,]"
-syn match pythonStatementPart	"for\s\+\w\+" contains=pythonPreStatement
-syn match pythonStatementPart	"return\s\+\w\+" contains=pythonPreStatement
+
+syn match pythonStatementPart "for\s\+\w\+" contains=pythonPreStatement
+syn match pythonStatementPart "return\s\+\ze[\[({]" contains=pythonPreStatement
+syn match pythonStatementPart "return\s\+[\'\"]" 
+      \	contains=pythonPreStatement,pythonString
+syn match pythonStatementPart "return\s\+\w\+" 
+      \ contains=pythonPreStatement,pythonConstant,pythonParentIdentifier,
+      \	  pythonFunctionCall
 
 syn keyword pythonConstant	None True False
 syn keyword pythonPreStatement	for return contained
