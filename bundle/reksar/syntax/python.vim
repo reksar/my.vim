@@ -273,12 +273,14 @@ syn region  pythonFunctionArgs	start="(" end=")" keepend
 syn keyword pythonParentIdentifier  self
 syn match   pythonParentIdentifier  "\w\+\ze[\.\[]"
 
-syn match pythonExpressionElem "[+-/]\s\{-}\w\+"
+syn match pythonRightExpression "[+-/]\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier
-syn match pythonExpressionElem "[\*=<>]\{1,2}\s\{-}\w\+"
+syn match pythonRightExpression "[\*=<>]\{1,2}\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier
+
+syn match pythonLeftExpression "\w\+\ze\s\{-}[=<>,]"
 " ----------------------------------------------------------------------------
 
 
@@ -311,8 +313,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonParentIdentifier Include
   HiLink pythonFunctionCall	Function
   HiLink pythonFunctionArgs	Identifier
-  HiLink pythonExpressionElem	Identifier
-
+  HiLink pythonRightExpression	Identifier
+  HiLink pythonLeftExpression	Identifier
 
   if !exists("python_no_number_highlight")
     HiLink pythonNumber		Number
