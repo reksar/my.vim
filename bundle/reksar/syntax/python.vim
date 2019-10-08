@@ -256,9 +256,9 @@ endif
 
 
 " By REKSAR ------------------------------------------------------------------
-syn match   pythonOperator	"="
-syn match   pythonOperator	"[.,:+-/]"
-syn match   pythonOperator	"*"
+syn match   pythonOperator	"=\{1,2}"
+syn match   pythonOperator	"*\{1,2}"
+syn match   pythonOperator	"[.,:+-/<>]"
 syn match   pythonOperator	"("
 syn match   pythonOperator	")"
 syn match   pythonOperator	"{"
@@ -267,11 +267,18 @@ syn match   pythonOperator	"\["
 syn match   pythonOperator	"\]"
 syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
 syn region  pythonFunctionArgs	start="(" end=")" keepend
-      \ contains=pythonFunctionCall,pythonNumber,pythonString,pythonOperator,
-      \		 pythonSelf,pythonParentIdentifier
+      \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
+      \	  pythonParentIdentifier
 
 syn keyword pythonParentIdentifier  self
 syn match   pythonParentIdentifier  "\w\+\ze[\.\[]"
+
+syn match pythonExpressionElem "[+-/]\s\{-}\w\+"
+      \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
+      \	  pythonParentIdentifier
+syn match pythonExpressionElem "[\*=<>]\{1,2}\s\{-}\w\+"
+      \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
+      \	  pythonParentIdentifier
 " ----------------------------------------------------------------------------
 
 
@@ -304,6 +311,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonParentIdentifier Include
   HiLink pythonFunctionCall	Function
   HiLink pythonFunctionArgs	Identifier
+  HiLink pythonExpressionElem	Identifier
 
 
   if !exists("python_no_number_highlight")
