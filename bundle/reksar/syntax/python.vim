@@ -266,7 +266,7 @@ syn match pythonExpressionPart	"[+-/]\s\{-}\w\+"
       \	  pythonParentIdentifier
 syn match pythonExpressionPart	"[\*=<>]\{1,2}\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
-      \	  pythonParentIdentifier
+      \	  pythonParentIdentifier,pythonConstant
 syn match pythonExpressionPart	"\w\+\ze\s\{-}[=<>,]"
 
 syn match pythonStatementPart "for\s\+\w\+" contains=pythonPreStatement
