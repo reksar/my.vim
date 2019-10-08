@@ -44,6 +44,9 @@ hi Type			ctermfg=DarkGreen ctermbg=Black cterm=NONE
 hi Constant		guifg=#C5772C guibg=#333333 gui=NONE
 hi Constant		ctermfg=DarkRed ctermbg=Black cterm=BOLD
 
+hi Number		guifg=#C5772C guibg=#333333 gui=NONE
+hi Number		ctermfg=DarkRed ctermbg=Black cterm=BOLD
+
 hi String		guifg=#FFFFFF guibg=#333333 gui=NONE
 hi String		ctermfg=White ctermbg=Black cterm=ITALIC
 

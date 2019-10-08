@@ -65,20 +65,10 @@ set cpo&vim
 " We include Python 3.0 features, but when a definition is duplicated,
 " the last definition takes precedence.
 "
-" - 'False', 'None', and 'True' are keywords in Python 3.0 but they are
-"   built-ins in 2.6 and will be highlighted as built-ins below.
-" - 'exec' is a built-in in Python 3.0 and will be highlighted as
-"   built-in below.
-" - 'nonlocal' is a keyword in Python 3.0 and will be highlighted.
-" - 'print' is a built-in in Python 3.0 and will be highlighted as
-"   built-in below (use 'from __future__ import print_function' in 2.6)
-"
-syn keyword pythonStatement	False, None, True
 syn keyword pythonStatement	as assert break continue del exec global
-syn keyword pythonStatement	lambda nonlocal pass print return with yield
+syn keyword pythonStatement	lambda nonlocal pass print with yield
 syn keyword pythonStatement	class def nextgroup=pythonFunction skipwhite
-syn keyword pythonConditional	elif else if
-syn keyword pythonRepeat	for while
+syn keyword pythonConditional	elif else if while
 syn keyword pythonOperator	and in is not or
 syn keyword pythonException	except finally raise try
 syn keyword pythonInclude	from import
@@ -175,8 +165,6 @@ endif
 " Python built-in functions are in alphabetical order.
 if !exists("python_no_builtin_highlight")
   " built-in constants
-  " 'False', 'True', and 'None' are also reserved words in Python 3.0
-  syn keyword pythonBuiltin	False True None
   syn keyword pythonBuiltin	NotImplemented Ellipsis __debug__
   " built-in functions
   syn keyword pythonBuiltin	abs all any bin bool chr classmethod
@@ -273,14 +261,18 @@ syn region  pythonFunctionArgs	start="(" end=")" keepend
 syn keyword pythonParentIdentifier  self
 syn match   pythonParentIdentifier  "\w\+\ze[\.\[]"
 
-syn match pythonRightExpression "[+-/]\s\{-}\w\+"
+syn match pythonExpressionPart	"[+-/]\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier
-syn match pythonRightExpression "[\*=<>]\{1,2}\s\{-}\w\+"
+syn match pythonExpressionPart	"[\*=<>]\{1,2}\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier
+syn match pythonExpressionPart	"\w\+\ze\s\{-}[=<>,]"
+syn match pythonStatementPart	"for\s\+\w\+" contains=pythonPreStatement
+syn match pythonStatementPart	"return\s\+\w\+" contains=pythonPreStatement
 
-syn match pythonLeftExpression "\w\+\ze\s\{-}[=<>,]"
+syn keyword pythonConstant	None True False
+syn keyword pythonPreStatement	for return contained
 " ----------------------------------------------------------------------------
 
 
@@ -298,7 +290,6 @@ if version >= 508 || !exists("did_python_syn_inits")
   " The default highlight links.  Can be overridden later.
   HiLink pythonStatement	Statement
   HiLink pythonConditional	Conditional
-  HiLink pythonRepeat		Repeat
   HiLink pythonOperator		Operator
   HiLink pythonException	Exception
   HiLink pythonInclude		Include
@@ -313,8 +304,10 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonParentIdentifier Include
   HiLink pythonFunctionCall	Function
   HiLink pythonFunctionArgs	Identifier
-  HiLink pythonRightExpression	Identifier
-  HiLink pythonLeftExpression	Identifier
+  HiLink pythonExpressionPart	Identifier
+  HiLink pythonStatementPart	Identifier
+  HiLink pythonPreStatement	Repeat
+  HiLink pythonConstant		Constant
 
   if !exists("python_no_number_highlight")
     HiLink pythonNumber		Number
