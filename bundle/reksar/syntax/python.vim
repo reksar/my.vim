@@ -120,25 +120,6 @@ syn match   pythonEscape	"\%(\\u\x\{4}\|\\U\x\{8}\)" contained
 syn match   pythonEscape	"\\N{\a\+\%(\s\a\+\)*}" contained
 syn match   pythonEscape	"\\$"
 
-
-" By REKSAR
-syn match   pythonOperator	"="
-syn match   pythonOperator	"[.,:+-/]"
-syn match   pythonOperator	"*"
-syn match   pythonOperator	"("
-syn match   pythonOperator	")"
-syn match   pythonOperator	"{"
-syn match   pythonOperator	"}"
-syn match   pythonOperator	"\["
-syn match   pythonOperator	"\]"
-syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
-syn region  pythonFunctionArgs	start="(" end=")" keepend
-      \ contains=pythonFunctionCall,pythonNumber,pythonString,pythonOperator,
-      \		 pythonSelf,pythonParentIdentifier
-
-syn keyword pythonParentIdentifier  self
-syn match   pythonParentIdentifier  "\w\+[\.\[]"
-
 if exists("python_highlight_all")
   if exists("python_no_builtin_highlight")
     unlet python_no_builtin_highlight
@@ -273,6 +254,27 @@ if !exists("python_no_doctest_highlight")
   endif
 endif
 
+
+" By REKSAR ------------------------------------------------------------------
+syn match   pythonOperator	"="
+syn match   pythonOperator	"[.,:+-/]"
+syn match   pythonOperator	"*"
+syn match   pythonOperator	"("
+syn match   pythonOperator	")"
+syn match   pythonOperator	"{"
+syn match   pythonOperator	"}"
+syn match   pythonOperator	"\["
+syn match   pythonOperator	"\]"
+syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
+syn region  pythonFunctionArgs	start="(" end=")" keepend
+      \ contains=pythonFunctionCall,pythonNumber,pythonString,pythonOperator,
+      \		 pythonSelf,pythonParentIdentifier
+
+syn keyword pythonParentIdentifier  self
+syn match   pythonParentIdentifier  "\w\+\ze[\.\[]"
+" ----------------------------------------------------------------------------
+
+
 " Sync at the beginning of class, function, or method definition.
 syn sync match pythonSync grouphere NONE "^\s*\%(def\|class\)\s\+\h\w*\s*("
 
@@ -299,7 +301,6 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonDocString	Comment
   HiLink pythonRawString	String
   HiLink pythonEscape		Special
-  " By REKSAR
   HiLink pythonParentIdentifier Include
   HiLink pythonFunctionCall	Function
   HiLink pythonFunctionArgs	Identifier
