@@ -267,15 +267,15 @@ syn match pythonExpressionPart	"[+-/]\s\{-}\w\+"
 syn match pythonExpressionPart	"[\*=<>]\{1,2}\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
       \	  pythonParentIdentifier,pythonConstant
-syn match pythonExpressionPart	"\w\+\ze\s\{-}[=<>,]"
+syn match pythonExpressionPart	"\h\w\{-}\ze\s\{-}[=<>,]" contains=pythonNumber
 
 syn match pythonStatementPart "for\s\+\w\+" contains=pythonPreStatement
 syn match pythonStatementPart "return\s\+\ze[\[({]" contains=pythonPreStatement
 syn match pythonStatementPart "return\s\+[\'\"]" 
       \	contains=pythonPreStatement,pythonString
-syn match pythonStatementPart "return\s\+\w\+" 
-      \ contains=pythonPreStatement,pythonConstant,pythonParentIdentifier,
-      \	  pythonFunctionCall
+syn match pythonStatementPart "return\s\+\w\+"
+      \ contains=pythonNumber,pythonPreStatement,pythonConstant,
+      \ pythonParentIdentifier,pythonFunctionCall
 
 syn keyword pythonConstant	None True False
 syn keyword pythonPreStatement	for return contained
