@@ -255,8 +255,8 @@ syn match   pythonOperator	"\["
 syn match   pythonOperator	"\]"
 syn match   pythonFunctionCall	"\w\+\ze\s\{-}("
 syn region  pythonFunctionArgs	start="(" end=")" keepend
-      \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
-      \	  pythonParentIdentifier
+      \ contains=pythonNumber,pythonComment,pythonString,pythonOperator,
+      \ pythonFunctionCall,pythonParentIdentifier
 
 syn keyword pythonParentIdentifier self
 syn match   pythonParentIdentifier "\h\w\{-}\ze[\.\[]"
@@ -275,7 +275,7 @@ syn match pythonStatementPart "return\s\+[\'\"]"
       \	contains=pythonPreStatement,pythonString
 syn match pythonStatementPart "return\s\+\w\+"
       \ contains=pythonNumber,pythonPreStatement,pythonConstant,
-      \ pythonParentIdentifier,pythonFunctionCall
+      \	  pythonParentIdentifier,pythonFunctionCall
 
 syn keyword pythonConstant	None True False
 syn keyword pythonPreStatement	for return contained
