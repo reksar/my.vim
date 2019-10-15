@@ -259,7 +259,7 @@ syn region  pythonFunctionArgs	start="(" end=")" keepend
       \	  pythonParentIdentifier
 
 syn keyword pythonParentIdentifier self
-syn match   pythonParentIdentifier "\w\+\ze[\.\[]"
+syn match   pythonParentIdentifier "\h\w\{-}\ze[\.\[]"
 
 syn match pythonExpressionPart	"[+-/]\s\{-}\w\+"
       \ contains=pythonNumber,pythonString,pythonOperator,pythonFunctionCall,
