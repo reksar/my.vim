@@ -55,7 +55,9 @@ set guioptions+=b " Show horizontal scroll
 set nowrap " Do not break the lines
 set guicursor=a:blinkon600-blinkoff400 " Cursor blinking speed
 set guitablabel=%t " Show file name only
+
 set colorcolumn=80
+autocmd FileType php setlocal cc=120
 
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
