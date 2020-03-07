@@ -7,12 +7,12 @@
 
 ## Deployment
 
-### in Linux
+### Linux
 
-* Place `~/.vimrc` file.
-* Place `~/.vim/bundle` dir.
+* Place the `~/.vimrc` file.
+* Place the `~/.vim/bundle` dir.
 
-### in Windows
+### Windows
 
-* Place `_vimrc` file into Vim *root*.
-* Place `bundle` dir into Vim *work dir*.
+* Place the `_vimrc` file into Vim *root*.
+* Place the `bundle` dir into Vim *work dir*.
