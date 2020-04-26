@@ -1,10 +1,5 @@
 set nocompatible " with Vi
 
-" Call the Pathogen plugin to activate plugins in a `bundle` dir
-filetype off
-call pathogen#helptags()
-call pathogen#infect()
-
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -20,7 +15,6 @@ set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
-	colorscheme khaki " Must be after `syntax on`
 	set lines=35 columns=90 " Window size
 	set guioptions-=T " Hide toolbar (button panel)
 
@@ -34,13 +28,14 @@ if has('gui_running')
 	else
 		set guifont=DejaVu\ Sans\ Mono\ 11
 		set clipboard=unnamedplus " Copy into system buffer
-		let g:CTAGS = $HOME."/.vim/ctags"
+		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
 " Terminal: ------------------------------------------------------------------
 else
-	colorscheme khaki " Must be after `syntax on`
 endif
+
+colorscheme khaki " Must be after `syntax on`
 
 " Highlighting: --------------------------------------------------------------
 set cursorline
@@ -81,7 +76,9 @@ imap <C-BS> <C-W>
 imap <C-Del> <C-O>dw
 
 " Reset highlighting of searched text on `Esc`
-:nnoremap <esc> :noh<return><esc>
+if has('gui_running')
+	:nnoremap <esc> :noh<return><esc>
+endif
 
 " File Types: ----------------------------------------------------------------
 
