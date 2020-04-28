@@ -23,13 +23,13 @@ hi Keyword		ctermfg=DarkCyan ctermbg=Black cterm=NONE
 hi Comment  	guifg=#777777 guibg=#333333 gui=ITALIC
 hi Comment  	ctermfg=DarkGray ctermbg=Black cterm=ITALIC,BOLD
 
-hi Identifier 	guifg=#AFAF3F guibg=#333333 gui=NONE
+hi Identifier 	guifg=#AAAA45 guibg=#333333 gui=NONE
 hi Identifier 	ctermfg=Gray ctermbg=Black cterm=NONE
 
 hi Label		guifg=#AFAF3F guibg=#333333 gui=BOLD
 hi Label 		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
-hi Function 	guifg=#FFCA57 guibg=#333333 gui=NONE
+hi Function 	guifg=#E9B152 guibg=#333333 gui=NONE
 hi Function 	ctermfg=Brown ctermbg=Black cterm=NONE
 
 hi Special		guifg=#FFCA57 guibg=#333333
