@@ -26,13 +26,13 @@ hi Comment  	ctermfg=DarkGray ctermbg=Black cterm=ITALIC,BOLD
 hi Identifier 	guifg=#AAAA45 guibg=#333333 gui=NONE
 hi Identifier 	ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi Label		guifg=#AFAF3F guibg=#333333 gui=BOLD
+hi Label		guifg=#AAAA45 guibg=#333333 gui=BOLD
 hi Label 		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
 hi Function 	guifg=#E9B152 guibg=#333333 gui=NONE
 hi Function 	ctermfg=Brown ctermbg=Black cterm=NONE
 
-hi Special		guifg=#FFCA57 guibg=#333333
+hi Special		guifg=#E9B152 guibg=#333333
 hi Special		ctermfg=Brown ctermbg=Black
 
 hi Type			guifg=#82A591 guibg=#333333 gui=BOLD
@@ -55,7 +55,7 @@ hi Statement  	ctermfg=DarkBlue ctermbg=Black cterm=BOLD
 hi PreProc 		guifg=#CFBFAD gui=ITALIC
 hi PreProc  	ctermfg=Gray ctermbg=Black cterm=ITALIC
 
-hi Define 		guifg=#FFCA57 guibg=#333333 gui=ITALIC
+hi Define 		guifg=#E9B152 guibg=#333333 gui=ITALIC
 hi Define 		ctermfg=Brown ctermbg=Black cterm=ITALIC
 
 
