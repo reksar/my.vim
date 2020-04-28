@@ -23,25 +23,25 @@ hi Keyword		ctermfg=Gray ctermbg=Black cterm=BOLD
 hi Comment  	guifg=#777777 guibg=#333333 gui=ITALIC
 hi Comment  	ctermfg=DarkMagenta ctermbg=Black cterm=ITALIC
 
-hi Identifier 	guifg=#AAAA45 guibg=#333333 gui=NONE
+hi Identifier 	guifg=#AFA54B guibg=#333333 gui=NONE
 hi Identifier 	ctermfg=DarkGreen ctermbg=Black cterm=NONE
 
-hi Label		guifg=#AAAA45 guibg=#333333 gui=BOLD
+hi Label		guifg=#AFA54B guibg=#333333 gui=BOLD
 hi Label 		ctermfg=DarkGreen ctermbg=Black cterm=BOLD
 
-hi Function 	guifg=#E9B152 guibg=#333333 gui=NONE
+hi Function 	guifg=#DC964B guibg=#333333 gui=NONE
 hi Function 	ctermfg=DarkYellow ctermbg=Black cterm=NONE
 
 hi Special		guifg=#E9B152 guibg=#333333
 hi Special		ctermfg=DarkYellow ctermbg=Black
 
-hi Type			guifg=#82A591 guibg=#333333 gui=NONE
+hi Type			guifg=#7AA085 guibg=#333333 gui=NONE
 hi Type			ctermfg=DarkCyan ctermbg=Black cterm=NONE
 
-hi Constant		guifg=#CC6E57 guibg=#333333 gui=NONE
+hi Constant		guifg=#DF6143 guibg=#333333 gui=NONE
 hi Constant		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
-hi Number		guifg=#CC6E57 guibg=#333333 gui=NONE
+hi Number		guifg=#DF6143 guibg=#333333 gui=NONE
 hi Number		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
 hi String		guifg=#FFFFFF guibg=#333333 gui=NONE
