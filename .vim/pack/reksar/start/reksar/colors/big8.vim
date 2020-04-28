@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: REKSAR DSV <reksarka@gmail.com>
 " Last Change: 28.04.2020
-" Version: 0.1
+" Version: 0.2
 " Description: Big 8 (bit) colors for customized terminal.
 
 set background=dark
@@ -18,45 +18,46 @@ hi Normal 		guifg=#CFBFAD guibg=#333333 gui=NONE
 hi Normal 		ctermfg=Gray ctermbg=Black cterm=NONE
 
 hi Keyword		guifg=#CFBFAD guibg=#333333 gui=BOLD
-hi Keyword		ctermfg=DarkCyan ctermbg=Black cterm=NONE
+hi Keyword		ctermfg=Gray ctermbg=Black cterm=BOLD
 
 hi Comment  	guifg=#777777 guibg=#333333 gui=ITALIC
-hi Comment  	ctermfg=DarkGray ctermbg=Black cterm=ITALIC,BOLD
+hi Comment  	ctermfg=DarkMagenta ctermbg=Black cterm=ITALIC
 
 hi Identifier 	guifg=#AAAA45 guibg=#333333 gui=NONE
-hi Identifier 	ctermfg=Gray ctermbg=Black cterm=NONE
+hi Identifier 	ctermfg=DarkGreen ctermbg=Black cterm=NONE
 
 hi Label		guifg=#AAAA45 guibg=#333333 gui=BOLD
-hi Label 		ctermfg=DarkRed ctermbg=Black cterm=NONE
+hi Label 		ctermfg=DarkGreen ctermbg=Black cterm=BOLD
 
 hi Function 	guifg=#E9B152 guibg=#333333 gui=NONE
-hi Function 	ctermfg=Brown ctermbg=Black cterm=NONE
+hi Function 	ctermfg=DarkYellow ctermbg=Black cterm=NONE
 
 hi Special		guifg=#E9B152 guibg=#333333
-hi Special		ctermfg=Brown ctermbg=Black
+hi Special		ctermfg=DarkYellow ctermbg=Black
 
-hi Type			guifg=#82A591 guibg=#333333 gui=BOLD
-hi Type			ctermfg=DarkGreen ctermbg=Black cterm=NONE
+hi Type			guifg=#82A591 guibg=#333333 gui=NONE
+hi Type			ctermfg=DarkCyan ctermbg=Black cterm=NONE
 
 hi Constant		guifg=#CC6E57 guibg=#333333 gui=NONE
-hi Constant		ctermfg=DarkRed ctermbg=Black cterm=BOLD
+hi Constant		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
 hi Number		guifg=#CC6E57 guibg=#333333 gui=NONE
-hi Number		ctermfg=DarkRed ctermbg=Black cterm=BOLD
+hi Number		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
 hi String		guifg=#FFFFFF guibg=#333333 gui=NONE
-hi String		ctermfg=White ctermbg=Black cterm=ITALIC
+hi String		ctermfg=White ctermbg=Black cterm=NONE
 
 hi Delimiter	guifg=#CFBFAD guibg=#333333 gui=NONE
+hi Delimiter	ctermfg=Gray ctermbg=Black cterm=NONE
 
 hi Statement 	guifg=#CFBFAD guibg=#333333 gui=BOLD
-hi Statement  	ctermfg=DarkBlue ctermbg=Black cterm=BOLD
+hi Statement  	ctermfg=Gray ctermbg=Black cterm=BOLD
 
 hi PreProc 		guifg=#CFBFAD gui=ITALIC
 hi PreProc  	ctermfg=Gray ctermbg=Black cterm=ITALIC
 
 hi Define 		guifg=#E9B152 guibg=#333333 gui=ITALIC
-hi Define 		ctermfg=Brown ctermbg=Black cterm=ITALIC
+hi Define 		ctermfg=DarkYellow ctermbg=Black cterm=ITALIC
 
 
 " Marked Text: ---------------------------------------------------------------
