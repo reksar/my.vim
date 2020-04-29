@@ -14,49 +14,49 @@ let colors_name='big8'
 
 " Syntax: --------------------------------------------------------------------
 
-hi Normal 		guifg=#CFBFAD guibg=#333333 gui=NONE
+hi Normal 		guifg=#CFBFAD guibg=#181714 gui=NONE
 hi Normal 		ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi Keyword		guifg=#CFBFAD guibg=#333333 gui=BOLD
+hi Keyword		guifg=#CFBFAD guibg=#181714 gui=BOLD
 hi Keyword		ctermfg=Gray ctermbg=Black cterm=BOLD
 
-hi Comment  	guifg=#777777 guibg=#333333 gui=ITALIC
+hi Comment  	guifg=#8A8A8A guibg=#181714 gui=ITALIC
 hi Comment  	ctermfg=DarkMagenta ctermbg=Black cterm=ITALIC
 
-hi Identifier 	guifg=#AFA54B guibg=#333333 gui=NONE
+hi Identifier 	guifg=#AFA54B guibg=#181714 gui=NONE
 hi Identifier 	ctermfg=DarkGreen ctermbg=Black cterm=NONE
 
-hi Label		guifg=#AFA54B guibg=#333333 gui=BOLD
+hi Label		guifg=#AFA54B guibg=#181714 gui=BOLD
 hi Label 		ctermfg=DarkGreen ctermbg=Black cterm=BOLD
 
-hi Function 	guifg=#DC964B guibg=#333333 gui=NONE
+hi Function 	guifg=#DC964B guibg=#181714 gui=NONE
 hi Function 	ctermfg=DarkYellow ctermbg=Black cterm=NONE
 
-hi Special		guifg=#E9B152 guibg=#333333
+hi Special		guifg=#E9B152 guibg=#181714
 hi Special		ctermfg=DarkYellow ctermbg=Black
 
-hi Type			guifg=#7AA085 guibg=#333333 gui=NONE
+hi Type			guifg=#7AA085 guibg=#181714 gui=NONE
 hi Type			ctermfg=DarkCyan ctermbg=Black cterm=NONE
 
-hi Constant		guifg=#DF6143 guibg=#333333 gui=NONE
+hi Constant		guifg=#DF6143 guibg=#181714 gui=NONE
 hi Constant		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
-hi Number		guifg=#DF6143 guibg=#333333 gui=NONE
+hi Number		guifg=#DF6143 guibg=#181714 gui=NONE
 hi Number		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
-hi String		guifg=#FFFFFF guibg=#333333 gui=NONE
+hi String		guifg=#FFFFFF guibg=#181714 gui=NONE
 hi String		ctermfg=White ctermbg=Black cterm=NONE
 
-hi Delimiter	guifg=#CFBFAD guibg=#333333 gui=NONE
+hi Delimiter	guifg=#CFBFAD guibg=#181714 gui=NONE
 hi Delimiter	ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi Statement 	guifg=#CFBFAD guibg=#333333 gui=BOLD
+hi Statement 	guifg=#CFBFAD guibg=#181714 gui=BOLD
 hi Statement  	ctermfg=Gray ctermbg=Black cterm=BOLD
 
 hi PreProc 		guifg=#CFBFAD gui=ITALIC
 hi PreProc  	ctermfg=Gray ctermbg=Black cterm=ITALIC
 
-hi Define 		guifg=#E9B152 guibg=#333333 gui=ITALIC
+hi Define 		guifg=#E9B152 guibg=#181714 gui=ITALIC
 hi Define 		ctermfg=DarkYellow ctermbg=Black cterm=ITALIC
 
 
@@ -70,7 +70,7 @@ hi IncSearch	cterm=Reverse
 
 hi Visual 		guibg=#202020
 hi Todo 		guifg=#D9D9C0 guibg=#666600	
-hi Folded 		guifg=#FFFFFF guibg=#333333 gui=BOLD
+hi Folded 		guifg=#FFFFFF guibg=#181714 gui=BOLD
 
 
 " Border Interface: ----------------------------------------------------------
@@ -89,13 +89,13 @@ hi ErrorMsg		guibg=#CC0000
 
 " Menu: ----------------------------------------------------------------------
 
-hi Pmenu		guifg=#333333 guibg=#CFBFAD
+hi Pmenu		guifg=#181714 guibg=#CFBFAD
 hi PmenuSel		guifg=#000000 guibg=#DDCCBB gui=BOLD
 
 
 " Cursor Indicators: ---------------------------------------------------------
 
-hi CursorLineNr guifg=#CFBFAD guibg=#333333
+hi CursorLineNr guifg=#CFBFAD guibg=#181714
 hi CursorLineNr	ctermfg=White ctermbg=Black cterm=BOLD,UNDERLINE
 
 hi CursorLine 	guibg=#292929
