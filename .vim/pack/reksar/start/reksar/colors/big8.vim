@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: REKSAR DSV <reksarka@gmail.com>
-" Last Change: 28.04.2020
-" Version: 0.1
+" Last Change: 29.04.2020
+" Version: 0.3
 " Description: Big 8 (bit) colors for customized terminal.
 
 set background=dark
@@ -14,49 +14,50 @@ let colors_name='big8'
 
 " Syntax: --------------------------------------------------------------------
 
-hi Normal 		guifg=#CFBFAD guibg=#333333 gui=NONE
+hi Normal 		guifg=#CFBFAD guibg=#181714 gui=NONE
 hi Normal 		ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi Keyword		guifg=#CFBFAD guibg=#333333 gui=BOLD
-hi Keyword		ctermfg=DarkCyan ctermbg=Black cterm=NONE
+hi Keyword		guifg=#CFBFAD guibg=#181714 gui=BOLD
+hi Keyword		ctermfg=Gray ctermbg=Black cterm=BOLD
 
-hi Comment  	guifg=#777777 guibg=#333333 gui=ITALIC
-hi Comment  	ctermfg=DarkGray ctermbg=Black cterm=ITALIC,BOLD
+hi Comment  	guifg=#8A8A8A guibg=#181714 gui=ITALIC
+hi Comment  	ctermfg=DarkMagenta ctermbg=Black cterm=ITALIC
 
-hi Identifier 	guifg=#AFAF3F guibg=#333333 gui=NONE
-hi Identifier 	ctermfg=Gray ctermbg=Black cterm=NONE
+hi Identifier 	guifg=#AFA54B guibg=#181714 gui=NONE
+hi Identifier 	ctermfg=DarkGreen ctermbg=Black cterm=NONE
 
-hi Label		guifg=#AFAF3F guibg=#333333 gui=BOLD
-hi Label 		ctermfg=DarkRed ctermbg=Black cterm=NONE
+hi Label		guifg=#AFA54B guibg=#181714 gui=BOLD
+hi Label 		ctermfg=DarkGreen ctermbg=Black cterm=BOLD
 
-hi Function 	guifg=#FFCA57 guibg=#333333 gui=NONE
-hi Function 	ctermfg=Brown ctermbg=Black cterm=NONE
+hi Function 	guifg=#DC964B guibg=#181714 gui=NONE
+hi Function 	ctermfg=DarkYellow ctermbg=Black cterm=NONE
 
-hi Special		guifg=#FFCA57 guibg=#333333
-hi Special		ctermfg=Brown ctermbg=Black
+hi Special		guifg=#E9B152 guibg=#181714
+hi Special		ctermfg=DarkYellow ctermbg=Black
 
-hi Type			guifg=#AF875F guibg=#333333 gui=BOLD
-hi Type			ctermfg=DarkGreen ctermbg=Black cterm=NONE
+hi Type			guifg=#7AA085 guibg=#181714 gui=NONE
+hi Type			ctermfg=DarkCyan ctermbg=Black cterm=NONE
 
-hi Constant		guifg=#C5772C guibg=#333333 gui=NONE
-hi Constant		ctermfg=DarkRed ctermbg=Black cterm=BOLD
+hi Constant		guifg=#DF6143 guibg=#181714 gui=NONE
+hi Constant		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
-hi Number		guifg=#C5772C guibg=#333333 gui=NONE
-hi Number		ctermfg=DarkRed ctermbg=Black cterm=BOLD
+hi Number		guifg=#DF6143 guibg=#181714 gui=NONE
+hi Number		ctermfg=DarkRed ctermbg=Black cterm=NONE
 
-hi String		guifg=#FFFFFF guibg=#333333 gui=NONE
-hi String		ctermfg=White ctermbg=Black cterm=ITALIC
+hi String		guifg=#FFFFFF guibg=#181714 gui=NONE
+hi String		ctermfg=White ctermbg=Black cterm=NONE
 
-hi Delimiter	guifg=#CFBFAD guibg=#333333 gui=NONE
+hi Delimiter	guifg=#CFBFAD guibg=#181714 gui=NONE
+hi Delimiter	ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi Statement 	guifg=#CFBFAD guibg=#333333 gui=BOLD
-hi Statement  	ctermfg=DarkBlue ctermbg=Black cterm=BOLD
+hi Statement 	guifg=#CFBFAD guibg=#181714 gui=BOLD
+hi Statement  	ctermfg=Gray ctermbg=Black cterm=BOLD
 
 hi PreProc 		guifg=#CFBFAD gui=ITALIC
 hi PreProc  	ctermfg=Gray ctermbg=Black cterm=ITALIC
 
-hi Define 		guifg=#FFCA57 guibg=#333333 gui=ITALIC
-hi Define 		ctermfg=Brown ctermbg=Black cterm=ITALIC
+hi Define 		guifg=#E9B152 guibg=#181714 gui=ITALIC
+hi Define 		ctermfg=DarkYellow ctermbg=Black cterm=ITALIC
 
 
 " Marked Text: ---------------------------------------------------------------
@@ -69,18 +70,18 @@ hi IncSearch	cterm=Reverse
 
 hi Visual 		guibg=#202020
 hi Todo 		guifg=#D9D9C0 guibg=#666600	
-hi Folded 		guifg=#FFFFFF guibg=#333333 gui=BOLD
+hi Folded 		guifg=#FFFFFF guibg=#181714 gui=BOLD
 
 
 " Border Interface: ----------------------------------------------------------
 
-hi NonText		guifg=#8B8BCD guibg=#292929 gui=BOLD
+hi NonText		guifg=#8B8BCD guibg=#1E1E1E gui=BOLD
 
-hi LineNr   	guifg=#9A8B7B guibg=#292929 gui=NONE
+hi LineNr   	guifg=#9A8B7B guibg=#1E1E1E gui=NONE
 hi LineNr		ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi ColorColumn 	guibg=#292929
-hi ColorColumn 	ctermbg=Brown
+hi ColorColumn 	guibg=#1E1E1E
+hi ColorColumn 	ctermbg=Magenta
 
 hi Statusline 	guifg=#FFFFFF guibg=#000000
 hi ErrorMsg		guibg=#CC0000
@@ -88,17 +89,18 @@ hi ErrorMsg		guibg=#CC0000
 
 " Menu: ----------------------------------------------------------------------
 
-hi Pmenu		guifg=#333333 guibg=#CFBFAD
+hi Pmenu		guifg=#181714 guibg=#CFBFAD
 hi PmenuSel		guifg=#000000 guibg=#DDCCBB gui=BOLD
 
 
 " Cursor Indicators: ---------------------------------------------------------
 
-hi CursorLineNr guifg=#CFBFAD guibg=#333333
-hi CursorLineNr	ctermfg=White ctermbg=Black cterm=BOLD,UNDERLINE
+hi CursorLineNr guifg=#CFBFAD guibg=#181714
+hi CursorLineNr	ctermfg=Black ctermbg=Gray cterm=BOLD
 
-hi CursorLine 	guibg=#292929
+hi CursorLine 	guibg=#1E1E1E
 hi CursorLine	ctermbg=Black cterm=NONE
 
 " Brackets pairs
 hi MatchParen 	guifg=#55FFFF guibg=#444444 gui=BOLD,UNDERLINE
+hi MatchParen 	ctermfg=Black ctermbg=Gray cterm=BOLD,UNDERLINE
