@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: REKSAR DSV <reksarka@gmail.com>
-" Last Change: 28.04.2020
-" Version: 0.2
+" Last Change: 29.04.2020
+" Version: 0.3
 " Description: Big 8 (bit) colors for customized terminal.
 
 set background=dark
@@ -75,12 +75,12 @@ hi Folded 		guifg=#FFFFFF guibg=#181714 gui=BOLD
 
 " Border Interface: ----------------------------------------------------------
 
-hi NonText		guifg=#8B8BCD guibg=#292929 gui=BOLD
+hi NonText		guifg=#8B8BCD guibg=#1E1E1E gui=BOLD
 
-hi LineNr   	guifg=#9A8B7B guibg=#292929 gui=NONE
+hi LineNr   	guifg=#9A8B7B guibg=#1E1E1E gui=NONE
 hi LineNr		ctermfg=Gray ctermbg=Black cterm=NONE
 
-hi ColorColumn 	guibg=#292929
+hi ColorColumn 	guibg=#1E1E1E
 hi ColorColumn 	ctermbg=Brown
 
 hi Statusline 	guifg=#FFFFFF guibg=#000000
@@ -98,7 +98,7 @@ hi PmenuSel		guifg=#000000 guibg=#DDCCBB gui=BOLD
 hi CursorLineNr guifg=#CFBFAD guibg=#181714
 hi CursorLineNr	ctermfg=White ctermbg=Black cterm=BOLD,UNDERLINE
 
-hi CursorLine 	guibg=#292929
+hi CursorLine 	guibg=#1E1E1E
 hi CursorLine	ctermbg=Black cterm=NONE
 
 " Brackets pairs
