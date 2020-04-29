@@ -81,7 +81,7 @@ hi LineNr   	guifg=#9A8B7B guibg=#1E1E1E gui=NONE
 hi LineNr		ctermfg=Gray ctermbg=Black cterm=NONE
 
 hi ColorColumn 	guibg=#1E1E1E
-hi ColorColumn 	ctermbg=Brown
+hi ColorColumn 	ctermbg=Magenta
 
 hi Statusline 	guifg=#FFFFFF guibg=#000000
 hi ErrorMsg		guibg=#CC0000
@@ -96,10 +96,11 @@ hi PmenuSel		guifg=#000000 guibg=#DDCCBB gui=BOLD
 " Cursor Indicators: ---------------------------------------------------------
 
 hi CursorLineNr guifg=#CFBFAD guibg=#181714
-hi CursorLineNr	ctermfg=White ctermbg=Black cterm=BOLD,UNDERLINE
+hi CursorLineNr	ctermfg=Black ctermbg=Gray cterm=BOLD
 
 hi CursorLine 	guibg=#1E1E1E
 hi CursorLine	ctermbg=Black cterm=NONE
 
 " Brackets pairs
 hi MatchParen 	guifg=#55FFFF guibg=#444444 gui=BOLD,UNDERLINE
+hi MatchParen 	ctermfg=Black ctermbg=Gray cterm=BOLD,UNDERLINE
