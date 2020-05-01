@@ -15,6 +15,7 @@ set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
+	colorscheme khaki " Must be after `syntax on`
 	set lines=35 columns=90 " Window size
 	set guioptions-=T " Hide toolbar (button panel)
 
@@ -33,9 +34,8 @@ if has('gui_running')
 
 " Terminal: ------------------------------------------------------------------
 else
+	colorscheme big8 " Must be after `syntax on`
 endif
-
-colorscheme khaki " Must be after `syntax on`
 
 " Highlighting: --------------------------------------------------------------
 set cursorline
