@@ -1,10 +1,5 @@
 set nocompatible " with Vi
 
-" Call the Pathogen plugin to activate plugins in a `bundle` dir
-filetype off
-call pathogen#helptags()
-call pathogen#infect()
-
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -34,12 +29,12 @@ if has('gui_running')
 	else
 		set guifont=DejaVu\ Sans\ Mono\ 11
 		set clipboard=unnamedplus " Copy into system buffer
-		let g:CTAGS = $HOME."/.vim/ctags"
+		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
 " Terminal: ------------------------------------------------------------------
 else
-	colorscheme khaki " Must be after `syntax on`
+	colorscheme big8 " Must be after `syntax on`
 endif
 
 " Highlighting: --------------------------------------------------------------
@@ -81,7 +76,9 @@ imap <C-BS> <C-W>
 imap <C-Del> <C-O>dw
 
 " Reset highlighting of searched text on `Esc`
-:nnoremap <esc> :noh<return><esc>
+if has('gui_running')
+	:nnoremap <esc> :noh<return><esc>
+endif
 
 " File Types: ----------------------------------------------------------------
 

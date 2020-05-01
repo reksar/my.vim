@@ -1,19 +1,16 @@
 " Vim color file
-" Documentation: http://vimdoc.sourceforge.net/htmldoc/syntax.html
-" Based On: http://vimcolors.com/452/moonshine_minimal/light
-" Maintainer: reksarka@gmail.com
-" Last Change: 12.10.2017
-" Version: 1.1
-" Description: Khaki colorscheme. Dark-warm colors are not harmful for eyes.
+" Maintainer: REKSAR DSV <reksarka@gmail.com>
+" Last Change: 28.04.2020
+" Version: 2.0
+" Description: Khaki color scheme in dark-warm colors for gvim.
 
-let g:colors_name="khaki"
 set background=dark
-
 hi clear
-if exists("syntax_on")
+if exists('syntax_on')
 	syntax reset
 endif
 
+let colors_name='khaki'
 
 " Syntax: --------------------------------------------------------------------
 
