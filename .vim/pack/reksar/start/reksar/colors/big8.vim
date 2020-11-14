@@ -1,7 +1,7 @@
 " Vim color file
-" Maintainer: REKSAR DSV <reksarka@gmail.com>
-" Last Change: 29.04.2020
-" Version: 0.3
+" Maintainer: REKSAR SVD <reksarka@gmail.com>
+" Last Change: 14.11.2020
+" Version: 0.5
 " Description: Big 8 (bit) colors for customized terminal.
 
 set background=dark
@@ -71,6 +71,14 @@ hi IncSearch	cterm=Reverse
 hi Visual 		guibg=#202020
 hi Todo 		guifg=#D9D9C0 guibg=#666600	
 hi Folded 		guifg=#FFFFFF guibg=#181714 gui=BOLD
+
+
+" Menu: ----------------------------------------------------------------------
+
+hi Pmenu		ctermfg=Black 	ctermbg=DarkBlue
+hi PmenuSel		ctermfg=Red		ctermbg=DarkBlue
+"hi PmenuSbar
+"hi PmenuThumb
 
 
 " Border Interface: ----------------------------------------------------------
