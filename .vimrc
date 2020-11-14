@@ -1,4 +1,4 @@
-set nocompatible " with Vi
+set nocompatible  " with Vi
 
 filetype on
 filetype plugin on
@@ -9,9 +9,11 @@ set encoding=utf-8
 set fileencodings=utf-8,latin1,cp1251,cp866
 set backspace=indent,eol,start
 
-" Statusbar
+
+" Statusbar: -----------------------------------------------------------------
 set ls=2
 set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
+
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
@@ -32,15 +34,18 @@ if has('gui_running')
 		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
+
 " Terminal: ------------------------------------------------------------------
 else
 	colorscheme big8 " Must be after `syntax on`
 endif
 
+
 " Highlighting: --------------------------------------------------------------
 set cursorline
 set incsearch
 set hlsearch
+
 
 " Interface: -----------------------------------------------------------------
 set number " Show line numbers
@@ -52,6 +57,7 @@ set guicursor=a:blinkon600-blinkoff400 " Cursor blinking speed
 set guitablabel=%t " Show file name only
 set colorcolumn=80
 
+
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
 set shiftwidth=4
@@ -60,14 +66,13 @@ set smarttab
 set smartindent
 let g:netrw_ignorenetrc=1
 "set spell spelllang=ru " Orphography check
+"set omnifunc=syntaxcomplete#Complete " Enable omni completion
 
-" Enable omni completion
-"set omnifunc=syntaxcomplete#Complete
 
 " Key Bindings: --------------------------------------------------------------
-map <C-s> :w<CR> " Save
-map <C-Tab> :tabnext<CR>
-map <C-S-Tab> :tabprev<CR>
+
+" Save
+map <C-s> :w<CR>
 
 " Del word on `Ctrl+Backspace`
 imap <C-BS> <C-W>
@@ -75,10 +80,15 @@ imap <C-BS> <C-W>
 " Del word on `Ctrl+Del`
 imap <C-Del> <C-O>dw
 
-" Reset highlighting of searched text on `Esc`
+" Reset search highlighting on `Esc`
 if has('gui_running')
 	:nnoremap <esc> :noh<return><esc>
 endif
+
+map <C-Tab> :tabnext<CR>
+map <C-S-Tab> :tabprev<CR>
+nmap <C-L> :set invrelativenumber<CR>
+
 
 " File Types: ----------------------------------------------------------------
 
