@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: REKSAR SVD <reksarka@gmail.com>
-" Last Change: 14.11.2020
-" Version: 0.5
+" Last Change: 15.11.2020
+" Version: 0.6
 " Description: Big 8 (bit) colors for customized terminal.
 
 set background=dark
@@ -89,7 +89,7 @@ hi LineNr   	guifg=#9A8B7B guibg=#1E1E1E gui=NONE
 hi LineNr		ctermfg=Gray ctermbg=Black cterm=NONE
 
 hi ColorColumn 	guibg=#1E1E1E
-hi ColorColumn 	ctermbg=Magenta
+hi ColorColumn 	ctermfg=Black	ctermbg=Magenta
 
 hi Statusline 	guifg=#FFFFFF guibg=#000000
 hi ErrorMsg		guibg=#CC0000
