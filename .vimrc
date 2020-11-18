@@ -82,7 +82,9 @@ imap <C-Del> <C-O>dw
 
 " Reset search highlighting on `Esc`
 if has('gui_running')
-	:nnoremap <esc> :noh<return><esc>
+	:nnoremap <esc> :nohlsearch<return><esc>
+else
+	:nnoremap <CR> :nohlsearch<CR><CR>
 endif
 
 map <C-Tab> :tabnext<CR>
