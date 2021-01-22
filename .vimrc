@@ -98,3 +98,7 @@ autocmd FileType php setlocal cc=120
 if has('gui_running')
 	autocmd FileType php setlocal columns=125
 endif
+
+autocmd FileType sh set tabstop=2
+autocmd FileType sh set shiftwidth=2
+
