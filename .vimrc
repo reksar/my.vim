@@ -102,3 +102,6 @@ endif
 autocmd FileType sh set tabstop=2
 autocmd FileType sh set shiftwidth=2
 
+autocmd FileType vim set tabstop=2
+autocmd FileType vim set shiftwidth=2
+
