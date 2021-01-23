@@ -17,7 +17,6 @@ set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
-	colorscheme khaki " Must be after `syntax on`
 	set lines=35 columns=90 " Window size
 	set guioptions-=T " Hide toolbar (button panel)
 
@@ -34,10 +33,17 @@ if has('gui_running')
 		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
+endif
 
-" Terminal: ------------------------------------------------------------------
+
+" Colorscheme: --------------------------------------------------------------
+" Must be after the `syntax on`
+if !(has('termguicolors') && &termguicolors)
+			\	&& !has('gui_running')
+			\ && &t_Co != 256
+	colorscheme big8  " 8 bit terminal colors
 else
-	colorscheme big8 " Must be after `syntax on`
+	colorscheme gruvbox
 endif
 
 
