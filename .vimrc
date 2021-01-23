@@ -105,3 +105,6 @@ autocmd FileType sh set shiftwidth=2
 autocmd FileType vim set tabstop=2
 autocmd FileType vim set shiftwidth=2
 
+autocmd FileType yaml set tabstop=2
+autocmd FileType yaml set shiftwidth=2
+
