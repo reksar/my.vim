@@ -1,11 +1,8 @@
-" Сохраняет файл с правами root в Linux.
-" Иногда файл, открытый только для чтения (режим RO), невозможно сохранить
-" командой 'w!' из-за отсутствия прав на запись у текущего юзера. Тут описана
-" команда, которая позволяет сохранить файл с правами root.
+" Add :W command for saving a file with Linux sudo if no rights for :w!
+" Depends on OSname plugin.
 
 if (OSname() == 'Linux')
-	" Объявить команду.
 	command W w !sudo tee %
-	" Добавить команду в главное меню.
-	an 10.340 &File.Save\ as\ &root<Tab>:W :W<CR>
+	an 10.340 &File.Save\ as\ &root<Tab>:W :W<CR>  " Add menu item.
 endif
+
