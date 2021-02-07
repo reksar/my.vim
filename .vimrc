@@ -17,26 +17,26 @@ set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
-	set lines=35 columns=90 " Window size
-	set guioptions-=T " Hide toolbar (button panel)
+	set lines=35 columns=90  " Window size
+	set guioptions-=T  " Hide toolbar (button panel)
 
-"	GUI Windows: -------------------------------------------------------------
+"	GUI Windows: ---------------------------------------------------------------
 	if has('gui_win32')
 		set guifont=Consolas:h11
-		set clipboard=unnamed " Copy into system buffer
+		set clipboard=unnamed  " Copy into system buffer
 		language messages ru_RU.UTF-8
 
-"	GUI Linux: ---------------------------------------------------------------
+"	GUI Linux: -----------------------------------------------------------------
 	else
 		set guifont=DejaVu\ Sans\ Mono\ 11
-		set clipboard=unnamedplus " Copy into system buffer
+		set clipboard=unnamedplus  " Copy into system buffer
 		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
 endif
 
 
-" Colorscheme: --------------------------------------------------------------
+" Colorscheme: ---------------------------------------------------------------
 " Must be after the `syntax on`
 if !(has('termguicolors') && &termguicolors)
 			\	&& !has('gui_running')
@@ -54,14 +54,14 @@ set hlsearch
 
 
 " Interface: -----------------------------------------------------------------
-set number " Show line numbers
-set ruler " Show cursor position in a status bar
+set number  " Show line numbers
+set ruler  " Show cursor position in a status bar
+set nowrap  " Do not break the lines
+set colorcolumn=80  " May be rewritten in File Types section below
 set showcmd
-set guioptions+=b " Show horizontal scroll
-set nowrap " Do not break the lines
-set guicursor=a:blinkon600-blinkoff400 " Cursor blinking speed
-set guitablabel=%t " Show file name only
-set colorcolumn=80
+set guicursor=a:blinkon600-blinkoff400  " Cursor blinking speed
+set guitablabel=%t  " Show file name only
+set guioptions+=b  " Show horizontal scroll
 
 
 " Formatting Text: -----------------------------------------------------------
@@ -71,8 +71,8 @@ set noexpandtab
 set smarttab
 set smartindent
 let g:netrw_ignorenetrc=1
-"set spell spelllang=ru " Orphography check
-"set omnifunc=syntaxcomplete#Complete " Enable omni completion
+"set spell spelllang=ru  " Orphography check
+"set omnifunc=syntaxcomplete#Complete  " Enable omni completion
 
 
 " Key Bindings: --------------------------------------------------------------
