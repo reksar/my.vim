@@ -31,7 +31,7 @@ if has('gui_running')
 "	GUI Linux: -----------------------------------------------------------------
 	else
 		set guifont=DejaVu\ Sans\ Mono\ 11
-		set clipboard=unnamedplus  " Copy into system buffer
+		set clipboard=unnamedplus  " Use system clipboard
 		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
@@ -42,7 +42,7 @@ else
 		colorscheme big8  " 8 bit terminal colors
 	endif
 
-	set clipboard=unnamedplus  " Copy into system buffer
+	set clipboard=unnamedplus  " Use system clipboard
 
 endif
 
