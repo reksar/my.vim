@@ -15,6 +15,8 @@ set ls=2
 set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
 
 
+colorscheme gruvbox
+
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
 	set lines=35 columns=90  " Window size
@@ -33,17 +35,15 @@ if has('gui_running')
 		let g:CTAGS = $HOME.'/.vim/ctags'
 	endif
 
-endif
-
-
-" Colorscheme: ---------------------------------------------------------------
-" Must be after the `syntax on`
-if !(has('termguicolors') && &termguicolors)
-			\	&& !has('gui_running')
-			\ && &t_Co != 256
-	colorscheme big8  " 8 bit terminal colors
+" Terminal: ------------------------------------------------------------------
 else
-	colorscheme gruvbox
+
+	if !(has('termguicolors') && &termguicolors) && &t_Co != 256
+		colorscheme big8  " 8 bit terminal colors
+	endif
+
+	set clipboard=unnamedplus  " Copy into system buffer
+
 endif
 
 
