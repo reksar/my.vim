@@ -19,30 +19,31 @@ colorscheme gruvbox
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
-	set lines=35 columns=90  " Window size
-	set guioptions-=T  " Hide toolbar (button panel)
+  set lines=35 columns=90  " Window size
+  set guioptions-=T  " Hide toolbar (button panel)
 
-"	GUI Windows: ---------------------------------------------------------------
-	if has('gui_win32')
-		set guifont=Consolas:h11
-		set clipboard=unnamed  " Copy into system buffer
-		language messages ru_RU.UTF-8
+" GUI Windows: ---------------------------------------------------------------
+  if has('gui_win32')
+    set guifont=Consolas:h11
+	set clipboard=unnamed  " Copy into system buffer
+	language messages ru_RU.UTF-8
 
-"	GUI Linux: -----------------------------------------------------------------
-	else
-		set guifont=DejaVu\ Sans\ Mono\ 11
-		set clipboard=unnamedplus  " Use system clipboard
-		let g:CTAGS = $HOME.'/.vim/ctags'
-	endif
+" GUI Linux: -----------------------------------------------------------------
+  else
+	set guifont=DejaVu\ Sans\ Mono\ 11
+	set clipboard=unnamedplus  " Use system clipboard
+	let g:CTAGS = $HOME.'/.vim/ctags'
+
+  endif
 
 " Terminal: ------------------------------------------------------------------
 else
 
-	if !(has('termguicolors') && &termguicolors) && &t_Co != 256
-		colorscheme big8  " 8 bit terminal colors
-	endif
+  if !(has('termguicolors') && &termguicolors) && &t_Co != 256
+    colorscheme big8  " 8 bit terminal colors
+  endif
 
-	set clipboard=unnamedplus  " Use system clipboard
+  set clipboard=unnamedplus  " Use system clipboard
 
 endif
 
@@ -88,9 +89,9 @@ imap <C-Del> <C-O>dw
 
 " Reset search highlighting on `Esc`
 if has('gui_running')
-	:nnoremap <esc> :nohlsearch<return><esc>
+  :nnoremap <esc> :nohlsearch<return><esc>
 else
-	:nnoremap <CR> :nohlsearch<CR><CR>
+  :nnoremap <CR> :nohlsearch<CR><CR>
 endif
 
 map <C-Tab> :tabnext<CR>
@@ -102,7 +103,7 @@ nmap <C-L> :set invrelativenumber<CR>
 
 autocmd FileType php setlocal cc=120
 if has('gui_running')
-	autocmd FileType php setlocal columns=125
+  autocmd FileType php setlocal columns=125
 endif
 
 autocmd FileType sh set tabstop=2
