@@ -125,7 +125,15 @@ autocmd FileType json set shiftwidth=2
 
 autocmd FileType xml set tabstop=2
 autocmd FileType xml set shiftwidth=2
+autocmd FileType xml setlocal cc=120
+if has('gui_running')
+  autocmd FileType xml setlocal columns=125
+endif
 
 autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
+autocmd FileType html setlocal cc=120
+if has('gui_running')
+  autocmd FileType html setlocal columns=125
+endif
 
