@@ -123,3 +123,9 @@ autocmd FileType yaml set shiftwidth=2
 autocmd FileType json set tabstop=2
 autocmd FileType json set shiftwidth=2
 
+autocmd FileType xml set tabstop=2
+autocmd FileType xml set shiftwidth=2
+
+autocmd FileType html set tabstop=2
+autocmd FileType html set shiftwidth=2
+
