@@ -68,8 +68,9 @@ set guioptions+=b  " Show horizontal scroll
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 set smarttab
+set autoindent
 set smartindent
 let g:netrw_ignorenetrc=1
 "set spell spelllang=ru  " Orphography check
