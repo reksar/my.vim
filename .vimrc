@@ -24,7 +24,7 @@ if has('gui_running')
 
 " GUI Windows: ---------------------------------------------------------------
   if has('gui_win32')
-    set guifont=Consolas:h11
+    set guifont=Consolas:h14
 	set clipboard=unnamed  " Copy into system buffer
 	language messages ru_RU.UTF-8
 
