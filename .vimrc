@@ -9,50 +9,50 @@ set encoding=utf-8
 set fileencodings=utf-8,latin1,cp1251,cp866
 set backspace=indent,eol,start
 
-
 " Statusbar: -----------------------------------------------------------------
 set ls=2
 set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
 
-
-colorscheme gruvbox
-
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
-  set lines=35 columns=90  " Window size
-  set guioptions-=T  " Hide toolbar (button panel)
+  colorscheme motley
+  " Window size
+  set lines=35 columns=90
+  " Hide toolbar (button panel)
+  set guioptions-=T
 
 " GUI Windows: ---------------------------------------------------------------
   if has('gui_win32')
     set guifont=Consolas:h14
-	set clipboard=unnamed  " Copy into system buffer
-	language messages ru_RU.UTF-8
+    set clipboard=unnamed
+    language messages ru_RU.UTF-8
 
 " GUI Linux: -----------------------------------------------------------------
   else
-	set guifont=DejaVu\ Sans\ Mono\ 11
-	set clipboard=unnamedplus  " Use system clipboard
-	let g:CTAGS = $HOME.'/.vim/ctags'
-
+    set guifont=DejaVu\ Sans\ Mono\ 11
+    set clipboard=unnamedplus
+    let g:CTAGS = $HOME.'/.vim/ctags'
   endif
 
 " Terminal: ------------------------------------------------------------------
 else
+  " Use system clipboard
+  set clipboard=unnamedplus
 
+" Terminal Low Color: --------------------------------------------------------
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
-    colorscheme big8  " 8 bit terminal colors
+    colorscheme big8
+
+" Terminal High Color: -------------------------------------------------------
+  else
+    colorscheme gruvbox
   endif
-
-  set clipboard=unnamedplus  " Use system clipboard
-
 endif
-
 
 " Highlighting: --------------------------------------------------------------
 set cursorline
 set incsearch
 set hlsearch
-
 
 " Interface: -----------------------------------------------------------------
 set number  " Show line numbers
@@ -64,7 +64,6 @@ set guicursor=a:blinkon600-blinkoff400  " Cursor blinking speed
 set guitablabel=%t  " Show file name only
 set guioptions+=b  " Show horizontal scroll
 
-
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
 set shiftwidth=4
@@ -75,7 +74,6 @@ set smartindent
 let g:netrw_ignorenetrc=1
 "set spell spelllang=ru  " Orphography check
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
-
 
 " Key Bindings: --------------------------------------------------------------
 
@@ -98,7 +96,6 @@ endif
 map <C-Tab> :tabnext<CR>
 map <C-S-Tab> :tabprev<CR>
 nmap <C-L> :set invrelativenumber<CR>
-
 
 " File Types: ----------------------------------------------------------------
 
@@ -126,6 +123,10 @@ autocmd FileType yaml set shiftwidth=2
 
 autocmd FileType json set tabstop=2
 autocmd FileType json set shiftwidth=2
+autocmd FileType json setlocal cc=120
+if has('gui_running')
+  autocmd FileType json setlocal columns=125
+endif
 
 autocmd FileType xml set tabstop=2
 autocmd FileType xml set shiftwidth=2
