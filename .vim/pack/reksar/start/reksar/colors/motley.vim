@@ -17,8 +17,8 @@ hi PreProc guifg=#baae8f gui=italic
 hi Include guifg=#baae8f gui=italic
 hi Macro guifg=#baae8f gui=italic
 hi PreCondit guifg=#baae8f gui=italic
-hi Define guifg=#d08f48 guibg=#21201d gui=italic
-hi Identifier	guifg=#afaf3f guibg=#21201d gui=none
+hi Define guifg=#7dadae guibg=#21201d
+hi Identifier guifg=#d08f48 guibg=#21201d gui=none
 hi Function guifg=#afaf3f guibg=#21201d gui=none
 hi Label guifg=#afaf3f guibg=#21201d gui=bold
 hi String guifg=#ebdbb2 guibg=#21201d gui=none
