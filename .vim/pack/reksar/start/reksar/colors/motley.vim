@@ -50,7 +50,7 @@ hi NonText guifg=#8b8bcd guibg=#292929 gui=bold
 hi LineNr guifg=#9a8b7b guibg=#292929 gui=none
 hi ColorColumn guibg=#292929
 hi Statusline guifg=#ebdbb2 guibg=#000000
-hi ErrorMsg guifg=#111111 guibg=#d35d41
+hi ErrorMsg guifg=#111111 guibg=#d35d41 gui=bold
 
 " Menu: ----------------------------------------------------------------------
 hi Pmenu guifg=#333333 guibg=#cfbfad
