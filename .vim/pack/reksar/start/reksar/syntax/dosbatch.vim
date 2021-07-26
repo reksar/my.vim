@@ -1,6 +1,6 @@
 " Vim syntax file
 
-if b:current_syntax != "dosbatch"
+if !exists("b:current_syntax") || b:current_syntax != "dosbatch"
   finish
 endif
 
