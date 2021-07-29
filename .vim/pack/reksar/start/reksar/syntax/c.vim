@@ -31,26 +31,26 @@ let g:cpp_no_function_highlight = 0
 " -----------------------------------------------------------------------------
 "  Highlight function names.
 " -----------------------------------------------------------------------------
-if !exists('g:cpp_no_function_highlight')
-    syn match    cCustomParen    transparent "(" contains=cParen contains=cCppParen
-    syn match    cCustomFunc     "\w\+\s*(\@=" contains=cCustomParen
-    hi def link cCustomFunc  Function
+if !exists('g:cpp_no_function_highlight') || g:cpp_no_function_highlight == 0
+  syn match    cCustomParen    transparent "(" contains=cParen contains=cCppParen
+  syn match    cCustomFunc     "\w\+\s*(\@=" contains=cCustomParen
+  hi def link cCustomFunc  Function
 endif
 
 " -----------------------------------------------------------------------------
 "  Highlight member variable names.
 " -----------------------------------------------------------------------------
-if exists('g:cpp_member_variable_highlight') && g:cpp_member_variable_highlight
-    syn match   cCustomDot    "\." contained
-    syn match   cCustomPtr    "->" contained
-    syn match   cCustomMemVar "\(\.\|->\)\h\w*" contains=cCustomDot,cCustomPtr
-    hi def link cCustomMemVar Function
+if exists('g:cpp_member_variable_highlight') && g:cpp_member_variable_highlight == 1
+  syn match   cCustomDot    "\." contained
+  syn match   cCustomPtr    "->" contained
+  syn match   cCustomMemVar "\(\.\|->\)\h\w*" contains=cCustomDot,cCustomPtr
+  hi def link cCustomMemVar Function
 endif
 
 " -----------------------------------------------------------------------------
 "  Highlight POSIX functions.
 " -----------------------------------------------------------------------------
-if exists('g:cpp_posix_standard') && g:cpp_posix_standard
+if exists('g:cpp_posix_standard') && g:cpp_posix_standard == 1
 	syn keyword cPOSIXFunction 	socket accept bind connect getsockname
 	syn keyword cPOSIXFunction 	listen recv recvfrom recvmsg
 	syn keyword cPOSIXFunction 	send sendto sendmsg setsockopt socketpair

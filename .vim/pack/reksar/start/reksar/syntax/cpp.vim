@@ -37,9 +37,7 @@ endif
 " Options instead of .vimrc
 " -----------------------------------------------------------------------------
 let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
 let g:cpp_concepts_highlight = 1
 
 " slower
@@ -65,20 +63,20 @@ endif
 syn keyword cppKeyword using
 
 " -----------------------------------------------------------------------------
-"  Highlight Class and Function names.
+" Highlight Class and Function names.
 "
 " Based on the discussion in: http://stackoverflow.com/q/736701
 " -----------------------------------------------------------------------------
 
 " Functions
-if !exists('g:cpp_no_function_highlight')
+if !exists('g:cpp_no_function_highlight') || g:cpp_no_function_highlight == 0
   syn match cCustomParen transparent "(" contains=cParen contains=cCppParen
   syn match cCustomFunc  "\w\+\s*(\@="
   HiLink cCustomFunc Function
 endif
 
 " Class and namespace scope
-if exists('g:cpp_class_scope_highlight') && g:cpp_class_scope_highlight
+if exists('g:cpp_class_scope_highlight') && g:cpp_class_scope_highlight == 1
   syn match cCustomScope "::"
   syn match cCustomClass "\w\+\s*::"
       \ contains=cCustomScope
@@ -88,10 +86,10 @@ endif
 " Clear cppStructure and replace "class" and/or "template" with matches
 " based on user configuration
 let s:needs_cppstructure_match = 0
-if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight
+if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight == 1
 	let s:needs_cppstructure_match += 1
 endif
-if exists('g:cpp_experimental_template_highlight') && g:cpp_experimental_template_highlight
+if exists('g:cpp_experimental_template_highlight') && g:cpp_experimental_template_highlight == 1
 	let s:needs_cppstructure_match += 2
 endif
 
@@ -108,7 +106,7 @@ unlet s:needs_cppstructure_match
 
 
 " Class name declaration
-if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight
+if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight == 1
 	syn match cCustomClassKey "\<class\>"
 	HiLink cCustomClassKey cppStructure
 
@@ -131,7 +129,7 @@ endif
 " Template functions.
 " Naive implementation that sorta works in most cases. Should correctly
 " highlight everything in test/color2.cpp
-if exists('g:cpp_experimental_simple_template_highlight') && g:cpp_experimental_simple_template_highlight
+if exists('g:cpp_experimental_simple_template_highlight') && g:cpp_experimental_simple_template_highlight == 1
     syn region  cCustomAngleBrackets matchgroup=AngleBracketContents start="\v%(<operator\_s*)@<!%(%(\_i|template\_s*)@<=\<[<=]@!|\<@<!\<[[:space:]<=]@!)" end='>' contains=@cppSTLgroup,cppStructure,cType,cCustomClass,cCustomAngleBrackets,cNumbers
     syn match   cCustomBrack    "<\|>" contains=cCustomAngleBrackets
     syn match   cCustomTemplateFunc "\w\+\s*<.*>(\@=" contains=cCustomBrack,cCustomAngleBrackets
@@ -2139,7 +2137,7 @@ if !exists("cpp_no_cpp20")
 endif
 
 
-if exists('g:cpp_concepts_highlight')
+if exists('g:cpp_concepts_highlight') && g:cpp_concepts_highlight != 0
     syntax keyword cppStatement concept
     syntax keyword cppStorageClass requires
 
