@@ -12,6 +12,22 @@
 " Based on:
 "   http://stackoverflow.com/questions/736701/class-function-names-highlighting-in-vim
 
+if !exists("b:current_syntax")
+  source $VIMRUNTIME/syntax/c.vim
+endif
+
+if b:current_syntax != "c"
+  finish
+endif
+
+" -----------------------------------------------------------------------------
+" Options instead of .vimrc
+" -----------------------------------------------------------------------------
+let g:cpp_member_variable_highlight = 1
+let g:cpp_posix_standard = 1
+
+let g:cpp_no_function_highlight = 0
+
 " -----------------------------------------------------------------------------
 "  Highlight function names.
 " -----------------------------------------------------------------------------
