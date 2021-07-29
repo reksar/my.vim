@@ -50,6 +50,21 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_no_function_highlight = 0
 
 " -----------------------------------------------------------------------------
+" Define HiLink
+" -----------------------------------------------------------------------------
+if version < 508
+  let did_cpp_syntax_inits = 1
+  command -nargs=+ HiLink hi link <args>
+else
+  command -nargs=+ HiLink hi def link <args>
+endif
+
+" -----------------------------------------------------------------------------
+" Keywords.
+" -----------------------------------------------------------------------------
+syn keyword cppKeyword using
+
+" -----------------------------------------------------------------------------
 "  Highlight Class and Function names.
 "
 " Based on the discussion in: http://stackoverflow.com/q/736701
@@ -59,7 +74,7 @@ let g:cpp_no_function_highlight = 0
 if !exists('g:cpp_no_function_highlight')
   syn match cCustomParen transparent "(" contains=cParen contains=cCppParen
   syn match cCustomFunc  "\w\+\s*(\@="
-  hi def link cCustomFunc Function
+  HiLink cCustomFunc Function
 endif
 
 " Class and namespace scope
@@ -67,7 +82,7 @@ if exists('g:cpp_class_scope_highlight') && g:cpp_class_scope_highlight
   syn match cCustomScope "::"
   syn match cCustomClass "\w\+\s*::"
       \ contains=cCustomScope
-  hi def link cCustomClass Type
+  HiLink cCustomClass Type
 endif
 
 " Clear cppStructure and replace "class" and/or "template" with matches
@@ -95,12 +110,12 @@ unlet s:needs_cppstructure_match
 " Class name declaration
 if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight
 	syn match cCustomClassKey "\<class\>"
-	hi def link cCustomClassKey cppStructure
+	HiLink cCustomClassKey cppStructure
 
 	syn match cCustomAccessKey "\<private\>"
 	syn match cCustomAccessKey "\<public\>"
 	syn match cCustomAccessKey "\<protected\>"
-	hi def link cCustomAccessKey cppAccess
+	HiLink cCustomAccessKey cppAccess
 
 	" Match the parts of a class declaration
 	syn match cCustomClassName "\<class\_s\+\w\+\>"
@@ -111,7 +126,7 @@ if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight
 				\ contains=cCustomAccessKey
 	syn match cCustomClassName "\<protected\_s\+\w\+\>"
 				\ contains=cCustomAccessKey
-	hi def link cCustomClassName Function
+	HiLink cCustomClassName Function
 endif
 " Template functions.
 " Naive implementation that sorta works in most cases. Should correctly
@@ -120,7 +135,7 @@ if exists('g:cpp_experimental_simple_template_highlight') && g:cpp_experimental_
     syn region  cCustomAngleBrackets matchgroup=AngleBracketContents start="\v%(<operator\_s*)@<!%(%(\_i|template\_s*)@<=\<[<=]@!|\<@<!\<[[:space:]<=]@!)" end='>' contains=@cppSTLgroup,cppStructure,cType,cCustomClass,cCustomAngleBrackets,cNumbers
     syn match   cCustomBrack    "<\|>" contains=cCustomAngleBrackets
     syn match   cCustomTemplateFunc "\w\+\s*<.*>(\@=" contains=cCustomBrack,cCustomAngleBrackets
-    hi def link cCustomTemplateFunc  Function
+    HiLink cCustomTemplateFunc  Function
 
 " Template functions (alternative faster parsing).
 " More sophisticated implementation that should be faster but doesn't always
@@ -130,22 +145,22 @@ elseif exists('g:cpp_experimental_template_highlight') && g:cpp_experimental_tem
 
     syn match   cCustomAngleBracketStart "<\_[^;()]\{-}>" contained
                 \ contains=cCustomAngleBracketStart,cCustomAngleBracketEnd
-    hi def link cCustomAngleBracketStart  cCustomAngleBracketContent
+    HiLink cCustomAngleBracketStart  cCustomAngleBracketContent
 
     syn match   cCustomAngleBracketEnd ">\_[^<>;()]\{-}>" contained
                 \ contains=cCustomAngleBracketEnd
-    hi def link cCustomAngleBracketEnd  cCustomAngleBracketContent
+    HiLink cCustomAngleBracketEnd  cCustomAngleBracketContent
 
     syn match cCustomTemplateFunc "\<\l\w*\s*<\_[^;()]\{-}>(\@="hs=s,he=e-1
                 \ contains=cCustomAngleBracketStart
-    hi def link cCustomTemplateFunc  cCustomFunc
+    HiLink cCustomTemplateFunc  cCustomFunc
 
     syn match    cCustomTemplateClass    "\<\w\+\s*<\_[^;()]\{-}>"
                 \ contains=cCustomAngleBracketStart,cCustomTemplateFunc
-    hi def link cCustomTemplateClass cCustomClass
+    HiLink cCustomTemplateClass cCustomClass
 
     syn match   cCustomTemplate "\<template\>"
-    hi def link cCustomTemplate  cppStructure
+    HiLink cCustomTemplate  cppStructure
     syn match   cTemplateDeclare "\<template\_s*<\_[^;()]\{-}>"
                 \ contains=cppStructure,cCustomTemplate,cCustomClassKey,cCustomAngleBracketStart
 
@@ -153,7 +168,7 @@ elseif exists('g:cpp_experimental_template_highlight') && g:cpp_experimental_tem
     syn keyword cppOperator and bitor or xor compl bitand and_eq or_eq xor_eq not not_eq
 
     syn match   cCustomOperator "\<operator\>"
-    hi def link cCustomOperator  cppStructure
+    HiLink cCustomOperator  cppStructure
     syn match   cTemplateOperatorDeclare "\<operator\_s*<\_[^;()]\{-}>[<>]=\?"
                 \ contains=cppOperator,cCustomOperator,cCustomAngleBracketStart
 endif
@@ -2283,12 +2298,8 @@ endif " boost
 
 " Default highlighting
 if version >= 508 || !exists("did_cpp_syntax_inits")
-  if version < 508
-    let did_cpp_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+  HiLink cppKeyword         Keyword
+  HiLink cppStructure       Keyword
   HiLink cppSTLbool         Boolean
   HiLink cppStorageClass    StorageClass
   HiLink cppStatement       Statement
