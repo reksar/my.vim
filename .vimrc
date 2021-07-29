@@ -43,7 +43,7 @@ else
 
 " Terminal High Color: -------------------------------------------------------
   else
-    colorscheme gruvbox
+    colorscheme motley
   endif
 endif
 
