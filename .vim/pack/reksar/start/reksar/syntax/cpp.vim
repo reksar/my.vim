@@ -20,11 +20,16 @@
 "   http://www.vim.org/scripts/script.php?script_id=1640
 "   http://www.vim.org/scripts/script.php?script_id=3064
 
+" Disable default C++ syntax
+if exists("b:current_syntax") && b:current_syntax == "cpp"
+  syntax clear
+endif
+
 if !exists("b:current_syntax")
   source $VIMRUNTIME/syntax/c.vim
 endif
 
-if b:current_syntax != "c" && b:current_syntax != "cpp"
+if b:current_syntax != "c"
   finish
 endif
 
@@ -75,7 +80,6 @@ if exists('g:cpp_experimental_template_highlight') && g:cpp_experimental_templat
 	let s:needs_cppstructure_match += 2
 endif
 
-syn clear cppStructure
 if s:needs_cppstructure_match == 0
 	syn keyword cppStructure typename namespace template class
 elseif s:needs_cppstructure_match == 1
@@ -93,8 +97,6 @@ if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight
 	syn match cCustomClassKey "\<class\>"
 	hi def link cCustomClassKey cppStructure
 
-	" Clear cppAccess entirely and redefine as matches
-	syn clear cppAccess
 	syn match cCustomAccessKey "\<private\>"
 	syn match cCustomAccessKey "\<public\>"
 	syn match cCustomAccessKey "\<protected\>"
@@ -147,8 +149,6 @@ elseif exists('g:cpp_experimental_template_highlight') && g:cpp_experimental_tem
     syn match   cTemplateDeclare "\<template\_s*<\_[^;()]\{-}>"
                 \ contains=cppStructure,cCustomTemplate,cCustomClassKey,cCustomAngleBracketStart
 
-    " Remove 'operator' from cppOperator and use a custom match
-    syn clear cppOperator
     syn keyword cppOperator typeid
     syn keyword cppOperator and bitor or xor compl bitand and_eq or_eq xor_eq not not_eq
 
