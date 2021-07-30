@@ -18,13 +18,15 @@ hi Normal ctermfg=223 ctermbg=234 cterm=none
 hi Keyword guifg=#baae8f guibg=#21201d gui=italic
 hi Keyword ctermfg=223 ctermbg=234 cterm=italic
 
-hi Statement guifg=#baae8f guibg=#21201d gui=italic
-hi Statement ctermfg=223 ctermbg=234 cterm=italic
+hi Statement guifg=#baae8f guibg=#21201d gui=bold
+hi Statement ctermfg=223 ctermbg=234 cterm=bold
 
 hi Conditional ctermfg=223 ctermbg=234 cterm=bold
 
 hi Operator guifg=#baae8f guibg=#21201d gui=bold
+
 hi Exception guifg=#baae8f guibg=#21201d gui=bold
+hi Exception ctermfg=223 ctermbg=234 cterm=bold
 
 hi PreProc guifg=#baae8f gui=italic
 hi PreProc ctermfg=6 ctermbg=234 cterm=none
@@ -38,7 +40,7 @@ hi Identifier guifg=#d08f48 guibg=#21201d gui=none
 hi Identifier ctermfg=117 ctermbg=234 cterm=none
 
 hi Function guifg=#afaf3f guibg=#21201d gui=none
-hi Function ctermfg=155 ctermbg=234 gui=none
+hi Function ctermfg=184 ctermbg=234 gui=none
 
 hi Label guifg=#afaf3f guibg=#21201d gui=bold
 hi String guifg=#ebdbb2 guibg=#21201d gui=none
@@ -50,7 +52,11 @@ hi SpecialComment guifg=#777777 guibg=#21201d gui=bold
 hi SpecialComment ctermfg=223 ctermbg=234 cterm=none
 
 hi SpecialChar guifg=#d08f48 guibg=#21201d
-hi Special guifg=#d08f48 guibg=#21201d
+hi SpecialChar ctermfg=155 ctermbg=234 cterm=none
+
+hi Special guifg=#d08f48 guibg=#21201d gui=none
+hi Special ctermfg=155 ctermbg=234 cterm=none
+
 hi Tag guifg=#d08f48 guibg=#21201d
 hi Delimiter guifg=#d08f48 guibg=#21201d
 hi Debug guifg=#d08f48 guibg=#21201d
@@ -61,7 +67,7 @@ hi Type guifg=#7dadae guibg=#21201d gui=none
 hi Type ctermfg=222 ctermbg=234 gui=none
 
 hi StorageClass guifg=#7dadae guibg=#21201d gui=italic
-hi StorageClass ctermfg=223 ctermbg=234 gui=italic
+hi StorageClass ctermfg=223 ctermbg=234 cterm=italic
 
 hi Structure guifg=#7dadae guibg=#21201d gui=none
 hi Typedef guifg=#7dadae guibg=#21201d gui=none
