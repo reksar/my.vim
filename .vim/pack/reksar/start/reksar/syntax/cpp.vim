@@ -8,56 +8,83 @@ if !exists("b:current_syntax") || b:current_syntax != "cpp"
 endif
 
 
-syn match cppTypeName contained "\i\+"
-
-syn clear cppAccess
-syn keyword cppAccess public protected private
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
 syn clear cStorageClass
-syn keyword cStorageClass const auto static register volatile extern
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
 syn clear cStructure
-syn keyword cStructure struct enum typedef union
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
+syn clear cType
+syn clear cppType
 syn clear cppStructure
-syn keyword cppStructure class typename template namespace
-    \ nextgroup=cppTypeName
+syn clear cppAccess
+syn clear cppModifier
+
+
+syn match cppNameScope "\<\i\+\>\ze::"
+
+syn keyword cppModifier contained static const virtual
+
+
+" Struct Declaration: --------------------------------------------------------
+
+syn keyword cppStructure
+  \ struct class enum namespace
+  \ public private protected
+    \ nextgroup=cppStructName
     \ skipwhite
 
+syn match cppStructName contained "\<\i\+\>"
 
-"                      ^      name     {...}     ;$
-syn match cppInstance "^\s\{-}\w\+\ze\({.*}\)\{-};$"
-
-"                                |ends with , or ) or }
-syn match cppArgs contained "\w\+\ze\s\{-}\(,\|)\|}\)"
-
-"                  name | <- end of highlighting, \_ allows line breaks
-syn match cppFunc "\w\+\ze(\_.\{-})"
-    \ contains=cppArgs
-
-" TODO: maybe make it contained and put to func and instance init.
-syn match cppUniform "\(\w\|,\|(\)\s\{-}\zs{\_.\{-}}"
-    \ contains=cppArgs
+" ----------------------------------------------------------------------------
 
 
-syn match cppNameScope "\w\+::"
+" Instance Declaration: ------------------------------------------------------
+" int i;
+" static int i;
+" const int i = 0;
+"
+" static TypeName
+"   instance_name{i};
+
+syn match cppInstance contained "\<\i\+\>\ze\s\{-}[;={]"
+
+"                                    type   (& or *)*    cppInstance
+syn match cppTypeInstance contained "\<\i\+\>[&*]*\_s\{-}\<\i\+\>\ze\s\{-}[;={]"
+    \ contains=cppInstance
+
+"                                   cppModifier      cppTypeInstance
+syn match cppInstanceDecl "^\s\{-}\(\<\i\+\>\s\{-}\)*\<\i\+\>[&*]*\_s\{-}\<\i\+\>\ze\s\{-}[;={]"
+    \ contains=cppModifier,cppTypeInstance
+
+" ----------------------------------------------------------------------------
 
 
-hi link cppTypeName Type
-hi link cppFunc Function
-hi link cppNameScope Type
+" Instance Declaration: ------------------------------------------------------
+" virtual const string&
+"   foo()
+"
+" virtual const string&
+"   foo()
+"     const;
+"
+" virtual const string&
+"   foo()
+"     const = 0;
+
+syn match cppFunc contained "\<\i\+\>(\_.\{-})"
+
+syn match cppTypeFunc contained "\<\i\+\>[&*]*\_s\{-}\<\i\+\>(\_.\{-})"
+    \ contains=cppFunc
+
+syn match cppFuncDecl "^\s\{-}\(\<\i\+\>\s\{-}\)*\<\i\+\>[&*]*\_s\{-}\<\i\+\>(\_.\{-})\_s\{-}\(const\|const = 0\)\{,1};"
+    \ contains=cppModifier,cppTypeFunc
+
+" ----------------------------------------------------------------------------
+
+
+hi link cppModifier StorageClass
+hi link cppType Type
 hi link cppInstance Identifier
-hi link cppArgs Identifier
-
-" NOTE: these syntax groups are defined in default c.vim and cpp.vim syntax 
-" files and here we just change it highlighting.
-hi link cStructure StorageClass
-hi link cStorageClass StorageClass
-hi link cppAccess	StorageClass
+hi link cppNameScope Type
 hi link cppStructure StorageClass
+hi link cppStructName Type
+hi link cppTypeFunc Type
+hi link cppFunc Function
+hi link cppTypeInstance Type
