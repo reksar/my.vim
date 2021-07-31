@@ -3,19 +3,33 @@ if !exists("b:current_syntax") || b:current_syntax != "cpp"
 
   " NOTE: `runtime` has deviant behavior, so `source` is used here to apply
   " default C++ syntax.
+  " NOTE: some default syntax will be clear and redefined below.
   source $VIMRUNTIME/syntax/cpp.vim
 endif
 
-syn match cppStructureDef "\(class\|struct\)\s\+\w\+"
 
-syn match cppStructureInnerAccess "\(public\|protected\|private\)\s\{-}:"
+syn match cppTypeName contained "\i\+"
 
-syn match cppInherit "\(public\|protected\|private\)\s\+\w\+"
+syn clear cppAccess
+syn keyword cppAccess public protected private
+    \ nextgroup=cppTypeName
+    \ skipwhite
 
-syn match cppTypeMatch contained
-  \ "\(static\|register\|auto\|volatile\|extern\|const\)\s\+\w\+"
+syn clear cStorageClass
+syn keyword cStorageClass const auto static register volatile extern
+    \ nextgroup=cppTypeName
+    \ skipwhite
 
-syn match cppDeclaration "\<\w\+\(\*\|&\)*$"
+syn clear cStructure
+syn keyword cStructure struct enum typedef union
+    \ nextgroup=cppTypeName
+    \ skipwhite
+
+syn clear cppStructure
+syn keyword cppStructure class typename template namespace
+    \ nextgroup=cppTypeName
+    \ skipwhite
+
 
 "                      ^      name     {...}     ;$
 syn match cppInstance "^\s\{-}\w\+\ze\({.*}\)\{-};$"
@@ -23,7 +37,7 @@ syn match cppInstance "^\s\{-}\w\+\ze\({.*}\)\{-};$"
 "                                |ends with , or ) or }
 syn match cppArgs contained "\w\+\ze\s\{-}\(,\|)\|}\)"
 
-"                      name | <- end of highlighting, \_ allows line breaks
+"                  name | <- end of highlighting, \_ allows line breaks
 syn match cppFunc "\w\+\ze(\_.\{-})"
     \ contains=cppArgs
 
@@ -31,14 +45,13 @@ syn match cppFunc "\w\+\ze(\_.\{-})"
 syn match cppUniform "\(\w\|,\|(\)\s\{-}\zs{\_.\{-}}"
     \ contains=cppArgs
 
+
 syn match cppNameScope "\w\+::"
 
-hi link cppStructureDef Type
-hi link cppInherit Type
+
+hi link cppTypeName Type
 hi link cppFunc Function
 hi link cppNameScope Type
-hi link cppTypeMatch Type
-hi link cppDeclaration Type
 hi link cppInstance Identifier
 hi link cppArgs Identifier
 
@@ -46,6 +59,5 @@ hi link cppArgs Identifier
 " files and here we just change it highlighting.
 hi link cStructure StorageClass
 hi link cStorageClass StorageClass
-hi link cppModifier StorageClass
 hi link cppAccess	StorageClass
 hi link cppStructure StorageClass
