@@ -19,8 +19,6 @@ syn clear cppModifier
 
 syn match cppNameScope "\<\i\+\>\ze::"
 
-syn keyword cppModifier contained static const virtual
-
 
 " Struct Declaration: --------------------------------------------------------
 
@@ -35,48 +33,35 @@ syn match cppStructName contained "\<\i\+\>"
 " ----------------------------------------------------------------------------
 
 
-" Instance Declaration: ------------------------------------------------------
-" int i;
-" static int i;
-" const int i = 0;
+" Start of line till        \i
+syn match cppSOL "^\s\{-}\ze\i"
+    \ nextgroup=cppModifier,cppType
+
+syn keyword cppModifier contained static const virtual
+    \ nextgroup=cppModifier,cppType
+    \ skipwhite
+
+" int
+" int&
+" int**
 "
-" static TypeName
-"   instance_name{i};
+" skipempty allows line breaks before nextgroup
+syn match cppType contained "\<\i\+\>[&*]*"
+    \ nextgroup=cppVar,cppFuncDecl
+    \ skipwhite
+    \ skipempty
 
-syn match cppInstance contained "\<\i\+\>\ze\s\{-}[;={]"
+" var;
+" var =
+" var{
+syn match cppVar contained "\<\i\+\>\ze\s\{-}[;={]"
 
-"                                    type   (& or *)*    cppInstance
-syn match cppTypeInstance contained "\<\i\+\>[&*]*\_s\{-}\<\i\+\>\ze\s\{-}[;={]"
-    \ contains=cppInstance
+" foo(
+syn match cppFuncDecl contained "\<\i\+\>\ze("
+    \ nextgroup=cppFuncDeclArgs
+    \ skipempty
 
-"                                   cppModifier      cppTypeInstance
-syn match cppInstanceDecl "^\s\{-}\(\<\i\+\>\s\{-}\)*\<\i\+\>[&*]*\_s\{-}\<\i\+\>\ze\s\{-}[;={]"
-    \ contains=cppModifier,cppTypeInstance
-
-" ----------------------------------------------------------------------------
-
-
-" Instance Declaration: ------------------------------------------------------
-" virtual const string&
-"   foo()
-"
-" virtual const string&
-"   foo()
-"     const;
-"
-" virtual const string&
-"   foo()
-"     const = 0;
-
-syn match cppFunc contained "\<\i\+\>(\_.\{-})"
-
-syn match cppTypeFunc contained "\<\i\+\>[&*]*\_s\{-}\<\i\+\>(\_.\{-})"
-    \ contains=cppFunc
-
-syn match cppFuncDecl "^\s\{-}\(\<\i\+\>\s\{-}\)*\<\i\+\>[&*]*\_s\{-}\<\i\+\>(\_.\{-})\_s\{-}\(const\|const = 0\)\{,1};"
-    \ contains=cppModifier,cppTypeFunc
-
-" ----------------------------------------------------------------------------
+syn match cppFuncDeclArgs contained "()"
 
 
 hi link cppModifier StorageClass
@@ -86,5 +71,6 @@ hi link cppNameScope Type
 hi link cppStructure StorageClass
 hi link cppStructName Type
 hi link cppTypeFunc Type
-hi link cppFunc Function
+hi link cppFuncDecl Function
 hi link cppTypeInstance Type
+hi link cppVar Identifier
