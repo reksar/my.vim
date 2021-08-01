@@ -20,10 +20,9 @@ syn clear cppModifier
 syn match cppNameScope "\<\i\+\>\ze::"
 
 
-" Entry point for next groups that starts with a new line
-" Start of line till        \i
-syn match cppSOL "^\s\{-}\ze\i"
-    \ nextgroup=cppStructure,cppModifier,cppType
+" Start of line till         word
+syn match cppSOL "^\s\{-}\ze\<\i\+\>"
+    \ nextgroup=cppStructure,cppModifier,cppType,cppExceptions,cStatement
 
 
 " Struct Declaration: --------------------------------------------------------
