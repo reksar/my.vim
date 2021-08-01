@@ -22,7 +22,8 @@ syn match cppNameScope "\<\i\+\>\ze::"
 
 " Start of line till         word
 syn match cppSOL "^\s\{-}\ze\<\i\+\>"
-    \ nextgroup=cppStructure,cppModifier,cppType,cppExceptions,cStatement
+    \ nextgroup=cppStructure,cppModifier,cppType,cppExceptions,cStatement,
+      \ cppFuncCall
 
 
 " Struct Declaration: --------------------------------------------------------
@@ -69,11 +70,30 @@ syn match cppVar contained "\<\i\+\>\ze\s\{-}[;={]"
 " Function Declaration: ------------------------------------------------------
 
 " foo(
-syn match cppFuncDecl contained "\<\i\+\>\ze("
-    \ nextgroup=cppFuncDeclArgs
+syn match cppFuncDecl contained "\<\i\+\>\ze(\_.\{-})"
+    \ contains=cppModifier
+
+" ----------------------------------------------------------------------------
+
+
+" Function Call: -------------------------------------------------------------
+
+syn match cppFuncCall contained "\<\i\+\>\ze("
+    \ nextgroup=cppFuncCall,cppArg,cppFuncCallEnd
+    \ skipwhite
     \ skipempty
 
-syn match cppFuncDeclArgs contained "()"
+syn match cppArg contained "\<\i\+\>\ze[^(]"
+    \ nextgroup=cppArgSeparator,cppFuncCallEnd
+    \ skipwhite
+    \ skipempty
+
+syn match cppArgSeparator contained ","
+    \ nextgroup=cppFuncCall,cppArg
+    \ skipwhite
+    \ skipempty
+
+syn match cppFuncCallEnd contained ")[;,){]"
 
 " ----------------------------------------------------------------------------
 
@@ -88,3 +108,5 @@ hi link cppTypeFunc Type
 hi link cppFuncDecl Function
 hi link cppTypeInstance Type
 hi link cppVar Identifier
+hi link cppFuncCall Function
+hi link cppArg Identifier
