@@ -20,9 +20,15 @@ syn clear cppModifier
 syn match cppNameScope "\<\i\+\>\ze::"
 
 
+" Entry point for next groups that starts with a new line
+" Start of line till        \i
+syn match cppSOL "^\s\{-}\ze\i"
+    \ nextgroup=cppStructure,cppModifier,cppType
+
+
 " Struct Declaration: --------------------------------------------------------
 
-syn keyword cppStructure
+syn keyword cppStructure contained
   \ struct class enum namespace
   \ public private protected
     \ nextgroup=cppStructName
@@ -32,10 +38,6 @@ syn match cppStructName contained "\<\i\+\>"
 
 " ----------------------------------------------------------------------------
 
-
-" Start of line till        \i
-syn match cppSOL "^\s\{-}\ze\i"
-    \ nextgroup=cppModifier,cppType
 
 syn keyword cppModifier contained static const virtual
     \ nextgroup=cppModifier,cppType
