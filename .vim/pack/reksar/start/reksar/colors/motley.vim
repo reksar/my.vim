@@ -32,6 +32,8 @@ hi PreProc guifg=#baae8f gui=italic
 hi PreProc ctermfg=6 ctermbg=234 cterm=none
 
 hi Include guifg=#baae8f gui=italic
+hi Include ctermfg=223 ctermbg=234 cterm=italic
+
 hi Macro guifg=#baae8f gui=italic
 hi PreCondit guifg=#baae8f gui=italic
 hi Define guifg=#7dadae guibg=#21201d
