@@ -39,6 +39,8 @@ syn match cppStructName contained "\<\i\+\>"
 " ----------------------------------------------------------------------------
 
 
+" Statement Type: ------------------------------------------------------------
+
 syn keyword cppModifier contained static const virtual
     \ nextgroup=cppModifier,cppType
     \ skipwhite
@@ -53,10 +55,19 @@ syn match cppType contained "\<\i\+\>[&*]*"
     \ skipwhite
     \ skipempty
 
+" ----------------------------------------------------------------------------
+
+
+" Variable: ------------------------------------------------------------------
 " var;
 " var =
 " var{
 syn match cppVar contained "\<\i\+\>\ze\s\{-}[;={]"
+
+" ----------------------------------------------------------------------------
+
+
+" Function Declaration: ------------------------------------------------------
 
 " foo(
 syn match cppFuncDecl contained "\<\i\+\>\ze("
@@ -64,6 +75,8 @@ syn match cppFuncDecl contained "\<\i\+\>\ze("
     \ skipempty
 
 syn match cppFuncDeclArgs contained "()"
+
+" ----------------------------------------------------------------------------
 
 
 hi link cppModifier StorageClass
