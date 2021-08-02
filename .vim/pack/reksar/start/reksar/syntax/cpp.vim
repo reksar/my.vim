@@ -28,16 +28,16 @@ let b:current_syntax = "cpp"
 
 
 " Function Call: -------------------------------------------------------------
+
+" Here arg is a \<\i\+\> word, that may be followed by \{,1} parens (\_.\{-}).
+" Also, an arg may be a {} with amount \{-} of any chars \_. inside.
 "
-" Here arg is a \<word\> of at least 1 identifier char (\i\+) - \<\i\+\>, that
-" may be followed by 0 or 1 \{,1}  parens (\_.\{-}), contain any char \_. (may
-" ends with line break).
-"
-" Start of line till                >|     foo(          arg                      or  arg                                      (,        arg                  )       *                );
-syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\|\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\(\_s\{-},\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\)\{-}\)\)\{-}\_s\{-});/
+" Start of line till                >|     foo(          arg      (       )       or           arg       (       )         {       }           ,          arg      (       )           {       }       or {       }             );
+syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\|\(\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\|{\_.\{-}}\)\(\_s\{-},\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\)\|{\_.\{-}}\)\{-}\)\|{\_.\{-}}\)\{-}\_s\{-});/
     \ nextgroup=cppFuncCall
 
 " foo(
+"                                 foo    >| (
 syn match cppFuncCall contained /\<\i\+\>\ze(/
     \ nextgroup=cppFuncCallArgs
 
@@ -50,11 +50,11 @@ syn keyword cppArgSeparator contained ,
     \ skipwhite
     \ skipempty
 
-" arg,
-" arg)
 " arg ,
 " arg )
-syn match cppFuncCallArg contained /\<\i\+\>\ze\s\{-}[,)]/
+" arg }
+"                                   arg      >|       ,)}
+syn match cppFuncCallArg contained /\<\i\+\>\ze\s\{-}[,)}]/
     \ nextgroup=cppArgSeparator
 
 " ----------------------------------------------------------------------------
