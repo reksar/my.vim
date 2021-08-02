@@ -16,97 +16,46 @@ syn clear cppStructure
 syn clear cppAccess
 syn clear cppModifier
 
+syn clear cBlock
+syn clear cParen
+syn clear cCppParen
+syn clear cCppBracket
+syn clear cParenError
+syn clear cErrInParen
 
-syn match cppNameScope "\<\i\+\>\ze::"
-
-
-" Start of line till         word
-syn match cppSOL "^\s\{-}\ze\<\i\+\>"
-    \ nextgroup=cppStructure,cppModifier,cppType,cppExceptions,cStatement,
-      \ cppFuncCall
-
-
-" Struct Declaration: --------------------------------------------------------
-
-syn keyword cppStructure contained
-  \ struct class enum namespace
-  \ public private protected
-    \ nextgroup=cppStructName
-    \ skipwhite
-
-syn match cppStructName contained "\<\i\+\>"
-
-" ----------------------------------------------------------------------------
+syntax clear
+let b:current_syntax = "cpp"
 
 
-" Statement Type: ------------------------------------------------------------
-
-syn keyword cppModifier contained static const virtual
-    \ nextgroup=cppModifier,cppType
-    \ skipwhite
-
-" int
-" int&
-" int**
-"
-" skipempty allows line breaks before nextgroup
-syn match cppType contained "\<\i\+\>[&*]*"
-    \ nextgroup=cppVar,cppFuncDecl
-    \ skipwhite
-    \ skipempty
-
-" ----------------------------------------------------------------------------
-
-
-" Variable: ------------------------------------------------------------------
-" var;
-" var =
-" var{
-syn match cppVar contained "\<\i\+\>\ze\s\{-}[;={]"
-
-" ----------------------------------------------------------------------------
-
-
-" Function Declaration: ------------------------------------------------------
+" Start of line till                >|     foo(
+syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\i\|,\|(\|)\|\_s\)\{-});/
+    \ nextgroup=cppFuncCall
 
 " foo(
-syn match cppFuncDecl contained "\<\i\+\>\ze(\_.\{-})"
-    \ contains=cppModifier
+syn match cppFuncCall contained /\<\i\+\>\ze(/
+    \ nextgroup=cppFuncCallArgs
 
-" ----------------------------------------------------------------------------
+syn region cppFuncCallArgs contained start=/(/ end=/)/
+    \ contains=cppFuncCall,cppFuncCallArg
+    \ nextgroup=cppArgSeparator
 
-
-" Function Call: -------------------------------------------------------------
-
-syn match cppFuncCall contained "\<\i\+\>\ze("
-    \ nextgroup=cppFuncCall,cppArg,cppFuncCallEnd
+syn keyword cppArgSeparator contained ,
+    \ nextgroup=cppFuncCall,cppFuncCallArg
     \ skipwhite
     \ skipempty
 
-syn match cppArg contained "\<\i\+\>\ze[^(]"
-    \ nextgroup=cppArgSeparator,cppFuncCallEnd
-    \ skipwhite
-    \ skipempty
-
-syn match cppArgSeparator contained ","
-    \ nextgroup=cppFuncCall,cppArg
-    \ skipwhite
-    \ skipempty
-
-syn match cppFuncCallEnd contained ")[;,){]"
-
-" ----------------------------------------------------------------------------
+" arg,
+" arg)
+" arg ,
+" arg )
+syn match cppFuncCallArg contained /\<\i\+\>\ze\s\{-}[,)]/
+    \ nextgroup=cppArgSeparator
 
 
-hi link cppModifier StorageClass
-hi link cppType Type
-hi link cppInstance Identifier
+" name::
+syn match cppNameScope /\<\i\+\>\ze::/
+
+
 hi link cppNameScope Type
-hi link cppStructure StorageClass
-hi link cppStructName Type
-hi link cppTypeFunc Type
-hi link cppFuncDecl Function
-hi link cppTypeInstance Type
-hi link cppVar Identifier
 hi link cppFuncCall Function
-hi link cppArg Identifier
+hi link cppFuncCallArg Identifier
