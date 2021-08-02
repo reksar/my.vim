@@ -27,8 +27,14 @@ syntax clear
 let b:current_syntax = "cpp"
 
 
-" Start of line till                >|     foo(
-syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\i\|,\|(\|)\|\_s\)\{-});/
+" Function Call: -------------------------------------------------------------
+"
+" Here arg is a \<word\> of at least 1 identifier char (\i\+) - \<\i\+\>, that
+" may be followed by 0 or 1 \{,1}  parens (\_.\{-}), contain any char \_. (may
+" ends with line break).
+"
+" Start of line till                >|     foo(          arg                      or  arg                                      (,        arg                  )       *                );
+syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\|\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\(\_s\{-},\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\)\{-}\)\)\{-}\_s\{-});/
     \ nextgroup=cppFuncCall
 
 " foo(
@@ -50,6 +56,8 @@ syn keyword cppArgSeparator contained ,
 " arg )
 syn match cppFuncCallArg contained /\<\i\+\>\ze\s\{-}[,)]/
     \ nextgroup=cppArgSeparator
+
+" ----------------------------------------------------------------------------
 
 
 " name::
