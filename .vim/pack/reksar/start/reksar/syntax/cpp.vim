@@ -37,15 +37,18 @@ syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,
     \ nextgroup=cppFuncCall
 
 " func(
-"                                 func   >| (
-syn match cppFuncCall contained /\<\i\+\>\ze(/
+"                        func  >| (
+syn match cppFuncCall /\<\i\+\>\ze(/
+    \ contained
     \ nextgroup=cppFuncCallArgs
 
-syn region cppFuncCallArgs contained start=/(/ end=/)/
+syn region cppFuncCallArgs start=/(/ end=/)/
+    \ contained
     \ contains=cppFuncCall,cppFuncCallArg
     \ nextgroup=cppFuncCallArgSeparator
 
-syn keyword cppFuncCallArgSeparator contained ,
+syn keyword cppFuncCallArgSeparator ,
+    \ contained
     \ nextgroup=cppFuncCall,cppFuncCallArg
     \ skipwhite
     \ skipempty
@@ -53,8 +56,9 @@ syn keyword cppFuncCallArgSeparator contained ,
 " arg ,
 " arg )
 " arg }
-"                                   arg      >|       ,)}
-syn match cppFuncCallArg contained /\<\i\+\>\ze\s\{-}[,)}]/
+"                           arg    >|       ,)}
+syn match cppFuncCallArg /\<\i\+\>\ze\s\{-}[,)}]/
+    \ contained
     \ nextgroup=cppFuncCallArgSeparator
 
 " ----------------------------------------------------------------------------
@@ -70,22 +74,30 @@ syn match cppFuncDefEntry /^\s*\(\<\i\+\>\s*\)\{-}\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.
 " type& func(args)
 " type* func(args)
 " type** func(args)
-syn match cppFuncDef contained /\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.\{-})/
+syn match cppFuncDef /\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.\{-})/
+    \ contained
     \ contains=cppFuncType,cppFuncDefArgs
 
-syn match cppFuncType contained /\<\i\+\>[&*]*\ze\_s\+\<\i\+\>(/
+syn match cppFuncType /\<\i\+\>[&*]*\ze\_s\+\<\i\+\>(/
+    \ contained
 
-syn region cppFuncDefArgs contained start=/(/ end=/)/
+syn region cppFuncDefArgs start=/(/ end=/)/
+    \ contained
     \ contains=cppArgType
     \ keepend
 
-syn match cppArgType contained /\(\<const\>\s\+\)\{,1}\<\i\+\>[&*]*\(\_s\+\<\i\+\>\)\{,1}/
+"                         const                type               name
+syn match cppArgType /\(\<const\>\s\+\)\{,1}\<\i\+\>[&*]*\(\_s\+\<\i\+\>\)\{,1}/
+    \ contained
     \ contains=cppModifier,cppFuncDefArg
 
-syn match cppFuncDefArg contained /\i\_s\+\zs\<\i\+\>\ze\s\{-}[,=)]/
+"            end of word |<           name           ,=)
+syn match cppFuncDefArg /\i\_s\+\zs\<\i\+\>\ze\s\{-}[,=)]/
+    \ contained
 
-syn keyword cppModifier contained const static virtual
+syn keyword cppModifier const static virtual
   \ public private protected
+    \ contained
 
 " ----------------------------------------------------------------------------
 
