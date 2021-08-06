@@ -10,9 +10,9 @@ endif
 
 syn clear cStorageClass
 syn clear cStructure
+syn clear cppStructure
 syn clear cType
 syn clear cppType
-syn clear cppStructure
 syn clear cppAccess
 syn clear cppModifier
 
@@ -96,18 +96,37 @@ syn match cppFuncDefArg /\i\_s\+\zs\<\i\+\>\ze\s\{-}[,=)]/
     \ contained
 
 syn keyword cppModifier const static virtual
-  \ public private protected
     \ contained
 
 " ----------------------------------------------------------------------------
 
 
+syn match cppTypeName /\<\i\+\>/
+    \ contained
+
+
 " name::
 syn match cppNameScope /\<\i\+\>\ze::/
+    \ contains=cppTypeName
 
 
+syn keyword cppStructure struct class typename template namespace
+    \ nextgroup=cppTypeName
+    \ skipwhite
+
+
+syn keyword cppAccess public private protected 
+    \ nextgroup=cppAccessDef,cppTypeName
+    \ skipwhite
+
+syn keyword cppAccessDef :
+    \ contained
+
+
+hi link cppStructure StorageClass
 hi link cppModifier StorageClass
-hi link cppNameScope Type
+hi link cppAccess StorageClass
+hi link cppTypeName Type
 hi link cppFuncType Type
 hi link cppArgType Type
 hi link cppFuncCall Function
