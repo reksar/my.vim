@@ -27,6 +27,15 @@ syntax clear
 let b:current_syntax = "cpp"
 
 
+syn match cppTypeName /\<\i\+\>/
+    \ contained
+
+
+"                     type                 name        ({;=
+syn match cppType /\<\i\+\>[&*]*\ze\_s\+\<\i\+\>\s\{-}[({;=]/
+    \ contained
+
+
 " Function Call: -------------------------------------------------------------
 
 " Here arg is a \<\i\+\> word, that may be followed by \{,1} parens (\_.\{-}).
@@ -76,10 +85,7 @@ syn match cppFuncDefEntry /^\s*\(\<\i\+\>\s*\)\{-}\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.
 " type** func(args)
 syn match cppFuncDef /\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.\{-})/
     \ contained
-    \ contains=cppFuncType,cppFuncDefArgs
-
-syn match cppFuncType /\<\i\+\>[&*]*\ze\_s\+\<\i\+\>(/
-    \ contained
+    \ contains=cppType,cppFuncDefArgs
 
 syn region cppFuncDefArgs start=/(/ end=/)/
     \ contained
@@ -101,9 +107,6 @@ syn keyword cppModifier const static virtual
 " ----------------------------------------------------------------------------
 
 
-syn match cppTypeName /\<\i\+\>/
-    \ contained
-
 
 " name::
 syn match cppNameScope /\<\i\+\>\ze::/
@@ -123,13 +126,18 @@ syn keyword cppAccessDef :
     \ contained
 
 
+syn match cppVar /^\s\{-}\(\<\i\+\>\s\{-}\)\{-}\<\i\+\>[&*]*\_s\{-}\<\i\+\>\ze\s\{-}[{;=]/
+    \ contains=cppModifier,cppType
+
+
 hi link cppStructure StorageClass
 hi link cppModifier StorageClass
 hi link cppAccess StorageClass
 hi link cppTypeName Type
-hi link cppFuncType Type
+hi link cppType Type
 hi link cppArgType Type
 hi link cppFuncCall Function
 hi link cppFuncDef Function
 hi link cppFuncCallArg Identifier
 hi link cppFuncDefArg Identifier
+hi link cppVar Identifier
