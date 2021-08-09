@@ -126,8 +126,19 @@ syn keyword cppAccessDef :
     \ contained
 
 
-syn match cppVar /^\s\{-}\(\<\i\+\>\s\{-}\)\{-}\<\i\+\>[&*]*\_s\{-}\<\i\+\>\ze\s\{-}[{;=]/
-    \ contains=cppModifier,cppType
+"                             modifiers           type                name             ;= or{       };
+syn match cppVar /^\s\{-}\(\<\i\+\>\s\{-}\)\{-}\<\i\+\>[&*]*\_s\{-}\<\i\+\>\s\{-}\(\ze[;=]\|{\_.\{-}};\)/
+    \ contains=cppModifier,cppType,cppUniform
+
+syn region cppUniform start=/{/ end=/};/
+    \ contained
+    \ contains=cppUniformArgs,cppFuncCall
+    \ skipwhite
+    \ skipempty
+
+"                            name           ,}
+syn match cppUniformArgs /\<\i\+\>\ze\s\{-}[,}]/
+    \ contained
 
 
 hi link cppStructure StorageClass
@@ -141,3 +152,4 @@ hi link cppFuncDef Function
 hi link cppFuncCallArg Identifier
 hi link cppFuncDefArg Identifier
 hi link cppVar Identifier
+hi link cppUniformArgs Identifier
