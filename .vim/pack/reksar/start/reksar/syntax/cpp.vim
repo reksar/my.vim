@@ -41,8 +41,8 @@ syn match cppType /\<\i\+\>[&*]*\ze\_s\+\<\i\+\>\s\{-}[({;=]/
 " Here arg is a \<\i\+\> word, that may be followed by \{,1} parens (\_.\{-}).
 " Also, an arg may be a {} with amount \{-} of any chars \_. inside.
 "
-" Start of line till                >|     func(         arg      (       )       or           arg       (       )         {       }           ,          arg      (       )           {       }       or {       }             );
-syn match cppFuncCallEntry /^\s\{-}\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\|\(\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\|{\_.\{-}}\)\(\_s\{-},\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\)\|{\_.\{-}}\)\{-}\)\|{\_.\{-}}\)\{-}\_s\{-});/
+" Start of line till                      >|     func(            arg    (       )       or           arg       (       )         {       }           ,          arg      (       )           {       }       or {       }             );
+syn match cppFuncCallEntry /\(^\|[=.]\)\s*\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\|\(\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\|{\_.\{-}}\)\(\_s\{-},\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\)\|{\_.\{-}}\)\{-}\)\|{\_.\{-}}\)\{-}\_s\{-});/
     \ nextgroup=cppFuncCall
 
 " func(
