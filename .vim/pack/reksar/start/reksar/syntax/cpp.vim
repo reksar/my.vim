@@ -31,6 +31,29 @@ syn match cppTypeName /\<\i\+\>/
     \ contained
 
 
+" name::
+syn match cppNameScope /\<\i\+\>\ze::/
+    \ contains=cppTypeName
+
+" name.
+"
+"                           name >|  .word
+syn match cppNameAccess /\<\i\+\>\ze\.\</
+
+
+syn keyword cppStructure struct class typename template namespace
+    \ nextgroup=cppTypeName
+    \ skipwhite
+
+
+syn keyword cppAccess public private protected 
+    \ nextgroup=cppAccessDef,cppTypeName
+    \ skipwhite
+
+syn keyword cppAccessDef :
+    \ contained
+
+
 "                     type               NameScope::          name        ({;=
 syn match cppType /\<\i\+\>[&*]*\ze\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>\s\{-}[({;=]/
     \ contained
@@ -111,30 +134,7 @@ syn keyword cppModifier const static virtual
 " ----------------------------------------------------------------------------
 
 
-
-" name::
-syn match cppNameScope /\<\i\+\>\ze::/
-    \ contains=cppTypeName
-
-" name.
-"
-"                           name >|  .word
-syn match cppNameAccess /\<\i\+\>\ze\.\</
-
-
-syn keyword cppStructure struct class typename template namespace
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
-
-syn keyword cppAccess public private protected 
-    \ nextgroup=cppAccessDef,cppTypeName
-    \ skipwhite
-
-syn keyword cppAccessDef :
-    \ contained
-
-
+" Var Def: -------------------------------------------------------------------
 "                             modifiers           type                name             ;= or{       };
 syn match cppVar /^\s\{-}\(\<\i\+\>\s\{-}\)\{-}\<\i\+\>[&*]*\_s\{-}\<\i\+\>\s\{-}\(\ze[;=]\|{\_.\{-}};\)/
     \ contains=cppModifier,cppType,cppUniform
@@ -148,6 +148,8 @@ syn region cppUniform start=/{/ end=/};/
 "                            name           ,}
 syn match cppUniformArgs /\<\i\+\>\ze\s\{-}[,}]/
     \ contained
+
+" ----------------------------------------------------------------------------
 
 
 hi link cppStructure StorageClass
