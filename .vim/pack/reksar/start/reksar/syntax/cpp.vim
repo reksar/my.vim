@@ -31,9 +31,10 @@ syn match cppTypeName /\<\i\+\>/
     \ contained
 
 
-"                     type                 name        ({;=
-syn match cppType /\<\i\+\>[&*]*\ze\_s\+\<\i\+\>\s\{-}[({;=]/
+"                     type               NameScope::          name        ({;=
+syn match cppType /\<\i\+\>[&*]*\ze\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>\s\{-}[({;=]/
     \ contained
+    \ contains=cppNameScope
 
 
 " Function Call: -------------------------------------------------------------
@@ -75,17 +76,20 @@ syn match cppFuncCallArg /\<\i\+\>\ze\s\{-}[,)}]/
 
 " Function Def: --------------------------------------------------------------
 
-"                               (  modifiers )      type              func  ( args  )      const            =   0       ;
-syn match cppFuncDefEntry /^\s*\(\<\i\+\>\s*\)\{-}\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.\{-})\(\_s*const\)\{,1}\(\s*=\s*0\)\{,1};/
+"                               (  modifiers )       type            NameScope::          func ( args  )      const            =   0            ;{
+syn match cppFuncDefEntry /^\s*\(\<\i\+\>\s*\)\{-}\<\i\+\>[&*]*\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>(\_.\{-})\(\_s*const\)\{,1}\(\s*=\s*0\)\{,1}\_s*[;{]/
     \ contains=cppModifier,cppFuncDef
 
 " type func(args)
 " type& func(args)
 " type* func(args)
 " type** func(args)
-syn match cppFuncDef /\<\i\+\>[&*]*\_s\+\<\i\+\>(\_.\{-})/
+" type NameScope::func(args)
+"
+"                        type            NameScope::          func (       )
+syn match cppFuncDef /\<\i\+\>[&*]*\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>(\_.\{-})/
     \ contained
-    \ contains=cppType,cppFuncDefArgs
+    \ contains=cppType,cppFuncDefArgs,cppNameScope
 
 syn region cppFuncDefArgs start=/(/ end=/)/
     \ contained
