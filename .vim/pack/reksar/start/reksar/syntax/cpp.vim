@@ -116,6 +116,11 @@ syn keyword cppModifier const static virtual
 syn match cppNameScope /\<\i\+\>\ze::/
     \ contains=cppTypeName
 
+" name.
+"
+"                           name >|  .word
+syn match cppNameAccess /\<\i\+\>\ze\.\</
+
 
 syn keyword cppStructure struct class typename template namespace
     \ nextgroup=cppTypeName
@@ -157,3 +162,4 @@ hi link cppFuncCallArg Identifier
 hi link cppFuncDefArg Identifier
 hi link cppVar Identifier
 hi link cppUniformArgs Identifier
+hi link cppNameAccess Identifier
