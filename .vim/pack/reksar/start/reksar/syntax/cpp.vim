@@ -16,152 +16,78 @@ syn clear cppType
 syn clear cppAccess
 syn clear cppModifier
 
-syn clear cBlock
-syn clear cParen
-syn clear cCppParen
-syn clear cCppBracket
-syn clear cParenError
-syn clear cErrInParen
 
 syntax clear
 let b:current_syntax = "cpp"
 
 
-syn match cppTypeName /\<\i\+\>/
-    \ contained
-
-
-" name::
-syn match cppNameScope /\<\i\+\>\ze::/
-    \ contains=cppTypeName
-
-" name.
-"
-"                           name >|  .word
-syn match cppNameAccess /\<\i\+\>\ze\.\</
-
-
-syn keyword cppStructure struct class typename template namespace
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
-
-syn keyword cppAccess public private protected 
-    \ nextgroup=cppAccessDef,cppTypeName
-    \ skipwhite
-
-syn keyword cppAccessDef :
-    \ contained
-
-
-"                     type               NameScope::          name        ({;=
-syn match cppType /\<\i\+\>[&*]*\ze\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>\s\{-}[({;=]/
-    \ contained
-    \ contains=cppNameScope
-
-
-" Function Call: -------------------------------------------------------------
-
-" Here arg is a \<\i\+\> word, that may be followed by \{,1} parens (\_.\{-}).
-" Also, an arg may be a {} with amount \{-} of any chars \_. inside.
-"
-" Start of line till                      >|     func(            arg    (       )       or           arg       (       )         {       }           ,          arg      (       )           {       }       or {       }             ) .;
-syn match cppFuncCallEntry /\(^\|[=.]\)\s*\ze\<\i\+\>(\(\_s\{-}\<\i\+\>\((\_.\{-})\)\{,1}\|\(\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\|{\_.\{-}}\)\(\_s\{-},\_s\{-}\(\<\i\+\>\((\_.\{-})\)\{,1}\)\|{\_.\{-}}\)\{-}\)\|{\_.\{-}}\)\{-}\_s\{-})[.;]/
-    \ nextgroup=cppFuncCall
-
-" func(
-"                        func  >| (
-syn match cppFuncCall /\<\i\+\>\ze(/
-    \ contained
-    \ nextgroup=cppFuncCallArgs
-
-syn region cppFuncCallArgs start=/(/ end=/)/
-    \ contained
-    \ contains=cppFuncCall,cppFuncCallArg
-    \ nextgroup=cppFuncCallArgSeparator
-
-syn keyword cppFuncCallArgSeparator ,
-    \ contained
-    \ nextgroup=cppFuncCall,cppFuncCallArg
-    \ skipwhite
-    \ skipempty
-
-" arg ,
-" arg )
-" arg }
-"                           arg    >|       ,)}
-syn match cppFuncCallArg /\<\i\+\>\ze\s\{-}[,)}]/
-    \ contained
-    \ nextgroup=cppFuncCallArgSeparator
-
-" ----------------------------------------------------------------------------
-
-
-" Function Def: --------------------------------------------------------------
-
-"                               (  modifiers )       type            NameScope::          func ( args  )      const            =   0            ;{
-syn match cppFuncDefEntry /^\s*\(\<\i\+\>\s*\)\{-}\<\i\+\>[&*]*\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>(\_.\{-})\(\_s*const\)\{,1}\(\s*=\s*0\)\{,1}\_s*[;{]/
-    \ contains=cppModifier,cppFuncDef
-
-" type func(args)
-" type& func(args)
-" type* func(args)
-" type** func(args)
-" type NameScope::func(args)
-"
-"                        type            NameScope::          func (       )
-syn match cppFuncDef /\<\i\+\>[&*]*\_s\+\(\<\i\+\>::\)\{,1}\<\i\+\>(\_.\{-})/
-    \ contained
-    \ contains=cppType,cppFuncDefArgs,cppNameScope
-
-syn region cppFuncDefArgs start=/(/ end=/)/
-    \ contained
-    \ contains=cppArgType
-    \ keepend
-
-"                         const                type               name
-syn match cppArgType /\(\<const\>\s\+\)\{,1}\<\i\+\>[&*]*\(\_s\+\<\i\+\>\)\{,1}/
-    \ contained
-    \ contains=cppModifier,cppFuncDefArg
-
-"            end of word |<           name           ,=)
-syn match cppFuncDefArg /\i\_s\+\zs\<\i\+\>\ze\s\{-}[,=)]/
-    \ contained
+" Start of line followed by spaces
+syn match cppStart /^\s*/
+    \ nextgroup=cppModifier,cppType
 
 syn keyword cppModifier const static virtual
     \ contained
+    \ nextgroup=cppModifier,cppType
+    \ skipwhite
 
-" ----------------------------------------------------------------------------
-
-
-" Var Def: -------------------------------------------------------------------
-"                             modifiers           type                name             ;= or{       };
-syn match cppVar /^\s\{-}\(\<\i\+\>\s\{-}\)\{-}\<\i\+\>[&*]*\_s\{-}\<\i\+\>\s\{-}\(\ze[;=]\|{\_.\{-}};\)/
-    \ contains=cppModifier,cppType,cppUniform
-
-syn region cppUniform start=/{/ end=/};/
+"                     type&*  >|
+syn match cppType /\<\i\+[&*]*\ze\_s/
     \ contained
-    \ contains=cppUniformArgs,cppFuncCall
+    \ nextgroup=cppFuncDef
     \ skipwhite
     \ skipempty
 
-"                            name           ,}
-syn match cppUniformArgs /\<\i\+\>\ze\s\{-}[,}]/
+
+" Func Def: ------------------------------------------------------------------
+
+"                         name::       func   (
+syn match cppFuncDef /\<\(\i\+::\)\{,1}\i\+\ze(/
+    \ contained
+    \ contains=cppNameScope
+    \ nextgroup=cppFuncDefArgs
+
+"                         name::
+syn match cppNameScope /\<\i\+::/
     \ contained
 
-" ----------------------------------------------------------------------------
+syn region cppFuncDefArgs start=/(/ end=/)/
+    \ contained
+    \ contains=cppFuncDefArg
+    \ keepend
+    \ nextgroup=cppMethodModifier,cppFuncBody
+    \ skipwhite
+    \ skipempty
+
+syn match cppFuncDefArg /\(const\s\+\)\{,1}\<\i\+[&*]*\s\+\i\+/
+    \ contained
+    \ contains=cppFuncDefArgModifier,cppFuncDefArgType
+
+syn keyword cppFuncDefArgModifier const
+    \ contained
+
+syn match cppFuncDefArgType /\<\i\+[&*]*\ze\s\+\</
+    \ contained
+
+syn keyword cppMethodModifier const
+    \ contained
+    \ nextgroup=cppFuncBody
+    \ skipwhite
+    \ skipempty
+
+syn region cppFuncBody start=/{/ end=/}/
+    \ contained
+    \ keepend
+
+" ------------------------------------------------------------------- Func Def
 
 
-hi link cppStructure StorageClass
 hi link cppModifier StorageClass
-hi link cppAccess StorageClass
-hi link cppTypeName Type
+hi link cppMethodModifier StorageClass
+hi link cppFuncDefArgModifier StorageClass
 hi link cppType Type
-hi link cppArgType Type
-hi link cppFuncCall Function
+hi link cppNameScope Type
+hi link cppFuncDefArgType Type
 hi link cppFuncDef Function
-hi link cppFuncCallArg Identifier
 hi link cppFuncDefArg Identifier
-hi link cppVar Identifier
-hi link cppUniformArgs Identifier
-hi link cppNameAccess Identifier
+
+hi link cppFuncBody Function
