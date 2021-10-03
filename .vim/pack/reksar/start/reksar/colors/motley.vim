@@ -1,6 +1,6 @@
 " Vim colors file
 " Description:
-" For 256 colors terminals, see: https://jonasjacek.github.io/colors
+"   For 256-color terminals, see: https://jonasjacek.github.io/colors
 
 set background=dark
 hi clear
@@ -24,6 +24,7 @@ hi Statement ctermfg=223 ctermbg=234 cterm=bold
 hi Conditional ctermfg=223 ctermbg=234 cterm=bold
 
 hi Operator guifg=#baae8f guibg=#21201d gui=bold
+hi Operator ctermfg=223 ctermbg=234 cterm=bold
 
 hi Exception guifg=#baae8f guibg=#21201d gui=bold
 hi Exception ctermfg=223 ctermbg=234 cterm=bold
@@ -36,16 +37,21 @@ hi Include ctermfg=223 ctermbg=234 cterm=italic
 
 hi Macro guifg=#baae8f gui=italic
 hi PreCondit guifg=#baae8f gui=italic
-hi Define guifg=#7dadae guibg=#21201d
+
+hi Define guifg=#7dadae guibg=#21201d gui=italic
+hi Define ctermfg=223 ctermbg=234 cterm=italic
 
 hi Identifier guifg=#d08f48 guibg=#21201d gui=none
-hi Identifier ctermfg=117 ctermbg=234 cterm=none
+hi Identifier ctermfg=116 ctermbg=234 cterm=none
 
 hi Function guifg=#afaf3f guibg=#21201d gui=none
-hi Function ctermfg=184 ctermbg=234 gui=none
+hi Function ctermfg=184 ctermbg=234 cterm=none
 
 hi Label guifg=#afaf3f guibg=#21201d gui=bold
+hi Label ctermfg=223 ctermbg=234 cterm=bold
+
 hi String guifg=#ebdbb2 guibg=#21201d gui=none
+hi String ctermfg=180 ctermbg=234 cterm=none
 
 hi Comment guifg=#777777 guibg=#21201d gui=italic
 hi Comment ctermfg=246 ctermbg=234 cterm=italic
@@ -71,7 +77,9 @@ hi Type ctermfg=222 ctermbg=234 gui=none
 hi StorageClass guifg=#7dadae guibg=#21201d gui=italic
 hi StorageClass ctermfg=223 ctermbg=234 cterm=italic
 
-hi Structure guifg=#7dadae guibg=#21201d gui=none
+hi Structure guifg=#7dadae guibg=#21201d gui=italic
+hi Structure ctermfg=223 ctermbg=234 cterm=italic
+
 hi Typedef guifg=#7dadae guibg=#21201d gui=none
 hi Ignore guifg=#777777
 
