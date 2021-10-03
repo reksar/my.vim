@@ -97,16 +97,6 @@ nmap <C-L> :set invrelativenumber<CR>
 
 " File Types: ----------------------------------------------------------------
 
-autocmd FileType php setlocal cc=120
-if has('gui_running')
-  autocmd FileType php setlocal columns=125
-endif
-
-autocmd FileType cs setlocal cc=120
-if has('gui_running')
-  autocmd FileType cs setlocal columns=125
-endif
-
 autocmd FileType cpp set tabstop=2
 autocmd FileType cpp set shiftwidth=2
 
@@ -121,22 +111,9 @@ autocmd FileType yaml set shiftwidth=2
 
 autocmd FileType json set tabstop=2
 autocmd FileType json set shiftwidth=2
-autocmd FileType json setlocal cc=120
-if has('gui_running')
-  autocmd FileType json setlocal columns=125
-endif
 
 autocmd FileType xml set tabstop=2
 autocmd FileType xml set shiftwidth=2
-autocmd FileType xml setlocal cc=120
-if has('gui_running')
-  autocmd FileType xml setlocal columns=125
-endif
 
 autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
-autocmd FileType html setlocal cc=120
-if has('gui_running')
-  autocmd FileType html setlocal columns=125
-endif
-
