@@ -3,3 +3,5 @@ if exists("b:current_syntax") && b:current_syntax != "php"
 endif
 
 syn keyword phpOperator new clone contained
+
+hi link phpKeyword StorageClass
