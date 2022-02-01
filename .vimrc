@@ -61,6 +61,9 @@ set showcmd
 set guicursor=a:blinkon600-blinkoff400  " Cursor blinking speed
 set guitablabel=%t  " Show file name only
 set guioptions+=b  " Show horizontal scroll
+let g:netrw_banner=0
+let g:netrw_list_hide='.*\.swp$'
+let g:netrw_browse_split=4  " Open file in previous window
 
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
