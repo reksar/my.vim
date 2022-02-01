@@ -95,6 +95,12 @@ map <C-Tab> :tabnext<CR>
 map <C-S-Tab> :tabprev<CR>
 nmap <C-L> :set invrelativenumber<CR>
 
+" More quick navigation between splitted windows.
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " File Types: ----------------------------------------------------------------
 
 autocmd FileType cpp set tabstop=2
