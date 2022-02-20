@@ -43,7 +43,7 @@ else
 
 " Terminal High Color: -------------------------------------------------------
   else
-    colorscheme motley
+    colorscheme lowcolor
   endif
 endif
 
