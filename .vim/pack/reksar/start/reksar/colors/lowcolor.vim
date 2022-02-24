@@ -14,43 +14,50 @@ hi Keyword ctermfg=223 ctermbg=234 cterm=italic
 hi Keyword guifg=#aa8060 guibg=#21201d gui=none
 hi Statement ctermfg=223 ctermbg=234 cterm=bold
 hi Statement guifg=#baae8f guibg=#21201d gui=bold
-hi PreProc ctermfg=223 ctermbg=234 cterm=italic
-hi PreProc guifg=#baae8f guibg=#21201d gui=italic
 hi Identifier ctermfg=223 ctermbg=234 cterm=none
 hi Identifier guifg=#baae8f guibg=#21201d gui=none
 hi Label ctermfg=223 ctermbg=234 cterm=bold
 hi Label guifg=#baae8f guibg=#21201d gui=bold
 hi Function ctermfg=223 ctermbg=234 cterm=none
 hi Function guifg=#baae8f guibg=#21201d gui=none
-hi String ctermfg=151 ctermbg=234 cterm=none
+hi String ctermfg=179 ctermbg=234 cterm=none
 hi String guifg=#edcd98 guibg=#21201d gui=none
-hi Comment ctermfg=246 ctermbg=234 cterm=italic
-hi Comment guifg=#777777 guibg=#21201d gui=italic
 hi Special ctermfg=246 ctermbg=234 cterm=bold
 hi Special guifg=#777777 guibg=#21201d gui=bold
 hi Delimiter ctermfg=130 ctermbg=234 cterm=none
 hi Delimiter guifg=#aa8060 guibg=#21201d gui=none
 hi Constant ctermfg=151 ctermbg=234 cterm=none
 hi Constant guifg=#edcd98 guibg=#21201d gui=none
-hi Number ctermfg=137 ctermbg=234 cterm=none
+hi SpecialChar ctermfg=151 ctermbg=234 cterm=none
+hi SpecialChar guifg=#d08f48 guibg=#21201d
+hi Number ctermfg=186 ctermbg=234 cterm=none
 hi Number guifg=#edcd98 guibg=#21201d gui=none
-hi Type ctermfg=186 ctermbg=234 cterm=none
+hi Type ctermfg=137 ctermbg=234 cterm=none
 hi Type guifg=#ccc281 guibg=#21201d gui=none
-
-
-
-hi Define guifg=#7dadae guibg=#21201d
+hi Comment ctermfg=246 ctermbg=234 cterm=italic
+hi Comment guifg=#777777 guibg=#21201d gui=italic
+hi SpecialComment ctermfg=246 ctermbg=232 cterm=none
+hi SpecialComment guifg=#777777 guibg=#21201d gui=bold
+hi PreProc ctermfg=246 ctermbg=232 cterm=none
+hi PreProc guifg=#baae8f guibg=#21201d gui=italic
+hi Operator ctermfg=223 ctermbg=234 cterm=none
 hi Operator guifg=#baae8f guibg=#21201d gui=bold
-hi Exception guifg=#baae8f guibg=#21201d gui=bold
+hi StorageClass ctermfg=137 ctermbg=234 cterm=none
+hi StorageClass guifg=#7dadae guibg=#21201d gui=none
+hi Structure ctermfg=137 ctermbg=234 cterm=none
+hi Structure guifg=#7dadae guibg=#21201d gui=none
+hi Define ctermfg=137 ctermbg=234 cterm=none
+hi Define guifg=#7dadae guibg=#21201d
+hi Include ctermfg=137 ctermbg=234 cterm=none
 hi Include guifg=#baae8f gui=italic
+
+
+
+hi Exception guifg=#baae8f guibg=#21201d gui=bold
 hi Macro guifg=#baae8f gui=italic
 hi PreCondit guifg=#baae8f gui=italic
-hi SpecialComment guifg=#777777 guibg=#21201d gui=bold
-hi SpecialChar guifg=#d08f48 guibg=#21201d
 hi Tag guifg=#d08f48 guibg=#21201d
 hi Debug guifg=#d08f48 guibg=#21201d
-hi StorageClass guifg=#7dadae guibg=#21201d gui=none
-hi Structure guifg=#7dadae guibg=#21201d gui=none
 hi Typedef guifg=#7dadae guibg=#21201d gui=none
 hi Ignore guifg=#777777
 
