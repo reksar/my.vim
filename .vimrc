@@ -9,7 +9,7 @@ set backspace=indent,eol,start
 
 " Statusbar: -----------------------------------------------------------------
 set ls=2
-set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ line:char:col=%l:%c:%v
+set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ chr:col=%c:%v
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
