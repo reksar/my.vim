@@ -8,56 +8,86 @@ if !exists("b:current_syntax") || b:current_syntax != "cpp"
 endif
 
 
-syn match cppTypeName contained "\i\+"
-
-syn clear cppAccess
-syn keyword cppAccess public protected private
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
 syn clear cStorageClass
-syn keyword cStorageClass const auto static register volatile extern
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
 syn clear cStructure
-syn keyword cStructure struct enum typedef union
-    \ nextgroup=cppTypeName
-    \ skipwhite
-
 syn clear cppStructure
-syn keyword cppStructure class typename template namespace
-    \ nextgroup=cppTypeName
+syn clear cType
+syn clear cppType
+syn clear cppAccess
+syn clear cppModifier
+
+
+syntax clear
+let b:current_syntax = "cpp"
+
+
+" Start of line followed by spaces
+syn match cppStart /^\s*/
+    \ nextgroup=cppModifier,cppType
+
+syn keyword cppModifier const static virtual
+    \ contained
+    \ nextgroup=cppModifier,cppType
     \ skipwhite
 
-
-"                      ^      name     {...}     ;$
-syn match cppInstance "^\s\{-}\w\+\ze\({.*}\)\{-};$"
-
-"                                |ends with , or ) or }
-syn match cppArgs contained "\w\+\ze\s\{-}\(,\|)\|}\)"
-
-"                  name | <- end of highlighting, \_ allows line breaks
-syn match cppFunc "\w\+\ze(\_.\{-})"
-    \ contains=cppArgs
-
-" TODO: maybe make it contained and put to func and instance init.
-syn match cppUniform "\(\w\|,\|(\)\s\{-}\zs{\_.\{-}}"
-    \ contains=cppArgs
+"                     type&*  >|
+syn match cppType /\<\i\+[&*]*\ze\_s/
+    \ contained
+    \ nextgroup=cppFuncDef
+    \ skipwhite
+    \ skipempty
 
 
-syn match cppNameScope "\w\+::"
+" Func Def: ------------------------------------------------------------------
+
+"                         name::       func   (
+syn match cppFuncDef /\<\(\i\+::\)\{,1}\i\+\ze(/
+    \ contained
+    \ contains=cppNameScope
+    \ nextgroup=cppFuncDefArgs
+
+"                         name::
+syn match cppNameScope /\<\i\+::/
+    \ contained
+
+syn region cppFuncDefArgs start=/(/ end=/)/
+    \ contained
+    \ contains=cppFuncDefArg
+    \ keepend
+    \ nextgroup=cppMethodModifier,cppFuncBody
+    \ skipwhite
+    \ skipempty
+
+syn match cppFuncDefArg /\(const\s\+\)\{,1}\<\i\+[&*]*\s\+\i\+/
+    \ contained
+    \ contains=cppFuncDefArgModifier,cppFuncDefArgType
+
+syn keyword cppFuncDefArgModifier const
+    \ contained
+
+syn match cppFuncDefArgType /\<\i\+[&*]*\ze\s\+\</
+    \ contained
+
+syn keyword cppMethodModifier const
+    \ contained
+    \ nextgroup=cppFuncBody
+    \ skipwhite
+    \ skipempty
+
+syn region cppFuncBody start=/{/ end=/}/
+    \ contained
+    \ keepend
+
+" ------------------------------------------------------------------- Func Def
 
 
-hi link cppTypeName Type
-hi link cppFunc Function
+hi link cppModifier StorageClass
+hi link cppMethodModifier StorageClass
+hi link cppFuncDefArgModifier StorageClass
+hi link cppType Type
 hi link cppNameScope Type
-hi link cppInstance Identifier
-hi link cppArgs Identifier
+hi link cppFuncDefArgType Type
+hi link cppFuncDef Function
+hi link cppFuncDefArg Identifier
 
-" NOTE: these syntax groups are defined in default c.vim and cpp.vim syntax 
-" files and here we just change it highlighting.
-hi link cStructure StorageClass
-hi link cStorageClass StorageClass
-hi link cppAccess	StorageClass
-hi link cppStructure StorageClass
+hi link cppFuncBody Function
