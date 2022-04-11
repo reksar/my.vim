@@ -24,9 +24,9 @@ hi String ctermfg=179 ctermbg=234 cterm=none
 hi String guifg=#edcd98 guibg=#21201d gui=none
 hi Special ctermfg=246 ctermbg=234 cterm=bold
 hi Special guifg=#777777 guibg=#21201d gui=bold
-hi Delimiter ctermfg=130 ctermbg=234 cterm=none
+hi Delimiter ctermfg=137 ctermbg=234 cterm=none
 hi Delimiter guifg=#aa8060 guibg=#21201d gui=none
-hi Constant ctermfg=151 ctermbg=234 cterm=none
+hi Constant ctermfg=186 ctermbg=234 cterm=none
 hi Constant guifg=#edcd98 guibg=#21201d gui=none
 hi SpecialChar ctermfg=151 ctermbg=234 cterm=none
 hi SpecialChar guifg=#d08f48 guibg=#21201d
@@ -42,18 +42,20 @@ hi PreProc ctermfg=246 ctermbg=232 cterm=none
 hi PreProc guifg=#baae8f guibg=#21201d gui=italic
 hi Operator ctermfg=223 ctermbg=234 cterm=none
 hi Operator guifg=#baae8f guibg=#21201d gui=bold
-hi StorageClass ctermfg=137 ctermbg=234 cterm=none
+hi StorageClass ctermfg=223 ctermbg=234 cterm=italic
 hi StorageClass guifg=#7dadae guibg=#21201d gui=none
-hi Structure ctermfg=137 ctermbg=234 cterm=none
+hi Structure ctermfg=223 ctermbg=234 cterm=italic
 hi Structure guifg=#7dadae guibg=#21201d gui=none
-hi Define ctermfg=137 ctermbg=234 cterm=none
+hi Define ctermfg=223 ctermbg=234 cterm=italic
 hi Define guifg=#7dadae guibg=#21201d
-hi Include ctermfg=137 ctermbg=234 cterm=none
+hi Include ctermfg=223 ctermbg=234 cterm=italic
 hi Include guifg=#baae8f gui=italic
-
-
-
+hi Exception ctermfg=223 ctermbg=234 cterm=bold
 hi Exception guifg=#baae8f guibg=#21201d gui=bold
+hi Noise ctermfg=234 ctermbg=124 cterm=none
+
+
+
 hi Macro guifg=#baae8f gui=italic
 hi PreCondit guifg=#baae8f gui=italic
 hi Tag guifg=#d08f48 guibg=#21201d
