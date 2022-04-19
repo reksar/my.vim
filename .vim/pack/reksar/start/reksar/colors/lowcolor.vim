@@ -1,4 +1,4 @@
-" TODO: Vim Comment Title
+" For 256-color terminals, see: https://jonasjacek.github.io/colors
 set background=dark
 hi clear
 if exists('syntax_on')
@@ -8,10 +8,10 @@ endif
 let colors_name='lowcolor'
 
 " Syntax: --------------------------------------------------------------------
-hi Normal ctermfg=107 ctermbg=234 cterm=none
+hi Normal ctermfg=150 ctermbg=234 cterm=none
 hi Normal guifg=#96925f guibg=#21201d gui=none
 hi Keyword ctermfg=223 ctermbg=234 cterm=italic
-hi Keyword guifg=#aa8060 guibg=#21201d gui=none
+hi Keyword guifg=#aa8060 guibg=#21201d gui=italic
 hi Statement ctermfg=223 ctermbg=234 cterm=bold
 hi Statement guifg=#baae8f guibg=#21201d gui=bold
 hi Identifier ctermfg=223 ctermbg=234 cterm=none
@@ -36,9 +36,9 @@ hi Type ctermfg=137 ctermbg=234 cterm=none
 hi Type guifg=#ccc281 guibg=#21201d gui=none
 hi Comment ctermfg=246 ctermbg=234 cterm=italic
 hi Comment guifg=#777777 guibg=#21201d gui=italic
-hi SpecialComment ctermfg=246 ctermbg=232 cterm=none
+hi SpecialComment ctermfg=246 ctermbg=234 cterm=bold
 hi SpecialComment guifg=#777777 guibg=#21201d gui=bold
-hi PreProc ctermfg=246 ctermbg=232 cterm=none
+hi PreProc ctermfg=150 ctermbg=234 cterm=italic
 hi PreProc guifg=#baae8f guibg=#21201d gui=italic
 hi Operator ctermfg=223 ctermbg=234 cterm=none
 hi Operator guifg=#baae8f guibg=#21201d gui=bold
@@ -93,4 +93,5 @@ hi Pmenu guifg=#333333 guibg=#cfbfad
 hi PmenuSel guifg=#111111 guibg=#baae8f gui=bold
 
 " Brackets: ------------------------------------------------------------------
+hi MatchParen ctermfg=234 ctermbg=208 cterm=bold,underline,inverse
 hi MatchParen guifg=#55FFFF guibg=#111111 gui=bold,underline
