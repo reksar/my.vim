@@ -72,7 +72,10 @@ set expandtab
 set smarttab
 set autoindent
 set smartindent
+
+let g:netrw_winsize=23
 let g:netrw_ignorenetrc=1
+
 "set spell spelllang=ru  " Orphography check
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
 
@@ -98,7 +101,8 @@ map <C-Tab> :tabnext<CR>
 map <C-S-Tab> :tabprev<CR>
 nmap <C-L> :set invrelativenumber<CR>
 
-" More quick navigation between splitted windows.
+" Navigation between splitted windows
+" Ctrl + <direction key>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
