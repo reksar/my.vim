@@ -10,8 +10,8 @@ let colors_name='lowcolor'
 " Syntax: --------------------------------------------------------------------
 hi Normal ctermfg=150 ctermbg=234 cterm=none
 hi Normal guifg=#96925f guibg=#21201d gui=none
-hi Keyword ctermfg=223 ctermbg=234 cterm=italic
-hi Keyword guifg=#aa8060 guibg=#21201d gui=italic
+hi Keyword ctermfg=222 ctermbg=234 cterm=none
+hi Keyword guifg=#aa8060 guibg=#21201d gui=none
 hi Statement ctermfg=223 ctermbg=234 cterm=bold
 hi Statement guifg=#baae8f guibg=#21201d gui=bold
 hi Identifier ctermfg=223 ctermbg=234 cterm=none
