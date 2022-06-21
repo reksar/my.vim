@@ -3,6 +3,8 @@ set nocompatible  " with Vi
 filetype plugin indent on
 syntax on
 
+set background=dark
+
 set encoding=utf-8
 set fileencodings=utf-8,latin1,cp1251,cp866
 set backspace=indent,eol,start
@@ -43,7 +45,6 @@ else
 
 " Terminal High Color: -------------------------------------------------------
   else
-    set background=dark
     colorscheme ul
   endif
 endif

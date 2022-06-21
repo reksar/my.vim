@@ -36,7 +36,7 @@ if s:is_dark
 
     hi Special guifg=#ff8700 guibg=#1c1c1c gui=none
 
-    hi CursorLine guifg=none guibg=#121212 gui=none
+    hi CursorLine guibg=#121212 gui=none
     hi CursorLineNr guifg=#949494 guibg=#121212 gui=bold
     hi LineNr guifg=#585858 guibg=#121212 gui=none
 
@@ -72,15 +72,17 @@ else
 
     hi Comment guifg=#808080 guibg=#eeeeee gui=italic
     hi SpecialComment guifg=#808080 guibg=#eeeeee gui=italic,bold
-    hi PreProc guifg=#808080 guibg=#eeeeee gui=none
+
+    hi Constant guifg=#005f00 guibg=#eeeeee gui=none
+    hi PreProc guifg=#005f00 guibg=#eeeeee gui=none
 
     hi Type guifg=#005faf guibg=#eeeeee gui=none
 
     hi Special guifg=#af5f00 guibg=#eeeeee gui=none
 
-    hi Constant guifg=#005f00 guibg=#eeeeee gui=none
-
-    hi CursorLine guifg=none guibg=#e4e4e4 gui=none
+    hi CursorLine guibg=#e4e4e4 gui=none
+    hi CursorLineNr guifg=#808080 guibg=#e4e4e4 cterm=bold
+    hi LineNr guifg=#a8a8a8 guibg=#e4e4e4 cterm=none
 
   elseif &t_Co == 256
 
@@ -89,13 +91,13 @@ else
 
     hi Comment ctermfg=244 ctermbg=255 cterm=italic
     hi SpecialComment ctermfg=244 ctermbg=255 cterm=italic,bold
-    hi PreProc ctermfg=244 ctermbg=255 cterm=none
+
+    hi Constant ctermfg=22 ctermbg=255 cterm=none
+    hi PreProc ctermfg=22 ctermbg=255 cterm=none
 
     hi Type ctermfg=25 ctermbg=255 cterm=none
 
     hi Special ctermfg=130 ctermbg=255 cterm=none
-
-    hi Constant ctermfg=22 ctermbg=255 cterm=none
 
     hi CursorLine ctermfg=none ctermbg=254 cterm=none
     hi CursorLineNr ctermfg=244 ctermbg=254 cterm=bold
