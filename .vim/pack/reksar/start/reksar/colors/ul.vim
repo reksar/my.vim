@@ -30,6 +30,8 @@ if s:is_dark
     hi Comment guifg=#949494 guibg=#262626 gui=none
     hi SpecialComment guifg=#949494 guibg=#262626 gui=bold
 
+    hi Todo guifg=#262626 guibg=#d7af5f gui=none
+
     hi Constant guifg=#d7d75f guibg=#262626 gui=none
     hi PreProc guifg=#d7d75f guibg=#262626 gui=none
 
@@ -48,6 +50,8 @@ if s:is_dark
 
     hi Comment ctermfg=246 ctermbg=235 cterm=none
     hi SpecialComment ctermfg=246 ctermbg=235 cterm=bold
+
+    hi Todo ctermfg=235 ctermbg=179 cterm=none
 
     hi Constant ctermfg=185 ctermbg=235 cterm=none
     hi PreProc ctermfg=185 ctermbg=235 cterm=none
@@ -78,6 +82,8 @@ else  " is light
     hi Comment guifg=#808080 guibg=#eeeeee gui=none
     hi SpecialComment guifg=#808080 guibg=#eeeeee gui=bold
 
+    hi Todo guifg=#808080 guibg=#ffff5f gui=none
+
     hi Constant guifg=#005f00 guibg=#eeeeee gui=none
     hi PreProc guifg=#005f00 guibg=#eeeeee gui=none
 
@@ -96,6 +102,8 @@ else  " is light
 
     hi Comment ctermfg=244 ctermbg=255 cterm=none
     hi SpecialComment ctermfg=244 ctermbg=255 cterm=bold
+
+    hi Todo ctermfg=244 ctermbg=227 cterm=none
 
     hi Constant ctermfg=22 ctermbg=255 cterm=none
     hi PreProc ctermfg=22 ctermbg=255 cterm=none
