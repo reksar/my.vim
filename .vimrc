@@ -15,7 +15,7 @@ set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ chr:col=%c:%v
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
-  colorscheme ul
+  colorscheme alexstraza
   " Window size
   set lines=35 columns=90
   " Hide toolbar (button panel)
@@ -41,11 +41,11 @@ else
 
 " Terminal Low Color: --------------------------------------------------------
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
-    colorscheme ul
+    colorscheme alexstraza
 
 " Terminal High Color: -------------------------------------------------------
   else
-    colorscheme ul
+    colorscheme alexstraza
   endif
 endif
 
