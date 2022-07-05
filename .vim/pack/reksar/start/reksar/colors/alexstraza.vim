@@ -38,9 +38,9 @@ if s:is_dark
 
     hi Special guifg=#d75f5f guibg=#1c1c1c gui=none
 
-    hi CursorLine guibg=#1c1c1c gui=none
-    hi CursorLineNr guifg=#949494 guibg=#1c1c1c gui=bold
-    hi LineNr guifg=#585858 guibg=#1c1c1c gui=none
+    hi CursorLine guibg=#121212 gui=none
+    hi CursorLineNr guifg=#949494 guibg=#121212 gui=bold
+    hi LineNr guifg=#585858 guibg=#121212 gui=none
 
   elseif &t_Co == 256
 
@@ -58,9 +58,9 @@ if s:is_dark
 
     hi Special ctermfg=167 ctermbg=234 cterm=none
 
-    hi CursorLine ctermfg=none ctermbg=234 cterm=none
-    hi CursorLineNr ctermfg=246 ctermbg=234 cterm=bold
-    hi LineNr ctermfg=240 ctermbg=234 cterm=none
+    hi CursorLine ctermfg=none ctermbg=233 cterm=none
+    hi CursorLineNr ctermfg=246 ctermbg=233 cterm=bold
+    hi LineNr ctermfg=240 ctermbg=233 cterm=none
 
   else  " 8-bit color terminal
 
