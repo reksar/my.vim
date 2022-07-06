@@ -42,6 +42,8 @@ if s:is_dark
     hi CursorLineNr guifg=#949494 guibg=#121212 gui=bold
     hi LineNr guifg=#585858 guibg=#121212 gui=none
 
+    hi MatchParen guifg=#1c1c1c guibg=#d75f5f gui=bold,underline,inverse
+
   elseif &t_Co == 256
 
     hi Normal ctermfg=180 ctermbg=234 cterm=none
@@ -61,6 +63,8 @@ if s:is_dark
     hi CursorLine ctermfg=none ctermbg=233 cterm=none
     hi CursorLineNr ctermfg=246 ctermbg=233 cterm=bold
     hi LineNr ctermfg=240 ctermbg=233 cterm=none
+
+    hi MatchParen ctermfg=234 ctermbg=167 cterm=bold,underline,inverse
 
   else  " 8-bit color terminal
 
