@@ -81,6 +81,34 @@ let g:netrw_ignorenetrc=1
 "set spell spelllang=ru  " Orphography check
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
 
+
+runtime plugs.vim
+
+
+" File Types: ----------------------------------------------------------------
+
+autocmd FileType cpp set tabstop=2
+autocmd FileType cpp set shiftwidth=2
+
+autocmd FileType sh set tabstop=2
+autocmd FileType sh set shiftwidth=2
+
+autocmd FileType vim set tabstop=2
+autocmd FileType vim set shiftwidth=2
+
+autocmd FileType yaml set tabstop=2
+autocmd FileType yaml set shiftwidth=2
+
+autocmd FileType json set tabstop=2
+autocmd FileType json set shiftwidth=2
+
+autocmd FileType xml set tabstop=2
+autocmd FileType xml set shiftwidth=2
+
+autocmd FileType html set tabstop=2
+autocmd FileType html set shiftwidth=2
+
+
 " Key Bindings: --------------------------------------------------------------
 
 " Save
@@ -109,26 +137,3 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" File Types: ----------------------------------------------------------------
-
-autocmd FileType cpp set tabstop=2
-autocmd FileType cpp set shiftwidth=2
-
-autocmd FileType sh set tabstop=2
-autocmd FileType sh set shiftwidth=2
-
-autocmd FileType vim set tabstop=2
-autocmd FileType vim set shiftwidth=2
-
-autocmd FileType yaml set tabstop=2
-autocmd FileType yaml set shiftwidth=2
-
-autocmd FileType json set tabstop=2
-autocmd FileType json set shiftwidth=2
-
-autocmd FileType xml set tabstop=2
-autocmd FileType xml set shiftwidth=2
-
-autocmd FileType html set tabstop=2
-autocmd FileType html set shiftwidth=2
