@@ -82,9 +82,6 @@ let g:netrw_ignorenetrc=1
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
 
 
-runtime plugs.vim
-
-
 " File Types: ----------------------------------------------------------------
 
 autocmd FileType cpp set tabstop=2
