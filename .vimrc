@@ -6,6 +6,7 @@ syntax on
 set background=dark
 
 set encoding=utf-8
+set noswapfile
 set fileencodings=utf-8,latin1,cp1251,cp866
 set backspace=indent,eol,start
 
@@ -36,7 +37,6 @@ if has('gui_running')
 
 " Terminal: ------------------------------------------------------------------
 else
-  " Use system clipboard
   set clipboard=unnamedplus
 
 " Terminal Low Color: --------------------------------------------------------
@@ -117,12 +117,8 @@ imap <C-BS> <C-W>
 " Del word on `Ctrl+Del`
 imap <C-Del> <C-O>dw
 
-" Reset search highlighting on `Esc`
-if has('gui_running')
-  :nnoremap <esc> :nohlsearch<return><esc>
-else
-  :nnoremap <CR> :nohlsearch<CR><CR>
-endif
+" Reset search highlighting on `Enter`
+:nnoremap <CR> :nohlsearch<CR><CR>
 
 map <C-Tab> :tabnext<CR>
 map <C-S-Tab> :tabprev<CR>
