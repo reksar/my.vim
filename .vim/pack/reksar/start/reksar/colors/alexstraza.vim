@@ -122,4 +122,5 @@ endif
 
 hi! link ColorColumn CursorLine
 hi! link Identifier Normal
+hi! link Include Statement
 hi! link PreProc Constant
