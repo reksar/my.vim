@@ -2,7 +2,7 @@
 " Name: Alexstraza
 " 256-color palette: https://jonasjacek.github.io/colors
 
-highlight clear
+hi clear
 
 let s:is_dark=(&background == "dark")
 
@@ -22,27 +22,27 @@ let g:colors_name = "alexstraza"
 
 if s:is_dark
 
-  if has("gui_running")
+  if (has("gui_running") || &termguicolors)
 
-    hi Normal guifg=#d7af87 guibg=#1c1c1c gui=none
-    hi Statement guifg=#d7af87 guibg=#1c1c1c gui=bold
+    hi Normal guifg=#baae8f guibg=#21201d gui=none
+    hi Statement guifg=#baae8f guibg=#21201d gui=bold
 
-    hi Comment guifg=#8a8a8a guibg=#1c1c1c gui=none
-    hi SpecialComment guifg=#8a8a8a guibg=#1c1c1c gui=bold
+    hi Comment guifg=#8a8a8a guibg=#21201d gui=none
+    hi SpecialComment guifg=#8a8a8a guibg=#21201d gui=bold
 
-    hi Todo guifg=#1c1c1c guibg=#d7af5f gui=none
+    hi Todo guifg=#21201d guibg=#edcd98 gui=none
 
-    hi Constant guifg=#d7af5f guibg=#1c1c1c gui=none
+    hi Constant guifg=#edcd98 guibg=#21201d gui=none
 
-    hi Type guifg=#5f875f guibg=#1c1c1c gui=none
+    hi Type guifg=#687b6d guibg=#21201d gui=none
 
-    hi Special guifg=#d75f5f guibg=#1c1c1c gui=none
+    hi Special guifg=#a75b51 guibg=#21201d gui=none
 
-    hi CursorLine guibg=#121212 gui=none
-    hi CursorLineNr guifg=#949494 guibg=#121212 gui=bold
-    hi LineNr guifg=#585858 guibg=#121212 gui=none
+    hi CursorLine guibg=#1b1a18 gui=none
+    hi CursorLineNr guifg=#949494 guibg=#1b1a18 gui=bold
+    hi LineNr guifg=#585858 guibg=#1b1a18 gui=none
 
-    hi MatchParen guifg=#1c1c1c guibg=#d75f5f gui=bold,underline,inverse
+    hi MatchParen guifg=#21201d guibg=#a75b51 gui=bold,underline,inverse
 
   elseif &t_Co == 256
 
@@ -76,7 +76,7 @@ if s:is_dark
 
 else  " is light
 
-  if has("gui_running")
+  if (has("gui_running") || &termguicolors)
 
     hi Normal guifg=#080808 guibg=#eeeeee gui=none
     hi Statement guifg=#080808 guibg=#eeeeee gui=bold
@@ -124,3 +124,4 @@ hi! link ColorColumn CursorLine
 hi! link Identifier Normal
 hi! link Include Statement
 hi! link PreProc Constant
+hi! link Title Statement

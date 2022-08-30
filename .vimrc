@@ -1,14 +1,18 @@
 set nocompatible  " with Vi
 
+language messages en_US.UTF-8
+set langmenu=en_US.UTF-8
+
 filetype plugin indent on
 syntax on
 
+set termguicolors
 set background=dark
 
 set encoding=utf-8
-set noswapfile
 set fileencodings=utf-8,latin1,cp1251,cp866
 set backspace=indent,eol,start
+set noswapfile
 
 " Statusbar: -----------------------------------------------------------------
 set ls=2
@@ -37,6 +41,7 @@ if has('gui_running')
 
 " Terminal: ------------------------------------------------------------------
 else
+  " Use system clipboard
   set clipboard=unnamedplus
 
 " Terminal Low Color: --------------------------------------------------------
@@ -81,6 +86,34 @@ let g:netrw_ignorenetrc=1
 "set spell spelllang=ru  " Orphography check
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
 
+" Key Bindings: --------------------------------------------------------------
+
+" Save
+map <C-s> :w<CR>
+
+" Del word on `Ctrl+Backspace`
+imap <C-BS> <C-W>
+
+" Del word on `Ctrl+Del`
+imap <C-Del> <C-O>dw
+
+" Reset search highlighting on `Esc`
+if has('gui_running')
+  :nnoremap <esc> :nohlsearch<return><esc>
+else
+  :nnoremap <CR> :nohlsearch<CR><CR>
+endif
+
+map <C-Tab> :tabnext<CR>
+map <C-S-Tab> :tabprev<CR>
+nmap <C-L> :set invrelativenumber<CR>
+
+" Navigation between splitted windows
+" Ctrl + <direction key>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " File Types: ----------------------------------------------------------------
 
@@ -105,28 +138,5 @@ autocmd FileType xml set shiftwidth=2
 autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
 
-
-" Key Bindings: --------------------------------------------------------------
-
-" Save
-map <C-s> :w<CR>
-
-" Del word on `Ctrl+Backspace`
-imap <C-BS> <C-W>
-
-" Del word on `Ctrl+Del`
-imap <C-Del> <C-O>dw
-
-" Reset search highlighting on `Enter`
-:nnoremap <CR> :nohlsearch<CR><CR>
-
-map <C-Tab> :tabnext<CR>
-map <C-S-Tab> :tabprev<CR>
-nmap <C-L> :set invrelativenumber<CR>
-
-" Navigation between splitted windows
-" Ctrl + <direction key>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+autocmd FileType dosbatch set tabstop=2
+autocmd FileType dosbatch set shiftwidth=2
