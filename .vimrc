@@ -1,18 +1,24 @@
 set nocompatible  " with Vi
+set noswapfile
 
 language messages en_US.UTF-8
 set langmenu=en_US.UTF-8
 
-filetype plugin indent on
-syntax on
-
-set termguicolors
-set background=dark
-
 set encoding=utf-8
 set fileencodings=utf-8,latin1,cp1251,cp866
 set backspace=indent,eol,start
-set noswapfile
+
+filetype plugin indent on
+syntax on
+
+if has('win32')
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplus
+endif
+
+set termguicolors
+set background=dark
 
 " Statusbar: -----------------------------------------------------------------
 set ls=2
@@ -26,30 +32,20 @@ if has('gui_running')
   " Hide toolbar (button panel)
   set guioptions-=T
 
-" GUI Windows: ---------------------------------------------------------------
   if has('gui_win32')
+  " GUI Windows: -------------------------------------------------------------
     set guifont=Consolas:h14
-    set clipboard=unnamed
-    language messages ru_RU.UTF-8
-
-" GUI Linux: -----------------------------------------------------------------
   else
+  " GUI Linux: ---------------------------------------------------------------
     set guifont=DejaVu\ Sans\ Mono\ 11
-    set clipboard=unnamedplus
-    let g:CTAGS = $HOME.'/.vim/ctags'
   endif
-
-" Terminal: ------------------------------------------------------------------
 else
-  " Use system clipboard
-  set clipboard=unnamedplus
-
-" Terminal Low Color: --------------------------------------------------------
+  " Terminal: ----------------------------------------------------------------
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
+  " Terminal Low Color: ------------------------------------------------------
     colorscheme alexstraza
-
-" Terminal High Color: -------------------------------------------------------
   else
+  " Terminal High Color: -----------------------------------------------------
     colorscheme alexstraza
   endif
 endif
@@ -140,3 +136,6 @@ autocmd FileType html set shiftwidth=2
 
 autocmd FileType dosbatch set tabstop=2
 autocmd FileType dosbatch set shiftwidth=2
+
+autocmd FileType lua set tabstop=2
+autocmd FileType lua set shiftwidth=2
