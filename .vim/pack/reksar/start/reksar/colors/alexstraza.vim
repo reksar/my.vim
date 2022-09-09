@@ -38,6 +38,8 @@ if s:is_dark
 
     hi Special guifg=#a75b51 guibg=#21201d gui=none
 
+    hi Error guifg=#21201d guibg=#a75b51 gui=none
+
     hi CursorLine guibg=#1b1a18 gui=none
     hi CursorLineNr guifg=#949494 guibg=#1b1a18 gui=bold
     hi LineNr guifg=#585858 guibg=#1b1a18 gui=none
@@ -59,6 +61,8 @@ if s:is_dark
     hi Type ctermfg=65 ctermbg=234 cterm=none
 
     hi Special ctermfg=167 ctermbg=234 cterm=none
+
+    hi Error ctermfg=234 ctermbg=167 cterm=none
 
     hi CursorLine ctermfg=none ctermbg=233 cterm=none
     hi CursorLineNr ctermfg=246 ctermbg=233 cterm=bold
@@ -92,6 +96,8 @@ else  " is light
 
     hi Special guifg=#af5f00 guibg=#eeeeee gui=none
 
+    hi Error guifg=#eeeeee guibg=#af5f00 gui=none
+
     hi CursorLine guibg=#e4e4e4 gui=none
     hi CursorLineNr guifg=#808080 guibg=#e4e4e4 cterm=bold
     hi LineNr guifg=#a8a8a8 guibg=#e4e4e4 cterm=none
@@ -112,6 +118,8 @@ else  " is light
 
     hi Special ctermfg=130 ctermbg=255 cterm=none
 
+    hi Error ctermfg=255 ctermbg=130 cterm=none
+
     hi CursorLine ctermfg=none ctermbg=254 cterm=none
     hi CursorLineNr ctermfg=244 ctermbg=254 cterm=bold
     hi LineNr ctermfg=248 ctermbg=254 cterm=none
@@ -121,7 +129,9 @@ else  " is light
 endif
 
 hi! link ColorColumn CursorLine
+hi! link Directory Constant
 hi! link Identifier Normal
 hi! link Include Statement
 hi! link PreProc Constant
+hi! link Question Type
 hi! link Title Statement

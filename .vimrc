@@ -22,7 +22,8 @@ set background=dark
 
 " Statusbar: -----------------------------------------------------------------
 set ls=2
-set statusline=%F%m%r%h%w\ [%{&ff},%LL]\ chr:col=%c:%v
+set statusline=%F%m%r%h%w\ [%L\ %{&ff}
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}]\ [%l:%c\ %p%%]
 
 " GUI: -----------------------------------------------------------------------
 if has('gui_running')
@@ -41,6 +42,11 @@ if has('gui_running')
   endif
 else
   " Terminal: ----------------------------------------------------------------
+  if has('win32')
+    " Neovim Qt has not 'gui_running'.
+    set guifont=Cascadia\ Mono\ Light:h15
+  endif
+
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
   " Terminal Low Color: ------------------------------------------------------
     colorscheme alexstraza
@@ -61,12 +67,12 @@ set ruler  " Show cursor position in a status bar
 set nowrap  " Do not break the lines
 set colorcolumn=80  " May be rewritten in File Types section below
 set showcmd
-set guicursor=a:blinkon600-blinkoff400  " Cursor blinking speed
+set guicursor=a:blinkwait700-blinkon600-blinkoff400  " Cursor blinking speed
 set guitablabel=%t  " Show file name only
 set guioptions+=b  " Show horizontal scroll
 let g:netrw_banner=0
-let g:netrw_list_hide='.*\.swp$'
-let g:netrw_browse_split=4  " Open file in previous window
+let g:netrw_list_style=3
+let g:netrw_browse_split=3  " Open file in new tab
 
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
