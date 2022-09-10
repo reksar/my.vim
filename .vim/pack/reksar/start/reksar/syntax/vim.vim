@@ -14,4 +14,4 @@ hi link vimCommentTitle SpecialComment
 hi link vimGroup Identifier
 hi link vimHiAttrib Constant
 hi link vimNotFunc Statement
-hi link vimOper Special
+hi link vimOper Normal

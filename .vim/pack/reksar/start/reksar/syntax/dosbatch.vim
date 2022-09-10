@@ -5,15 +5,19 @@ endif
 syn keyword dosbatchCommentKeyword rem
 syn keyword dosbatchRepeat in do
 
-syn match dosbatchVarBound "%" containedin=dosbatchVariable
+syn match dosbatchVarBound "%"
+  \ containedin=dosbatchVariable
 syn match dosbatchVariable "%\h\w*%"
 syn match dosbatchVariable "%\h\w*:\*\=[^=]*=[^%]*%"
-syn match dosbatchVariable "%\h\w*:\~[-]\=\d\+\(,[-]\=\d\+\)\=%" contains=dosbatchInteger
+syn match dosbatchVariable "%\h\w*:\~[-]\=\d\+\(,[-]\=\d\+\)\=%"
+  \ contains=dosbatchInteger
 
-syn match dosbatchVarBound "!" containedin=dosbatchVariable
+syn match dosbatchVarBound "!"
+  \ containedin=dosbatchVariable
 syn match dosbatchVariable "!\h\w*!"
 syn match dosbatchVariable "!\h\w*:\*\=[^=]*=[^!]*!"
-syn match dosbatchVariable "!\h\w*:\~[-]\=\d\+\(,[-]\=\d\+\)\=!" contains=dosbatchInteger
+syn match dosbatchVariable "!\h\w*:\~[-]\=\d\+\(,[-]\=\d\+\)\=!"
+  \ contains=dosbatchInteger
 
 hi link dosbatchCommentKeyword Type
 hi link dosbatchImplicit Statement

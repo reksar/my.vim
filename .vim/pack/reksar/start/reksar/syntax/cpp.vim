@@ -23,60 +23,60 @@ let b:current_syntax = "cpp"
 
 " Start of line followed by spaces
 syn match cppStart /^\s*/
-    \ nextgroup=cppModifier,cppType
+  \ nextgroup=cppModifier,cppType
 
 syn keyword cppModifier const static virtual
-    \ contained
-    \ nextgroup=cppModifier,cppType
-    \ skipwhite
+  \ contained
+  \ nextgroup=cppModifier,cppType
+  \ skipwhite
 
 "                     type&*  >|
 syn match cppType /\<\i\+[&*]*\ze\_s/
-    \ contained
-    \ nextgroup=cppFuncDef
-    \ skipwhite
-    \ skipempty
+  \ contained
+  \ nextgroup=cppFuncDef
+  \ skipwhite
+  \ skipempty
 
 
 " Func Def: ------------------------------------------------------------------
 
 "                         name::       func   (
 syn match cppFuncDef /\<\(\i\+::\)\{,1}\i\+\ze(/
-    \ contained
-    \ contains=cppNameScope
-    \ nextgroup=cppFuncDefArgs
+  \ contained
+  \ contains=cppNameScope
+  \ nextgroup=cppFuncDefArgs
 
 "                         name::
 syn match cppNameScope /\<\i\+::/
-    \ contained
+  \ contained
 
 syn region cppFuncDefArgs start=/(/ end=/)/
-    \ contained
-    \ contains=cppFuncDefArg
-    \ keepend
-    \ nextgroup=cppMethodModifier,cppFuncBody
-    \ skipwhite
-    \ skipempty
+  \ contained
+  \ contains=cppFuncDefArg
+  \ keepend
+  \ nextgroup=cppMethodModifier,cppFuncBody
+  \ skipwhite
+  \ skipempty
 
 syn match cppFuncDefArg /\(const\s\+\)\{,1}\<\i\+[&*]*\s\+\i\+/
-    \ contained
-    \ contains=cppFuncDefArgModifier,cppFuncDefArgType
+  \ contained
+  \ contains=cppFuncDefArgModifier,cppFuncDefArgType
 
 syn keyword cppFuncDefArgModifier const
-    \ contained
+  \ contained
 
 syn match cppFuncDefArgType /\<\i\+[&*]*\ze\s\+\</
-    \ contained
+  \ contained
 
 syn keyword cppMethodModifier const
-    \ contained
-    \ nextgroup=cppFuncBody
-    \ skipwhite
-    \ skipempty
+  \ contained
+  \ nextgroup=cppFuncBody
+  \ skipwhite
+  \ skipempty
 
 syn region cppFuncBody start=/{/ end=/}/
-    \ contained
-    \ keepend
+  \ contained
+  \ keepend
 
 " ------------------------------------------------------------------- Func Def
 
