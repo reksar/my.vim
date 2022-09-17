@@ -21,137 +21,217 @@ endif
 let g:colors_name="alexstraza"
 
 if s:is_dark
-  " Dark Background: ---------------------------------------------------------
 
-  if (has("gui_running") || &termguicolors)
-    " GUI Colors: ------------------------------------------------------------
+"[
+  hi Normal
+    \ guifg=#baae8f guibg=#21201d gui=NONE
+    \ ctermfg=180 ctermbg=234 cterm=NONE
 
-    hi Normal guifg=#baae8f guibg=#21201d gui=none
-    hi Statement guifg=#baae8f guibg=#21201d gui=bold
-    hi Search guifg=#21201d guibg=#baae8f gui=none
-    hi IncSearch guifg=#21201d guibg=#baae8f gui=none
+  hi Statement
+    \ guifg=fg guibg=bg gui=bold
+    \ ctermfg=fg ctermbg=bg cterm=bold
 
-    hi Comment guifg=#8a8a8a guibg=#21201d gui=none
-    hi SpecialComment guifg=#8a8a8a guibg=#21201d gui=bold
+  hi Search
+    \ guifg=bg guibg=fg gui=NONE
+    \ ctermfg=bg ctermbg=fg cterm=NONE
 
-    hi Todo guifg=#21201d guibg=#edcd98 gui=none
+  hi IncSearch
+    \ guifg=bg guibg=fg gui=NONE
+    \ ctermfg=bg ctermbg=fg cterm=NONE
+"]
 
-    hi Constant guifg=#edcd98 guibg=#21201d gui=none
+"[
+  hi Comment
+    \ guifg=#8a8a8a guibg=bg gui=NONE
+    \ ctermfg=245 ctermbg=bg cterm=NONE
 
-    hi Type guifg=#687b6d guibg=#21201d gui=none
+  hi SpecialComment
+    \ guifg=#8a8a8a guibg=bg gui=bold
+    \ ctermfg=245 ctermbg=bg cterm=bold
+"]
 
-    hi Special guifg=#a75b51 guibg=#21201d gui=none
-    hi Error guifg=#21201d guibg=#a75b51 gui=bold
-    hi ErrorMsg guifg=#21201d guibg=#a75b51 gui=bold
+"[
+  hi Constant
+    \ guifg=#edcd98 guibg=bg gui=NONE
+    \ ctermfg=179 ctermbg=bg cterm=NONE
 
-    hi CursorLine guibg=#1b1a18 gui=none
-    hi CursorLineNr guifg=#949494 guibg=#1b1a18 gui=bold
-    hi LineNr guifg=#585858 guibg=#1b1a18 gui=none
-    hi StatusLine guifg=#21201d guibg=#8a8a8a gui=none
-    hi StatusLineNC guifg=#21201d guibg=#585858 gui=none
-    hi NonText guifg=#585858 guibg=#21201d gui=none
-    hi MatchParen guifg=#21201d guibg=#a75b51 gui=bold,underline,inverse
+  hi Todo
+    \ guifg=bg guibg=#edcd98 gui=NONE
+    \ ctermfg=bg ctermbg=179 cterm=NONE
+"]
 
-  elseif &t_Co == 256
-    " CTerm256 Colors: -------------------------------------------------------
+"[
+  hi Type
+    \ guifg=#687b6d guibg=bg gui=NONE
+    \ ctermfg=65 ctermbg=bg cterm=NONE
+"]
 
-    hi Normal ctermfg=180 ctermbg=234 cterm=none
-    hi Statement ctermfg=180 ctermbg=234 cterm=bold
-    hi Search ctermfg=234 ctermbg=180 cterm=none
-    hi IncSearch ctermfg=234 ctermbg=180 cterm=none
+"[
+  hi Special
+    \ guifg=#a75b51 guibg=bg gui=NONE
+    \ ctermfg=167 ctermbg=bg cterm=NONE
 
-    hi Comment ctermfg=245 ctermbg=234 cterm=none
-    hi SpecialComment ctermfg=245 ctermbg=234 cterm=bold
+  hi Error
+    \ guifg=bg guibg=#a75b51 gui=bold
+    \ ctermfg=bg ctermbg=167 cterm=bold
 
-    hi Todo ctermfg=234 ctermbg=179 cterm=none
+  hi ErrorMsg
+    \ guifg=bg guibg=#a75b51 gui=bold
+    \ ctermfg=bg ctermbg=167 cterm=bold
+"]
 
-    hi Constant ctermfg=179 ctermbg=234 cterm=none
+"[
+  hi CursorLine
+    \ guifg=NONE guibg=#1b1a18 gui=NONE
+    \ ctermfg=NONE ctermbg=233 cterm=NONE
 
-    hi Type ctermfg=65 ctermbg=234 cterm=none
+  hi CursorLineNr
+    \ guifg=#949494 guibg=#1b1a18 gui=bold
+    \ ctermfg=246 ctermbg=233 cterm=bold
 
-    hi Special ctermfg=167 ctermbg=234 cterm=none
-    hi Error ctermfg=234 ctermbg=167 cterm=bold
-    hi ErrorMsg ctermfg=234 ctermbg=167 cterm=bold
+  hi LineNr
+    \ guifg=#585858 guibg=#1b1a18 gui=NONE
+    \ ctermfg=240 ctermbg=233 cterm=NONE
 
-    hi CursorLine ctermfg=none ctermbg=233 cterm=none
-    hi CursorLineNr ctermfg=246 ctermbg=233 cterm=bold
-    hi LineNr ctermfg=240 ctermbg=233 cterm=none
-    hi StatusLine ctermfg=234 ctermbg=245 cterm=none
-    hi StatusLineNC ctermfg=234 ctermbg=240 cterm=none
-    hi NonText ctermfg=240 ctermbg=234 cterm=none
-    hi MatchParen ctermfg=234 ctermbg=167 cterm=bold,underline,inverse
+  hi StatusLine
+    \ guifg=bg guibg=#8a8a8a gui=NONE
+    \ ctermfg=bg ctermbg=245 cterm=NONE
 
-  else
-    " CTerm8 Colors: ---------------------------------------------------------
+  hi StatusLineNC
+    \ guifg=bg guibg=#585858 gui=NONE
+    \ ctermfg=bg ctermbg=240 cterm=NONE
 
-    hi Normal ctermfg=Grey ctermbg=Black cterm=none
-    hi Comment ctermfg=DarkGrey ctermbg=Black cterm=none
-    hi SpecialComment ctermfg=DarkGrey ctermbg=Black cterm=bold
+  hi NonText
+    \ guifg=#585858 guibg=bg gui=NONE
+    \ ctermfg=240 ctermbg=bg cterm=NONE
 
-  endif
+  hi Folded
+    \ guifg=#1b1a18 guibg=#585858 gui=NONE
+    \ ctermfg=233 ctermbg=240 cterm=NONE
 
-else
-  " Light Background: --------------------------------------------------------
+  hi MatchParen
+    \ guifg=bg guibg=#a75b51 gui=bold,underline,inverse
+    \ ctermfg=bg ctermbg=167 cterm=bold,underline,inverse
+"]
 
-  if (has("gui_running") || &termguicolors)
-    " GUI Colors: ------------------------------------------------------------
+"[
+  hi Pmenu
+    \ guifg=bg guibg=#687b6d gui=NONE
+    \ ctermfg=bg ctermbg=65 cterm=NONE
 
-    hi Normal guifg=#080808 guibg=#eeeeee gui=none
-    hi Statement guifg=#080808 guibg=#eeeeee gui=bold
-    hi Search guifg=#eeeeee guibg=#080808 gui=none
-    hi IncSearch guifg=#eeeeee guibg=#080808 gui=none
+  hi PmenuSel
+    \ guifg=#edcd98 guibg=#585858 gui=NONE
+    \ ctermfg=179 ctermbg=240 cterm=NONE
 
-    hi Comment guifg=#808080 guibg=#eeeeee gui=none
-    hi SpecialComment guifg=#808080 guibg=#eeeeee gui=bold
+  hi PmenuBar
+    \ guifg=#585858 guibg=#1b1a18 gui=NONE
+    \ ctermfg=240 ctermbg=233 cterm=NONE
+"]
 
-    hi Todo guifg=#808080 guibg=#ffff5f gui=none
+else " is light
 
-    hi Constant guifg=#005f00 guibg=#eeeeee gui=none
+"[
+  hi Normal
+    \ guifg=#080808 guibg=#eeeeee gui=NONE
+    \ ctermfg=232 ctermbg=255 cterm=NONE
 
-    hi Type guifg=#005faf guibg=#eeeeee gui=none
+  hi Statement
+    \ guifg=fg guibg=bg gui=bold
+    \ ctermfg=fg ctermbg=bg cterm=bold
 
-    hi Special guifg=#af5f00 guibg=#eeeeee gui=none
-    hi Error guifg=#eeeeee guibg=#af5f00 gui=bold
-    hi ErrorMsg guifg=#eeeeee guibg=#af5f00 gui=bold
+  hi Search
+    \ guifg=bg guibg=fg gui=NONE
+    \ ctermfg=bg ctermbg=fg cterm=NONE
 
-    hi CursorLine guibg=#e4e4e4 gui=none
-    hi CursorLineNr guifg=#808080 guibg=#e4e4e4 gui=bold
-    hi LineNr guifg=#a8a8a8 guibg=#e4e4e4 gui=none
-    hi StatusLine guifg=#eeeeee guibg=#808080 gui=none
-    hi StatusLineNC guifg=#eeeeee guibg=#a8a8a8 gui=none
-    hi NonText guifg=#a8a8a8 guibg=#eeeeee gui=none
+  hi IncSearch
+    \ guifg=bg guibg=fg gui=NONE
+    \ ctermfg=bg ctermbg=fg cterm=NONE
+"]
 
-  elseif &t_Co == 256
-    " CTerm256 Colors: -------------------------------------------------------
+"[
+  hi Comment
+    \ guifg=#808080 guibg=bg gui=NONE
+    \ ctermfg=244 ctermbg=bg cterm=NONE
 
-    hi Normal ctermfg=232 ctermbg=255 cterm=none
-    hi Statement ctermfg=232 ctermbg=255 cterm=bold
-    hi Search ctermfg=255 ctermbg=232 cterm=none
-    hi IncSearch ctermfg=255 ctermbg=232 cterm=none
+  hi SpecialComment
+    \ guifg=#808080 guibg=bg gui=bold
+    \ ctermfg=244 ctermbg=bg cterm=bold
+"]
 
-    hi Comment ctermfg=244 ctermbg=255 cterm=none
-    hi SpecialComment ctermfg=244 ctermbg=255 cterm=bold
+"[
+  hi Constant
+    \ guifg=#005f00 guibg=bg gui=NONE
+    \ ctermfg=22 ctermbg=bg cterm=NONE
 
-    hi Todo ctermfg=244 ctermbg=227 cterm=none
+  hi Todo
+    \ guifg=#808080 guibg=#ffff5f gui=NONE
+    \ ctermfg=244 ctermbg=227 cterm=NONE
+"]
 
-    hi Constant ctermfg=22 ctermbg=255 cterm=none
+"[
+  hi Type
+    \ guifg=#005faf guibg=bg gui=NONE
+    \ ctermfg=25 ctermbg=bg cterm=NONE
+"]
 
-    hi Type ctermfg=25 ctermbg=255 cterm=none
+"[
+  hi Special
+    \ guifg=#af5f00 guibg=bg gui=NONE
+    \ ctermfg=130 ctermbg=bg cterm=NONE
 
-    hi Special ctermfg=130 ctermbg=255 cterm=none
-    hi Error ctermfg=255 ctermbg=130 cterm=bold
-    hi ErrorMsg ctermfg=255 ctermbg=130 cterm=bold
+  hi Error
+    \ guifg=bg guibg=#af5f00 gui=bold
+    \ ctermfg=bg ctermbg=130 cterm=bold
 
-    hi CursorLine ctermfg=none ctermbg=254 cterm=none
-    hi CursorLineNr ctermfg=244 ctermbg=254 cterm=bold
-    hi LineNr ctermfg=248 ctermbg=254 cterm=none
-    hi StatusLine ctermfg=255 ctermbg=244 cterm=bold
-    hi StatusLineNC ctermfg=255 ctermbg=248 cterm=none
-    hi NonText ctermfg=248 ctermbg=255 cterm=none
+  hi ErrorMsg
+    \ guifg=bg guibg=#af5f00 gui=bold
+    \ ctermfg=bg ctermbg=130 cterm=bold
+"]
 
-  else
-    " CTerm8 Colors: ---------------------------------------------------------
-  endif
+"[
+  hi CursorLine
+    \ guifg=NONE guibg=#e4e4e4 gui=NONE
+    \ ctermfg=NONE ctermbg=254 cterm=NONE
+
+  hi CursorLineNr
+    \ guifg=#808080 guibg=#e4e4e4 gui=bold
+    \ ctermfg=244 ctermbg=254 cterm=bold
+
+  hi LineNr
+    \ guifg=#a8a8a8 guibg=#e4e4e4 gui=NONE
+    \ ctermfg=248 ctermbg=254 cterm=NONE
+
+  hi StatusLine
+    \ guifg=bg guibg=#808080 gui=NONE
+    \ ctermfg=bg ctermbg=244 cterm=NONE
+
+  hi StatusLineNC
+    \ guifg=bg guibg=#a8a8a8 gui=NONE
+    \ ctermfg=bg ctermbg=248 cterm=NONE
+
+  hi NonText
+    \ guifg=#a8a8a8 guibg=bg gui=NONE
+    \ ctermfg=248 ctermbg=bg cterm=NONE
+
+  hi Folded
+    \ guifg=#e4e4e4 guibg=#a8a8a8 gui=NONE
+    \ ctermfg=254 ctermbg=248 cterm=NONE
+"]
+
+"[
+  hi Pmenu
+    \ guifg=bg guibg=#005faf gui=NONE
+    \ ctermfg=bg ctermbg=25 cterm=NONE
+
+  hi PmenuSel
+    \ guifg=#005f00 guibg=#a8a8a8 gui=NONE
+    \  ctermfg=22 ctermbg=248 cterm=NONE
+
+  hi PmenuBar
+    \ guifg=#a8a8a8 guibg=#e4e4e4 gui=NONE
+    \ ctermfg=248 ctermbg=254 cterm=NONE
+"]
+
 endif
 
 hi! link ColorColumn CursorLine
