@@ -1,4 +1,4 @@
-if exists("b:current_syntax") && b:current_syntax != "vim"
+if exists('b:current_syntax') && b:current_syntax != 'vim'
   finish
 endif
 
@@ -6,19 +6,21 @@ endif
 syn clear
 source $VIMRUNTIME/syntax/vim.vim
 
-syn keyword vimBranching endif finish
+syn keyword vimStatement en[dif] for endfo[r] fini[sh] containedin=vim.*
+syn keyword vimLet const skipwhite nextgroup=vimVar,vimFuncVar
 
-syn match vimScope /\<[abglstvw]:\ze\h/
-  \ containedin=vimFBVar,vimFuncVar,vimFunc,vimVar
+syn match vimScope "\<[abglstvw]:\ze\h"
+  \ containedin=vimVar,vimFBVar,vimFuncVar,vimFunc
 
-hi link vimBranching Statement
-hi link vimCommand Keyword
+syn region vimOperParen matchgroup=vimSep start="\[" end="\]" transparent
+  \ contains=@vimOperGroup
+
 hi link vimCommentTitle SpecialComment
-hi link vimFBVar Type
 hi link vimFuncSID Type
 hi link vimFTOption Keyword
 hi link vimGroup Identifier
 hi link vimHiAttrib Constant
+hi link vimLet Type
 hi link vimNotFunc Statement
 hi link vimOper Normal
 hi link vimScope Type
