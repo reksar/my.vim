@@ -20,6 +20,8 @@ endif
 
 let g:colors_name="alexstraza"
 
+hi Visual guibg=reverse gui=inverse
+
 if s:is_dark
 
 "[
@@ -31,11 +33,7 @@ if s:is_dark
     \ guifg=fg guibg=bg gui=bold
     \ ctermfg=fg ctermbg=bg cterm=bold
 
-  hi Search
-    \ guifg=bg guibg=fg gui=NONE
-    \ ctermfg=bg ctermbg=fg cterm=NONE
-
-  hi IncSearch
+  hi TabLineSel
     \ guifg=bg guibg=fg gui=NONE
     \ ctermfg=bg ctermbg=fg cterm=NONE
 "]
@@ -48,6 +46,14 @@ if s:is_dark
   hi SpecialComment
     \ guifg=#8a8a8a guibg=bg gui=bold
     \ ctermfg=245 ctermbg=bg cterm=bold
+
+  hi WarningMsg
+    \ guifg=bg guibg=#8a8a8a gui=bold
+    \ ctermfg=bg ctermbg=245 cterm=bold
+
+  hi StatusLine
+    \ guifg=bg guibg=#8a8a8a gui=NONE
+    \ ctermfg=bg ctermbg=245 cterm=NONE
 "]
 
 "[
@@ -75,9 +81,9 @@ if s:is_dark
     \ guifg=bg guibg=#a75b51 gui=bold
     \ ctermfg=bg ctermbg=167 cterm=bold
 
-  hi ErrorMsg
-    \ guifg=bg guibg=#a75b51 gui=bold
-    \ ctermfg=bg ctermbg=167 cterm=bold
+  hi DiffDelete
+    \ guifg=bg guibg=#a75b51 gui=NONE
+    \ ctermfg=bg ctermbg=167 cterm=NONE
 "]
 
 "[
@@ -93,10 +99,6 @@ if s:is_dark
     \ guifg=#585858 guibg=#1b1a18 gui=NONE
     \ ctermfg=240 ctermbg=233 cterm=NONE
 
-  hi StatusLine
-    \ guifg=bg guibg=#8a8a8a gui=NONE
-    \ ctermfg=bg ctermbg=245 cterm=NONE
-
   hi StatusLineNC
     \ guifg=bg guibg=#585858 gui=NONE
     \ ctermfg=bg ctermbg=240 cterm=NONE
@@ -105,16 +107,16 @@ if s:is_dark
     \ guifg=#585858 guibg=bg gui=NONE
     \ ctermfg=240 ctermbg=bg cterm=NONE
 
-  hi Folded
-    \ guifg=#1b1a18 guibg=#585858 gui=NONE
-    \ ctermfg=233 ctermbg=240 cterm=NONE
-
   hi MatchParen
     \ guifg=bg guibg=#a75b51 gui=bold,underline,inverse
     \ ctermfg=bg ctermbg=167 cterm=bold,underline,inverse
 "]
 
 "[
+  hi SuccessMsg
+    \ guifg=bg guibg=#687b6d gui=bold
+    \ ctermfg=bg ctermbg=65 cterm=bold
+
   hi Pmenu
     \ guifg=bg guibg=#687b6d gui=NONE
     \ ctermfg=bg ctermbg=65 cterm=NONE
@@ -139,11 +141,7 @@ else " is light
     \ guifg=fg guibg=bg gui=bold
     \ ctermfg=fg ctermbg=bg cterm=bold
 
-  hi Search
-    \ guifg=bg guibg=fg gui=NONE
-    \ ctermfg=bg ctermbg=fg cterm=NONE
-
-  hi IncSearch
+  hi TabLineSel
     \ guifg=bg guibg=fg gui=NONE
     \ ctermfg=bg ctermbg=fg cterm=NONE
 "]
@@ -156,6 +154,14 @@ else " is light
   hi SpecialComment
     \ guifg=#808080 guibg=bg gui=bold
     \ ctermfg=244 ctermbg=bg cterm=bold
+
+  hi WarningMsg
+    \ guifg=bg guibg=#808080 gui=bold
+    \ ctermfg=bg ctermbg=244 cterm=bold
+
+  hi StatusLine
+    \ guifg=bg guibg=#808080 gui=NONE
+    \ ctermfg=bg ctermbg=244 cterm=NONE
 "]
 
 "[
@@ -183,9 +189,9 @@ else " is light
     \ guifg=bg guibg=#af5f00 gui=bold
     \ ctermfg=bg ctermbg=130 cterm=bold
 
-  hi ErrorMsg
-    \ guifg=bg guibg=#af5f00 gui=bold
-    \ ctermfg=bg ctermbg=130 cterm=bold
+  hi DiffDelete
+    \ guifg=bg guibg=#af5f00 gui=NONE
+    \ ctermfg=bg ctermbg=130 cterm=NONE
 "]
 
 "[
@@ -201,10 +207,6 @@ else " is light
     \ guifg=#a8a8a8 guibg=#e4e4e4 gui=NONE
     \ ctermfg=248 ctermbg=254 cterm=NONE
 
-  hi StatusLine
-    \ guifg=bg guibg=#808080 gui=NONE
-    \ ctermfg=bg ctermbg=244 cterm=NONE
-
   hi StatusLineNC
     \ guifg=bg guibg=#a8a8a8 gui=NONE
     \ ctermfg=bg ctermbg=248 cterm=NONE
@@ -213,12 +215,16 @@ else " is light
     \ guifg=#a8a8a8 guibg=bg gui=NONE
     \ ctermfg=248 ctermbg=bg cterm=NONE
 
-  hi Folded
-    \ guifg=#e4e4e4 guibg=#a8a8a8 gui=NONE
-    \ ctermfg=254 ctermbg=248 cterm=NONE
+  hi MatchParen
+    \ guifg=bg guibg=#af5f00 gui=bold,underline,inverse
+    \ ctermfg=bg ctermbg=130 cterm=bold,underline,inverse
 "]
 
 "[
+  hi SuccessMsg
+    \ guifg=bg guibg=#005faf gui=bold
+    \ ctermfg=bg ctermbg=25 cterm=bold
+
   hi Pmenu
     \ guifg=bg guibg=#005faf gui=NONE
     \ ctermfg=bg ctermbg=25 cterm=NONE
@@ -235,10 +241,22 @@ else " is light
 endif
 
 hi! link ColorColumn CursorLine
+hi! link DiffAdd Pmenu
+hi! link DiffChange StatusLine
 hi! link Directory Constant
+hi! link ErrorMsg Error
+hi! link Folded StatusLineNC
 hi! link Identifier Normal
 hi! link Include Statement
+hi! link IncSearch Visual
 hi! link MoreMsg Type
 hi! link PreProc Constant
+hi! link Search Visual
+hi! link SpecialKey Special
 hi! link Question Type
+hi! link TabLine StatusLine
+hi! link TabLineFill StatusLineNC
 hi! link Title Statement
+hi! link WildMenu Todo
+
+hi! link healthSuccess SuccessMsg
