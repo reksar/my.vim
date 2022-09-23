@@ -4,14 +4,6 @@
 
 hi clear
 
-let s:is_dark=(&background == "dark")
-
-if s:is_dark
-  set background=dark
-else
-  set background=light
-endif
-
 if version > 580
   if exists("syntax_on")
     syntax reset
@@ -20,7 +12,11 @@ endif
 
 let g:colors_name="alexstraza"
 
-hi Visual guibg=reverse gui=inverse
+hi DiagnosticError guifg=#dd3f19 guibg=bg gui=bold
+hi DiagnosticSignError guifg=#dd3f19 guibg=#1b1a18 gui=bold
+hi Visual guibg=NONE gui=inverse
+
+let s:is_dark = (&background == "dark")
 
 if s:is_dark
 
@@ -76,6 +72,10 @@ if s:is_dark
   hi Special
     \ guifg=#a75b51 guibg=bg gui=NONE
     \ ctermfg=167 ctermbg=bg cterm=NONE
+
+  hi DiagnosticWarn
+    \ guifg=#a75b51 guibg=bg gui=bold
+    \ ctermfg=167 ctermbg=bg cterm=bold
 
   hi Error
     \ guifg=bg guibg=#a75b51 gui=bold
@@ -185,6 +185,10 @@ else " is light
     \ guifg=#af5f00 guibg=bg gui=NONE
     \ ctermfg=130 ctermbg=bg cterm=NONE
 
+  hi DiagnosticWarn
+    \ guifg=#af5f00 guibg=bg gui=bold
+    \ ctermfg=130 ctermbg=bg cterm=bold
+
   hi Error
     \ guifg=bg guibg=#af5f00 gui=bold
     \ ctermfg=bg ctermbg=130 cterm=bold
@@ -259,4 +263,5 @@ hi! link TabLineFill StatusLineNC
 hi! link Title Statement
 hi! link WildMenu Todo
 
+hi! link SignColumn LineNr
 hi! link healthSuccess SuccessMsg

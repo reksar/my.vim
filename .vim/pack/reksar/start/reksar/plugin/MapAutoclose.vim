@@ -1,74 +1,76 @@
-function MapAutoclose (open, close)
-	if (a:open == a:close)
-		execute 'inoremap <expr> '.a:open.' AutocloseTwinChar("'.a:open.'")'
+function! MapAutoclose(open, close)
+  const map = 'inoremap <expr> '
+
+	if a:open == a:close
+		exe map.a:open.' AutocloseTwinChar("'.a:open.'")'
 	else
-		execute 'inoremap <expr> '.a:open.' AutocloseDualChar("'.a:open.'","'.a:close.'")'
-		execute 'inoremap <expr> '.a:close.' PasteOrJump("'.a:close.'")'
+		exe map.a:open.' AutocloseHiralChar("'.a:open.'", "'.a:close.'")'
+		exe map.a:close.' PasteOrJump("'.a:close.'")'
 	endif
 endfunction
 
-function AutocloseDualChar (open, close)
-	if NeedToClose()
-		return a:open . a:close . CursorLeft()
-	else
-		return a:open
+
+function! AutocloseTwinChar(char)
+  if s:next_char() == a:char
+    return s:move_cursor_right()
+  endif
+  return AutocloseHiralChar(a:char, a:char)
+endfunction
+
+
+function! AutocloseHiralChar(open, close)
+	if s:need_to_close()
+		return a:open . a:close . s:move_cursor_left()
 	endif
+  return a:open
 endfunction
 
-function PasteOrJump (close)
-	if (GetNextChar() == a:close)
-		return CursorRight()
-	else
-		return a:close
+
+function! PasteOrJump(close)
+	if s:next_char() == a:close
+		return s:move_cursor_right()
 	endif
+  return a:close
 endfunction
 
-function AutocloseTwinChar (char)
-	if (GetNextChar() == a:char)
-		return CursorRight()
-	else
-		return AutocloseDualChar (a:char, a:char)
-	endif
+
+function! s:need_to_close()
+	const next = s:next_char()
+	return ((next == '')
+  \  || (next =~ '\s')
+  \  || (next == '.')
+  \  || (next == ';')
+  \  || (next == ')')
+  \  || (next == ']')
+  \  || (next == '}')
+  \  || (next == '>')
+  \  || (next == "'")
+  \  || (next == '"'))
 endfunction
 
-function NeedToClose()
-	let next = GetNextChar()
-	if ((next == "")
-		\|| (next =~ '\s')
-		\|| (next == ".")
-		\|| (next == ";")
-		\|| (next == ")")
-		\|| (next == "]")
-		\|| (next == "}")
-		\|| (next == ">")
-		\|| (next == "'")
-		\|| (next == "\""))
-		return 1
-	else
-		return 0
-	endif
+
+function! s:next_char()
+	const current_line = getline('.')
+	const current_col = col('.')
+	const next_col = current_col - 1
+	return current_line[next_col]
 endfunction
 
-function GetNextChar()
-	let current_line = getline (".")
-	let current_col = col (".")
-	let next_col = current_col - 1
-	let next_char = current_line[next_col]
-	return next_char
-endfunction
 
-function CursorLeft()
-	let Esc = "\u1B"
+function! s:move_cursor_left()
+	const Esc = "\u1B"
 	return Esc . 'i'
 endfunction
 
-function CursorRight()
-	let Esc = "\u1B"
+
+function! s:move_cursor_right()
+	const Esc = "\u1B"
 	return Esc . 'la'
 endfunction
 
-inoremap <expr> " AutocloseTwinChar ('"')
-call MapAutoclose ("(",")")
-call MapAutoclose ("{","}")
-call MapAutoclose ("[","]")
-call MapAutoclose ("'","'")
+
+"inoremap <expr> " AutocloseTwinChar('"')
+"call MapAutoclose ("(",")")
+"call MapAutoclose ("{","}")
+"call MapAutoclose ("[","]")
+"call MapAutoclose ("'","'")

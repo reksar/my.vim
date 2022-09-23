@@ -73,6 +73,8 @@ set guioptions+=b  " Show horizontal scroll
 let g:netrw_banner=0
 let g:netrw_list_style=3
 let g:netrw_browse_split=3  " Open file in new tab
+let g:netrw_winsize=23
+let g:netrw_ignorenetrc=1
 
 " Formatting Text: -----------------------------------------------------------
 set tabstop=4
@@ -82,15 +84,12 @@ set smarttab
 set autoindent
 set smartindent
 
-let g:netrw_winsize=23
-let g:netrw_ignorenetrc=1
-
 "set spell spelllang=ru  " Orphography check
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
 
 " Key Bindings: --------------------------------------------------------------
 
-" Save
+" Save on `Ctrl+S`
 map <C-s> :w<CR>
 
 " Del word on `Ctrl+Backspace`
@@ -99,16 +98,11 @@ imap <C-BS> <C-W>
 " Del word on `Ctrl+Del`
 imap <C-Del> <C-O>dw
 
-" Reset search highlighting on `Esc`
-if has('gui_running')
-  :nnoremap <esc> :nohlsearch<return><esc>
-else
-  :nnoremap <CR> :nohlsearch<CR><CR>
-endif
+" Reset Search highlight on `Enter`
+nnoremap <CR> :nohlsearch<CR><CR>
 
-map <C-Tab> :tabnext<CR>
-map <C-S-Tab> :tabprev<CR>
-nmap <C-L> :set invrelativenumber<CR>
+" Switch line relative/absolute numbers on `Alt+N`
+nnoremap <A-n> :set invrelativenumber<CR>
 
 " Navigation between splitted windows
 " Ctrl + <direction key>
