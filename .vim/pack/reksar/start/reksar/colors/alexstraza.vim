@@ -10,239 +10,63 @@ if version > 580
   endif
 endif
 
-let g:colors_name="alexstraza"
+let g:colors_name = "alexstraza"
 
-hi DiagnosticError guifg=#dd3f19 guibg=bg gui=bold
-hi DiagnosticSignError guifg=#dd3f19 guibg=#1b1a18 gui=bold
-hi Visual guibg=NONE gui=inverse
+let s:fg = ['fg', 'fg']
+let s:bg = ['bg', 'bg']
+let s:no = ['NONE', 'NONE']
 
 let s:is_dark = (&background == "dark")
 
-if s:is_dark
+let s:norm = s:is_dark ? ['#baae8f', 180] : ['#080808', 232]
+let s:normbg = s:is_dark ? ['#21201d', 234] : ['#eeeeee', 255]
+let s:comment = s:is_dark ? ['#8a8a8a', 245] : ['#808080', 244]
+let s:const = s:is_dark ? ['#edcd98', 179] : ['#005f00', 22]
+let s:special = s:is_dark ? ['#a75b51', 167] : ['#af5f00', 130]
+let s:type = s:is_dark ? ['#687b6d', 65] : ['#005faf', 25]
+let s:bound = s:is_dark ? ['#1b1a18', 233] : ['#e4e4e4', 254]
+let s:nontxt = s:is_dark ? ['#585858', 240] : ['#a8a8a8', 248]
 
-"[
-  hi Normal
-    \ guifg=#baae8f guibg=#21201d gui=NONE
-    \ ctermfg=180 ctermbg=234 cterm=NONE
+for [name, style, fg, bg] in [
+\
+\  ['Normal', 'NONE', s:norm, s:normbg],
+\  ['Statement', 'bold', s:fg, s:bg],
+\  ['TabLineSel', 'NONE', s:bg, s:fg],
+\
+\  ['Comment', 'NONE', s:comment, s:bg],
+\  ['SpecialComment', 'bold', s:comment, s:bg],
+\  ['StatusLine', 'NONE', s:bg, s:comment],
+\  ['WarningMsg', 'bold', s:bg, s:comment],
+\
+\  ['Constant', 'NONE', s:const, s:bg],
+\  ['Todo', 'NONE', s:bg, s:const],
+\
+\  ['Special', 'NONE', s:special, s:bg],
+\  ['DiagnosticWarn', 'bold', s:special, s:bg],
+\  ['DiffDelete', 'NONE', s:bg, s:special],
+\  ['Error', 'bold', s:bg, s:special],
+\  ['MatchParen', 'bold,underline,inverse', s:bg, s:special],
+\
+\  ['Type', 'NONE', s:type, s:bg],
+\  ['Pmenu', 'NONE', s:bg, s:type],
+\  ['Pmenu', 'bold', s:bg, s:type],
+\
+\  ['CursorLine', 'NONE', s:no, s:bound],
+\  ['CursorLineNr', 'bold', s:comment, s:bound],
+\
+\  ['NonText', 'NONE', s:nontxt, s:bg],
+\  ['LineNr', 'NONE', s:nontxt, s:bound],
+\  ['StatusLineNC', 'NONE', s:bg, s:nontxt],
+\  ['PmenuSel', 'NONE', s:const, s:nontxt],
+\
+\  ['Visual', 'inverse', s:no, s:no],
+\]
+  exe 'hi '.name.' gui='.style.' cterm='.style
+  \  .' guifg='.fg[0].' guibg='.bg[0].' ctermfg='.fg[1].' ctermbg='.bg[1]
+endfor
 
-  hi Statement
-    \ guifg=fg guibg=bg gui=bold
-    \ ctermfg=fg ctermbg=bg cterm=bold
-
-  hi TabLineSel
-    \ guifg=bg guibg=fg gui=NONE
-    \ ctermfg=bg ctermbg=fg cterm=NONE
-"]
-
-"[
-  hi Comment
-    \ guifg=#8a8a8a guibg=bg gui=NONE
-    \ ctermfg=245 ctermbg=bg cterm=NONE
-
-  hi SpecialComment
-    \ guifg=#8a8a8a guibg=bg gui=bold
-    \ ctermfg=245 ctermbg=bg cterm=bold
-
-  hi WarningMsg
-    \ guifg=bg guibg=#8a8a8a gui=bold
-    \ ctermfg=bg ctermbg=245 cterm=bold
-
-  hi StatusLine
-    \ guifg=bg guibg=#8a8a8a gui=NONE
-    \ ctermfg=bg ctermbg=245 cterm=NONE
-"]
-
-"[
-  hi Constant
-    \ guifg=#edcd98 guibg=bg gui=NONE
-    \ ctermfg=179 ctermbg=bg cterm=NONE
-
-  hi Todo
-    \ guifg=bg guibg=#edcd98 gui=NONE
-    \ ctermfg=bg ctermbg=179 cterm=NONE
-"]
-
-"[
-  hi Type
-    \ guifg=#687b6d guibg=bg gui=NONE
-    \ ctermfg=65 ctermbg=bg cterm=NONE
-"]
-
-"[
-  hi Special
-    \ guifg=#a75b51 guibg=bg gui=NONE
-    \ ctermfg=167 ctermbg=bg cterm=NONE
-
-  hi DiagnosticWarn
-    \ guifg=#a75b51 guibg=bg gui=bold
-    \ ctermfg=167 ctermbg=bg cterm=bold
-
-  hi Error
-    \ guifg=bg guibg=#a75b51 gui=bold
-    \ ctermfg=bg ctermbg=167 cterm=bold
-
-  hi DiffDelete
-    \ guifg=bg guibg=#a75b51 gui=NONE
-    \ ctermfg=bg ctermbg=167 cterm=NONE
-"]
-
-"[
-  hi CursorLine
-    \ guifg=NONE guibg=#1b1a18 gui=NONE
-    \ ctermfg=NONE ctermbg=233 cterm=NONE
-
-  hi CursorLineNr
-    \ guifg=#949494 guibg=#1b1a18 gui=bold
-    \ ctermfg=246 ctermbg=233 cterm=bold
-
-  hi LineNr
-    \ guifg=#585858 guibg=#1b1a18 gui=NONE
-    \ ctermfg=240 ctermbg=233 cterm=NONE
-
-  hi StatusLineNC
-    \ guifg=bg guibg=#585858 gui=NONE
-    \ ctermfg=bg ctermbg=240 cterm=NONE
-
-  hi NonText
-    \ guifg=#585858 guibg=bg gui=NONE
-    \ ctermfg=240 ctermbg=bg cterm=NONE
-
-  hi MatchParen
-    \ guifg=bg guibg=#a75b51 gui=bold,underline,inverse
-    \ ctermfg=bg ctermbg=167 cterm=bold,underline,inverse
-"]
-
-"[
-  hi SuccessMsg
-    \ guifg=bg guibg=#687b6d gui=bold
-    \ ctermfg=bg ctermbg=65 cterm=bold
-
-  hi Pmenu
-    \ guifg=bg guibg=#687b6d gui=NONE
-    \ ctermfg=bg ctermbg=65 cterm=NONE
-
-  hi PmenuSel
-    \ guifg=#edcd98 guibg=#585858 gui=NONE
-    \ ctermfg=179 ctermbg=240 cterm=NONE
-
-  hi PmenuBar
-    \ guifg=#585858 guibg=#1b1a18 gui=NONE
-    \ ctermfg=240 ctermbg=233 cterm=NONE
-"]
-
-else " is light
-
-"[
-  hi Normal
-    \ guifg=#080808 guibg=#eeeeee gui=NONE
-    \ ctermfg=232 ctermbg=255 cterm=NONE
-
-  hi Statement
-    \ guifg=fg guibg=bg gui=bold
-    \ ctermfg=fg ctermbg=bg cterm=bold
-
-  hi TabLineSel
-    \ guifg=bg guibg=fg gui=NONE
-    \ ctermfg=bg ctermbg=fg cterm=NONE
-"]
-
-"[
-  hi Comment
-    \ guifg=#808080 guibg=bg gui=NONE
-    \ ctermfg=244 ctermbg=bg cterm=NONE
-
-  hi SpecialComment
-    \ guifg=#808080 guibg=bg gui=bold
-    \ ctermfg=244 ctermbg=bg cterm=bold
-
-  hi WarningMsg
-    \ guifg=bg guibg=#808080 gui=bold
-    \ ctermfg=bg ctermbg=244 cterm=bold
-
-  hi StatusLine
-    \ guifg=bg guibg=#808080 gui=NONE
-    \ ctermfg=bg ctermbg=244 cterm=NONE
-"]
-
-"[
-  hi Constant
-    \ guifg=#005f00 guibg=bg gui=NONE
-    \ ctermfg=22 ctermbg=bg cterm=NONE
-
-  hi Todo
-    \ guifg=#808080 guibg=#ffff5f gui=NONE
-    \ ctermfg=244 ctermbg=227 cterm=NONE
-"]
-
-"[
-  hi Type
-    \ guifg=#005faf guibg=bg gui=NONE
-    \ ctermfg=25 ctermbg=bg cterm=NONE
-"]
-
-"[
-  hi Special
-    \ guifg=#af5f00 guibg=bg gui=NONE
-    \ ctermfg=130 ctermbg=bg cterm=NONE
-
-  hi DiagnosticWarn
-    \ guifg=#af5f00 guibg=bg gui=bold
-    \ ctermfg=130 ctermbg=bg cterm=bold
-
-  hi Error
-    \ guifg=bg guibg=#af5f00 gui=bold
-    \ ctermfg=bg ctermbg=130 cterm=bold
-
-  hi DiffDelete
-    \ guifg=bg guibg=#af5f00 gui=NONE
-    \ ctermfg=bg ctermbg=130 cterm=NONE
-"]
-
-"[
-  hi CursorLine
-    \ guifg=NONE guibg=#e4e4e4 gui=NONE
-    \ ctermfg=NONE ctermbg=254 cterm=NONE
-
-  hi CursorLineNr
-    \ guifg=#808080 guibg=#e4e4e4 gui=bold
-    \ ctermfg=244 ctermbg=254 cterm=bold
-
-  hi LineNr
-    \ guifg=#a8a8a8 guibg=#e4e4e4 gui=NONE
-    \ ctermfg=248 ctermbg=254 cterm=NONE
-
-  hi StatusLineNC
-    \ guifg=bg guibg=#a8a8a8 gui=NONE
-    \ ctermfg=bg ctermbg=248 cterm=NONE
-
-  hi NonText
-    \ guifg=#a8a8a8 guibg=bg gui=NONE
-    \ ctermfg=248 ctermbg=bg cterm=NONE
-
-  hi MatchParen
-    \ guifg=bg guibg=#af5f00 gui=bold,underline,inverse
-    \ ctermfg=bg ctermbg=130 cterm=bold,underline,inverse
-"]
-
-"[
-  hi SuccessMsg
-    \ guifg=bg guibg=#005faf gui=bold
-    \ ctermfg=bg ctermbg=25 cterm=bold
-
-  hi Pmenu
-    \ guifg=bg guibg=#005faf gui=NONE
-    \ ctermfg=bg ctermbg=25 cterm=NONE
-
-  hi PmenuSel
-    \ guifg=#005f00 guibg=#a8a8a8 gui=NONE
-    \  ctermfg=22 ctermbg=248 cterm=NONE
-
-  hi PmenuBar
-    \ guifg=#a8a8a8 guibg=#e4e4e4 gui=NONE
-    \ ctermfg=248 ctermbg=254 cterm=NONE
-"]
-
-endif
+hi DiagnosticError guifg=#dd3f19 guibg=bg gui=bold
+hi DiagnosticSignError guifg=#dd3f19 guibg=#1b1a18 gui=bold
 
 hi! link ColorColumn CursorLine
 hi! link DiffAdd Pmenu
@@ -254,6 +78,7 @@ hi! link Identifier Normal
 hi! link Include Statement
 hi! link IncSearch Visual
 hi! link MoreMsg Type
+hi! link PmenuBar LineNr
 hi! link PreProc Constant
 hi! link Search Visual
 hi! link SpecialKey Special
@@ -262,6 +87,5 @@ hi! link TabLine StatusLine
 hi! link TabLineFill StatusLineNC
 hi! link Title Statement
 hi! link WildMenu Todo
-
 hi! link SignColumn LineNr
 hi! link healthSuccess SuccessMsg
