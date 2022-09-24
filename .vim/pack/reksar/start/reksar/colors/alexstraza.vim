@@ -49,7 +49,7 @@ for [name, style, fg, bg] in [
 \
 \  ['Type', 'NONE', s:type, s:bg],
 \  ['Pmenu', 'NONE', s:bg, s:type],
-\  ['Pmenu', 'bold', s:bg, s:type],
+\  ['SuccessMsg', 'bold', s:bg, s:type],
 \
 \  ['CursorLine', 'NONE', s:no, s:bound],
 \  ['CursorLineNr', 'bold', s:comment, s:bound],
