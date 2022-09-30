@@ -39,12 +39,12 @@ for [name, style, fg, bg] in [
 \  ['WarningMsg', 'bold', s:bg, s:comment],
 \
 \  ['Constant', 'NONE', s:const, s:bg],
-\  ['Todo', 'NONE', s:bg, s:const],
+\  ['Todo', 'inverse', s:comment, s:bg],
 \
 \  ['Special', 'NONE', s:special, s:bg],
 \  ['DiagnosticWarn', 'bold', s:special, s:bg],
 \  ['DiffDelete', 'NONE', s:bg, s:special],
-\  ['Error', 'bold', s:bg, s:special],
+\  ['Error', 'bold,inverse', s:special, s:bg],
 \  ['MatchParen', 'bold,underline,inverse', s:bg, s:special],
 \
 \  ['Type', 'NONE', s:type, s:bg],
