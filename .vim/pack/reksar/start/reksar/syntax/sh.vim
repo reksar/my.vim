@@ -10,6 +10,14 @@ endif
 syn clear
 source $VIMRUNTIME/syntax/sh.vim
 
+syn clear shStatement
+if b:current_syntax == "bash"
+  syn clear bashStatement
+elseif b:current_syntax == "ksh"
+  syn clear kshStatement
+endif
+syn keyword shStatement exit return
+
 " && ||
 syn match shCtrlOperator "[&|]\{2}"
 
@@ -34,6 +42,7 @@ if exists("b:is_kornshell") || exists("b:is_posix")
     \ contains=@shDerefVarArray
 endif
 
+syn clear shCommandSubBQ
 syn region shCommandSubBQ matchgroup=shCommandSubBounds
   \ start="`" skip="\\\\\|\\." end="`"
   \ contains=shBQComment,@shCommandSubList
@@ -42,12 +51,11 @@ hi link shArithRegion Special
 hi link shCmdSubRegion Special
 hi link shCommandSub Normal
 hi link shCommandSubBounds Special
-hi link shCtrlOperator Keyword
+hi link shCtrlOperator Statement
 hi link shDerefBounds Special
 hi link shOption Normal
 hi link shRange Special
 hi link shSet Type
 hi link shSpecialStart Special
-hi link shStatement Normal
 hi link shString Constant
 hi link shWrapLineOperator Type
