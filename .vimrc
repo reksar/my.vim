@@ -67,6 +67,7 @@ set ruler  " Show cursor position in a status bar
 set nowrap  " Do not break the lines
 set colorcolumn=80  " May be rewritten in File Types section below
 set showcmd
+set foldmethod=marker
 set guicursor=a:blinkwait700-blinkon600-blinkoff400  " Cursor blinking speed
 set guitablabel=%t  " Show file name only
 set guioptions+=b  " Show horizontal scroll

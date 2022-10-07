@@ -73,7 +73,7 @@ hi! link DiffAdd Pmenu
 hi! link DiffChange StatusLine
 hi! link Directory Constant
 hi! link ErrorMsg Error
-hi! link Folded StatusLineNC
+hi! link Folded SuccessMsg
 hi! link Identifier Normal
 hi! link Include Statement
 hi! link IncSearch Visual
