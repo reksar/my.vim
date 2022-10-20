@@ -6,7 +6,9 @@ endif
 syn clear
 source $VIMRUNTIME/syntax/vim.vim
 
-syn keyword vimStatement en[dif] for endfo[r] fini[sh] containedin=vim.*
+syn keyword vimStatement en[dif] for endfo[r] fini[sh]
+  \ containedin=vimIsCommand,vimFuncList,vimSyntax,vimAuSyntax
+
 syn keyword vimLet const skipwhite nextgroup=vimVar,vimFuncVar
 
 syn match vimScope "\<[abglstvw]:\ze\h"
