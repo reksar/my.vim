@@ -1,3 +1,4 @@
+" Common: {{{
 set nocompatible  " with Vi
 set noswapfile
 
@@ -19,13 +20,15 @@ endif
 
 set termguicolors
 set background=dark
+" }}}
 
-" Statusbar: -----------------------------------------------------------------
+" Statusbar: {{{
 set ls=2
 set statusline=%F%m%r%h%w\ [%L\ %{&ff}
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}]\ [%l:%c\ %p%%]
+" }}}
 
-" GUI: -----------------------------------------------------------------------
+" GUI: {{{
 if has('gui_running')
   colorscheme alexstraza
   " Window size
@@ -34,34 +37,35 @@ if has('gui_running')
   set guioptions-=T
 
   if has('gui_win32')
-  " GUI Windows: -------------------------------------------------------------
+  " GUI Windows: {{{
     set guifont=Consolas:h14
+  " }}}
   else
-  " GUI Linux: ---------------------------------------------------------------
+  " GUI Linux: {{{
     set guifont=DejaVu\ Sans\ Mono\ 11
+  " }}}
   endif
+" }}}
+" TUI: {{{
 else
-  " Terminal: ----------------------------------------------------------------
   if has('win32')
     " Neovim Qt has not 'gui_running'.
-    set guifont=Cascadia\ Mono\ Light:h15
+    set guifont=Input\ Mono\ Condensed:h15
   endif
 
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
-  " Terminal Low Color: ------------------------------------------------------
+  " Terminal Low Color: {{{
     colorscheme alexstraza
+  " }}}
   else
-  " Terminal High Color: -----------------------------------------------------
+  " Terminal High Color: {{{
     colorscheme alexstraza
+  " }}}
   endif
 endif
+" }}}
 
-" Highlighting: --------------------------------------------------------------
-set cursorline
-set incsearch
-set hlsearch
-
-" Interface: -----------------------------------------------------------------
+" Interface: {{{
 set number  " Show line numbers
 set ruler  " Show cursor position in a status bar
 set nowrap  " Do not break the lines
@@ -76,19 +80,26 @@ let g:netrw_list_style=3
 let g:netrw_browse_split=3  " Open file in new tab
 let g:netrw_winsize=23
 let g:netrw_ignorenetrc=1
+" }}}
 
-" Formatting Text: -----------------------------------------------------------
+" Highlighting: {{{
+set cursorline
+set incsearch
+set hlsearch
+" }}}
+
+" Text Formatting: {{{
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
 set autoindent
 set smartindent
-
 "set spell spelllang=ru  " Orphography check
 "set omnifunc=syntaxcomplete#Complete  " Enable omni completion
+" }}}
 
-" Key Bindings: --------------------------------------------------------------
+" Key Bindings: {{{
 
 " Save on `Ctrl+S`
 map <C-s> :w<CR>
@@ -112,7 +123,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" File Types: ----------------------------------------------------------------
+" }}}
+
+" File Types: {{{
 
 autocmd FileType cpp set tabstop=2
 autocmd FileType cpp set shiftwidth=2
@@ -140,3 +153,11 @@ autocmd FileType dosbatch set shiftwidth=2
 
 autocmd FileType lua set tabstop=2
 autocmd FileType lua set shiftwidth=2
+
+" }}}
+
+" Neovim: {{{
+let g:loaded_node_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+" }}}
