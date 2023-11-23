@@ -12,14 +12,12 @@ set backspace=indent,eol,start
 filetype plugin indent on
 syntax on
 
-if has('win32')
-  set clipboard=unnamed
-else
-  set clipboard=unnamedplus
-endif
+let &clipboard = has('win32') ? "unnamed" : "unnamedplus"
 
 set termguicolors
 set background=dark
+
+set path+=**
 " }}}
 
 " Statusbar: {{{
@@ -38,7 +36,7 @@ if has('gui_running')
 
   if has('gui_win32')
   " GUI Windows: {{{
-    set guifont=Consolas:h14
+    set guifont=InputMonoCondensed\ Light:h15
   " }}}
   else
   " GUI Linux: {{{
@@ -46,21 +44,19 @@ if has('gui_running')
   " }}}
   endif
 " }}}
-" TUI: {{{
 else
+  " TUI: {{{
   if has('win32')
     " Neovim Qt has not 'gui_running'.
     set guifont=Input\ Mono\ Condensed:h15
   endif
 
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
-  " Terminal Low Color: {{{
+  " Terminal Low Color: ------------------------------------------------------
     colorscheme alexstraza
-  " }}}
   else
-  " Terminal High Color: {{{
+  " Terminal High Color: -----------------------------------------------------
     colorscheme alexstraza
-  " }}}
   endif
 endif
 " }}}
@@ -126,38 +122,19 @@ nnoremap <C-l> <C-w>l
 " }}}
 
 " File Types: {{{
-
-autocmd FileType cpp set tabstop=2
-autocmd FileType cpp set shiftwidth=2
-
-autocmd FileType sh set tabstop=2
-autocmd FileType sh set shiftwidth=2
-
-autocmd FileType vim set tabstop=2
-autocmd FileType vim set shiftwidth=2
-
-autocmd FileType yaml set tabstop=2
-autocmd FileType yaml set shiftwidth=2
-
-autocmd FileType json set tabstop=2
-autocmd FileType json set shiftwidth=2
-
-autocmd FileType xml set tabstop=2
-autocmd FileType xml set shiftwidth=2
-
-autocmd FileType html set tabstop=2
-autocmd FileType html set shiftwidth=2
-
-autocmd FileType dosbatch set tabstop=2
-autocmd FileType dosbatch set shiftwidth=2
-
-autocmd FileType lua set tabstop=2
-autocmd FileType lua set shiftwidth=2
-
-" }}}
-
-" Neovim: {{{
-let g:loaded_node_provider = 0
-let g:loaded_ruby_provider = 0
-let g:loaded_perl_provider = 0
+for i in [
+\ 'vim',
+\ 'lua',
+\ 'xml',
+\ 'html',
+\ 'json',
+\ 'yaml',
+\ 'sh',
+\ 'cpp',
+\ 'dosbatch',
+\ 'javascript',
+\]
+  exe 'autocmd FileType '.i.' set tabstop=2'
+  exe 'autocmd FileType '.i.' set shiftwidth=2'
+endfor
 " }}}
