@@ -16,7 +16,7 @@ if b:current_syntax == "bash"
 elseif b:current_syntax == "ksh"
   syn clear kshStatement
 endif
-syn keyword shStatement exit return
+syn keyword shStatement exit return shift
 
 " && ||
 syn match shCtrlOperator "[&|]\{2}"
