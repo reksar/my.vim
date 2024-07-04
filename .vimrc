@@ -18,6 +18,12 @@ set termguicolors
 set background=dark
 
 set path+=**
+
+" See `:help complete`.
+" Exclude included files from searching for completion.
+set complete-=i
+" Exclude tags from searching for completion.
+set complete-=t
 " }}}
 
 " Statusbar: {{{
