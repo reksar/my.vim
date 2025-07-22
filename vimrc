@@ -2,8 +2,8 @@
 set nocompatible  " with Vi
 set noswapfile
 
-language messages en_US.UTF-8
-set langmenu=en_US.UTF-8
+language messages C.UTF-8
+set langmenu=C.UTF-8
 
 set encoding=utf-8
 set fileencodings=utf-8,latin1,cp1251,cp866
@@ -12,10 +12,11 @@ set backspace=indent,eol,start
 filetype plugin indent on
 syntax on
 
-let &clipboard = has('win32') ? "unnamed" : "unnamedplus"
+let &clipboard = has('win32') ? 'unnamed' : 'unnamedplus'
 
 set termguicolors
 set background=dark
+set mouse=a
 
 set path+=**
 
@@ -24,6 +25,15 @@ set path+=**
 set complete-=i
 " Exclude tags from searching for completion.
 set complete-=t
+
+" On `set wrap` wraps words, not symbols.
+set linebreak
+
+" The default is `shellcmdflag=-c`, but you can make the shell interactive with
+" `shellcmdflag=-ic`. But the interactive shell has some disadvantages. So
+" this is the alternative solution for non-interactive Vim shell.
+" Requires `shopt -s expand_aliases` in the specified file.
+let $BASH_ENV = '~/.bash_aliases'
 " }}}
 
 " Statusbar: {{{
@@ -117,6 +127,12 @@ nnoremap <CR> :nohlsearch<CR><CR>
 
 " Switch line relative/absolute numbers on `Alt+N`
 nnoremap <A-n> :set invrelativenumber<CR>
+
+" `:let cmd = '<a shell cmd>'`, then you can run a `cmd` on `Alt+R`.
+nnoremap <A-r> :exe '!'.cmd<CR>
+" This is the same, but when the `Alt` is redirected via another console app.
+" The `^[` is the control char: put with `Ctrl+V`, `Esc`.
+nnoremap r :exe '!'.cmd<CR>
 
 " Navigation between splitted windows
 " Ctrl + <direction key>
