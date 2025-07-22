@@ -34,7 +34,7 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}]\ [%l:%c\ %p%%]
 
 " GUI: {{{
 if has('gui_running')
-  colorscheme alexstraza
+  colorscheme zhen
   " Window size
   set lines=35 columns=90
   " Hide toolbar (button panel)
@@ -59,10 +59,10 @@ else
 
   if !(has('termguicolors') && &termguicolors) && &t_Co != 256
   " Terminal Low Color: ------------------------------------------------------
-    colorscheme alexstraza
+    colorscheme zhen
   else
   " Terminal High Color: -----------------------------------------------------
-    colorscheme alexstraza
+    colorscheme zhen
   endif
 endif
 " }}}
