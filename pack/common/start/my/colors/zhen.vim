@@ -1,5 +1,8 @@
-" Vim color file
+" Vim / NeoVim color file
 " Name: Zhen
+"
+" The dark theme palette is inspired by
+" https://arthive.com/utagawakuniyoshi/works/468167~Trigram_Zhen_Thunder_From_the_trigrams_of_the_Chinese_predictions
 
 hi clear
 if exists('syntax_on')

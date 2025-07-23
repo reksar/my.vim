@@ -9,7 +9,7 @@ endif
 syn clear
 source $VIMRUNTIME/syntax/sh.vim
 
-let s:syntax_dir = $HOME . "/.vim/pack/reksar/start/reksar/syntax"
+let s:syntax_dir = $HOME . "/.vim/pack/common/start/my/syntax"
 
 if getline(1) =~ '\<bash\>'
   exec "source " . s:syntax_dir . "/bash.vim"

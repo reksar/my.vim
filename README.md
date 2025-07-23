@@ -1,7 +1,5 @@
 # My Vim pack
 
-Custom configs and plugins.
+My Vim configs and plugins.
 
-# Installation
-
-Place the `~/.vimrc` file and `~/.vim/pack/my.vim/start/my.vim` dir.
+`pack/common` - standard Vim files, but compatible with the NeoVim.
