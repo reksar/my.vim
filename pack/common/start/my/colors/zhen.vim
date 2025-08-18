@@ -24,7 +24,7 @@ let s:no = ['NONE', 'NONE']
 "   - shades of black and white
 "   - blue
 "   - red
-"   - yellow
+"   - light yellow
 "   - brown
 
 " Normal background.
@@ -68,15 +68,16 @@ for [name, style, fg, bg] in [
 \  ['WarningMsg', 'bold', s:bg, s:const],
 \
 \  ['Type', 'NONE', s:type, s:bg],
-\  ['SpecialChar', 'NONE', s:type, s:bg],
+\  ['Title', 'bold', s:type, s:bg],
 \  ['SuccessMsg', 'bold', s:bg, s:type],
 \
 \  ['Special', 'NONE', s:special, s:bg],
 \  ['DiagnosticWarn', 'bold', s:special, s:bg],
 \  ['DiffDelete', 'NONE', s:bg, s:special],
 \  ['Error', 'bold,inverse', s:special, s:bg],
-\  ['MatchParen', 'bold,underline,inverse', s:bg, s:special],
+\  ['MatchParen', 'bold,inverse,underline', s:bg, s:special],
 \
+\  ['MoreMsg', 'NONE', s:ok, s:bg],
 \  ['Question', 'bold', s:ok, s:bg],
 \  ['StatusLineTerm', 'NONE', s:bg, s:ok],
 \
@@ -121,19 +122,18 @@ hi! link Function Normal
 hi! link Identifier Normal
 hi! link IncSearch Visual
 hi! link Include Statement
-hi! link MoreMsg Type
 hi! link Operator Special
 hi! link PmenuBar LineNr
 hi! link PreProc Constant
 hi! link Search Visual
 hi! link SignColumn LineNr
+hi! link SpecialChar Type
 hi! link SpecialKey Special
 hi! link Statement Type
 hi! link StatusLineTermNC StatusLineTerm
 hi! link String Constant
 hi! link TabLine StatusLine
 hi! link TabLineFill StatusLineNC
-hi! link Title Statement
 hi! link WildMenu Todo
 hi! link healthSuccess SuccessMsg
 
@@ -147,16 +147,26 @@ if has('nvim')
   set cursorlineopt=number
 
   hi! link DiagnosticSignInfo SpecialChar
-  hi! link FloatBorder Delimiter
-  hi! link FloatTitle DiagnosticWarn
+  hi! link FloatBorder NonText
+  hi! link FloatTitle Question
   hi! link NormalFloat Normal
   hi! link WinSeparator FloatBorder
 
   " -- -- Treesitter {{{
+  hi! link @attribute Identifier
+  hi! link @attribute.builtin Identifier
+  hi! link @constant.python Identifier
+  hi! link @constructor Function
+  hi! link @function Function
+  hi! link @function.builtin Function
+  hi! link @keyword.directive Comment
   hi! link @keyword.conditional.ternary Delimiter
-  hi! link @type.vim Normal
-  hi! link @variable Normal
-  hi! link @variable.builtin Normal
+  hi! link @module Identifier
+  hi! link @string.documentation Comment
+  hi! link @type Identifier
+  hi! link @type.builtin Type
+  hi! link @variable Identifier
+  hi! link @variable.builtin Identifier
   " -- -- Treesitter }}}
 
   " -- -- LazyVim {{{
@@ -173,6 +183,16 @@ if has('nvim')
   hi! link SnacksDashboardSpecial Constant
   hi! link SnacksIndent Whitespace
   hi! link SnacksIndentScope NonText
+  hi! link SnacksInputBorder FloatBorder
+  hi! link SnacksInputIcon SpecialChar
+  hi! link SnacksInputPrompt Normal
+  hi! link SnacksInputTitle FloatTitle
+  hi! link SnacksPickerDirectory Type
+  hi! link SnacksPickerGitStatusModified MoreMsg
+  hi! link SnacksPickerGitStatusStaged Constant
+  hi! link SnacksPickerGitStatusUntracked Comment
+  hi! link SnacksPickerPrompt SpecialChar
+  hi! link SnacksPickerTree SnacksIndentScope
   " -- -- LazyVim }}}
 
 endif
