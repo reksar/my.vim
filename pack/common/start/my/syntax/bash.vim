@@ -1,7 +1,7 @@
 syn keyword shStatement cat dirname
 
 " Override some shStatement keywords.
-syn keyword shStatementBase exit for in declare
+syn keyword shStatementBase exit for in declare readonly local
 
 syn match shOperator /\(||\|&&\|&>\|1>\|2>\)/
 
