@@ -65,6 +65,7 @@ for [name, style, fg, bg] in [
 \  ['StatusLine', 'NONE', s:bound, s:comment],
 \
 \  ['Constant', 'NONE', s:const, s:bg],
+\  ['ConstantBold', 'bold', s:const, s:bg],
 \  ['WarningMsg', 'bold', s:bg, s:const],
 \
 \  ['Type', 'NONE', s:type, s:bg],
@@ -72,6 +73,7 @@ for [name, style, fg, bg] in [
 \  ['SuccessMsg', 'bold', s:bg, s:type],
 \
 \  ['Special', 'NONE', s:special, s:bg],
+\  ['SpecialBold', 'bold', s:special, s:bg],
 \  ['DiagnosticWarn', 'bold', s:special, s:bg],
 \  ['DiffDelete', 'NONE', s:bg, s:special],
 \  ['Error', 'bold,inverse', s:special, s:bg],
@@ -107,12 +109,15 @@ endfor
 "
 " Extend the base highlight groups by linking with extra groups.
 
-hi DiagnosticError guifg=#dd3f19 guibg=bg gui=bold
 hi DiagnosticSignError guifg=#dd3f19 guibg=#1b1a18 gui=bold
 
 hi! link ColorColumn CursorLine
 hi! link Conditional Operator
 hi! link Delimiter Special
+hi! link DiagnosticError SpecialBold
+hi! link DiagnosticOk Question
+hi! link DiagnosticSignInfo SpecialChar
+hi! link DiagnosticWarn ConstantBold
 hi! link DiffAdd Pmenu
 hi! link DiffChange StatusLine
 hi! link Directory Constant
@@ -135,7 +140,10 @@ hi! link String Constant
 hi! link TabLine StatusLine
 hi! link TabLineFill StatusLineNC
 hi! link WildMenu Todo
+hi! link healthSectionDelim CursorLine
 hi! link healthSuccess SuccessMsg
+hi! link helpCommand Type
+hi! link helpExample Type
 
 " -- NeoVim extra {{{
 if has('nvim')
@@ -146,9 +154,9 @@ if has('nvim')
   " leaving only the cursor line number.
   set cursorlineopt=number
 
-  hi! link DiagnosticSignInfo SpecialChar
   hi! link FloatBorder NonText
   hi! link FloatTitle Question
+  hi! link ModeMsg MoreMsg
   hi! link NormalFloat Normal
   hi! link WinSeparator FloatBorder
 
